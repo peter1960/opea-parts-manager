@@ -5,12 +5,18 @@ using System.Text;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using log4net;
+using log4net.Config;
+
 
 namespace OPEAManager
 {
     class opeaFile
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(opeaFile));
+
         public void LoadFile(String fileName) {
+            log.Info("Loading: " + fileName);
             opeaLine ol = new opeaLine();
             using (TextReader sr = File.OpenText(fileName)) {
                 String line;

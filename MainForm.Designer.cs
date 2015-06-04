@@ -37,15 +37,15 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripFranchise = new System.Windows.Forms.ToolStripComboBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.MainTabControl = new System.Windows.Forms.TabControl();
             this.tabStock = new System.Windows.Forms.TabPage();
             this.dataGridStock = new System.Windows.Forms.DataGridView();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabOrders = new System.Windows.Forms.TabPage();
+            this.tabFranchise = new System.Windows.Forms.TabPage();
             this.tabSuppliers = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -57,7 +57,7 @@
             this.statusStrip1.SuspendLayout();
             this.toolStripTop.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.MainTabControl.SuspendLayout();
             this.tabStock.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStock)).BeginInit();
             this.tabSuppliers.SuspendLayout();
@@ -134,30 +134,30 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.tabControl1);
+            this.flowLayoutPanel1.Controls.Add(this.MainTabControl);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 49);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(879, 423);
             this.flowLayoutPanel1.TabIndex = 4;
             // 
-            // tabControl1
+            // MainTabControl
             // 
-            this.tabControl1.Alignment = System.Windows.Forms.TabAlignment.Left;
-            this.tabControl1.Controls.Add(this.tabStock);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabSuppliers);
-            this.tabControl1.Controls.Add(this.tabSystem);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tabControl1.Location = new System.Drawing.Point(3, 3);
-            this.tabControl1.Multiline = true;
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(876, 417);
-            this.tabControl1.TabIndex = 0;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
-            this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
+            this.MainTabControl.Alignment = System.Windows.Forms.TabAlignment.Left;
+            this.MainTabControl.Controls.Add(this.tabStock);
+            this.MainTabControl.Controls.Add(this.tabOrders);
+            this.MainTabControl.Controls.Add(this.tabFranchise);
+            this.MainTabControl.Controls.Add(this.tabSuppliers);
+            this.MainTabControl.Controls.Add(this.tabSystem);
+            this.MainTabControl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.MainTabControl.Location = new System.Drawing.Point(3, 3);
+            this.MainTabControl.Multiline = true;
+            this.MainTabControl.Name = "MainTabControl";
+            this.MainTabControl.SelectedIndex = 0;
+            this.MainTabControl.Size = new System.Drawing.Size(876, 417);
+            this.MainTabControl.TabIndex = 0;
+            this.MainTabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.MainTabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
             // 
             // tabStock
             // 
@@ -223,25 +223,25 @@
             this.textBox1.Size = new System.Drawing.Size(244, 20);
             this.textBox1.TabIndex = 1;
             // 
-            // tabPage2
+            // tabOrders
             // 
-            this.tabPage2.Location = new System.Drawing.Point(23, 4);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(849, 409);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabOrders.Location = new System.Drawing.Point(23, 4);
+            this.tabOrders.Name = "tabOrders";
+            this.tabOrders.Padding = new System.Windows.Forms.Padding(3);
+            this.tabOrders.Size = new System.Drawing.Size(849, 409);
+            this.tabOrders.TabIndex = 1;
+            this.tabOrders.Text = "Orders";
+            this.tabOrders.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // tabFranchise
             // 
-            this.tabPage3.Location = new System.Drawing.Point(23, 4);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(849, 409);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabFranchise.Location = new System.Drawing.Point(23, 4);
+            this.tabFranchise.Name = "tabFranchise";
+            this.tabFranchise.Padding = new System.Windows.Forms.Padding(3);
+            this.tabFranchise.Size = new System.Drawing.Size(849, 409);
+            this.tabFranchise.TabIndex = 2;
+            this.tabFranchise.Text = "Franchise";
+            this.tabFranchise.UseVisualStyleBackColor = true;
             // 
             // tabSuppliers
             // 
@@ -335,7 +335,7 @@
             this.toolStripTop.ResumeLayout(false);
             this.toolStripTop.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.MainTabControl.ResumeLayout(false);
             this.tabStock.ResumeLayout(false);
             this.tabStock.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStock)).EndInit();
@@ -357,10 +357,10 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStrip toolStripTop;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl MainTabControl;
         private System.Windows.Forms.TabPage tabStock;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabOrders;
+        private System.Windows.Forms.TabPage tabFranchise;
         private System.Windows.Forms.TabPage tabSuppliers;
         private System.Windows.Forms.TabPage tabSystem;
         private System.Windows.Forms.Button buttonLoad;

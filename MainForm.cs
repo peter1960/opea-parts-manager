@@ -71,16 +71,18 @@ namespace OPEAManager
         }
 
         private void Main_Resize(object sender, EventArgs e) {
-            tabControl1.Width = this.Width - 12;
-            tabControl1.Height = this.Height - 104;
+            MainTabControl.Width = this.Width - 12;
+            MainTabControl.Height = this.Height - 104;
         }
 
         private void OPEA_Load_Click(object sender, EventArgs e) {
+            log.Debug("Load Started ");
             toolStripStatusLabel1.Text = "OPEA Load Started";
             statusStrip1.Refresh();
             opeaFile of = new opeaFile();
             of.LoadFile("c:\\data\\KAWAMC01.dat");
             toolStripStatusLabel1.Text = "OPEA Load Done";
+            log.Debug("Load Complete ");
             statusStrip1.Refresh();
         }
 
