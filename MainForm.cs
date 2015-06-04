@@ -25,7 +25,7 @@ namespace OPEAManager
         {
             InitializeComponent();
             //BasicConfigurator.Configure();
-            XmlConfigurator.Configure(new System.IO.FileInfo(@"c:\data\log4net.xml"));
+            XmlConfigurator.Configure(new System.IO.FileInfo(@"log4net.xml"));
             log.Info("Application Start");
             SetupStockTab();
         }
@@ -43,15 +43,6 @@ namespace OPEAManager
             toolStripStatusLabel1.Text = "Reset Done";
             log.Info("Reset Database");
 
-            statusStrip1.Refresh();
-        }
-
-        private void button1_Click(object sender, EventArgs e) {
-            toolStripStatusLabel1.Text = "OPEA Load Started";
-            statusStrip1.Refresh();
-            opeaFile of = new opeaFile();
-            of.LoadFile("c:\\data\\KAWAMC01.dat");
-            toolStripStatusLabel1.Text = "OPEA Load Done";
             statusStrip1.Refresh();
         }
 
@@ -82,6 +73,15 @@ namespace OPEAManager
         private void Main_Resize(object sender, EventArgs e) {
             tabControl1.Width = this.Width - 12;
             tabControl1.Height = this.Height - 104;
+        }
+
+        private void OPEA_Load_Click(object sender, EventArgs e) {
+            toolStripStatusLabel1.Text = "OPEA Load Started";
+            statusStrip1.Refresh();
+            opeaFile of = new opeaFile();
+            of.LoadFile("c:\\data\\KAWAMC01.dat");
+            toolStripStatusLabel1.Text = "OPEA Load Done";
+            statusStrip1.Refresh();
         }
 
 

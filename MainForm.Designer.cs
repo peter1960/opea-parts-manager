@@ -39,20 +39,20 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabStock = new System.Windows.Forms.TabPage();
+            this.dataGridStock = new System.Windows.Forms.DataGridView();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dataGridStock = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabSuppliers = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabSystem = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonSystemReset = new System.Windows.Forms.Button();
             this.buttonLoad = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStripTop.SuspendLayout();
@@ -61,10 +61,10 @@
             this.tabStock.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStock)).BeginInit();
             this.tabSuppliers.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabSystem.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -174,6 +174,21 @@
             this.tabStock.Text = "Stock";
             this.tabStock.UseVisualStyleBackColor = true;
             // 
+            // dataGridStock
+            // 
+            this.dataGridStock.AllowUserToAddRows = false;
+            this.dataGridStock.AllowUserToDeleteRows = false;
+            this.dataGridStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridStock.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridStock.Location = new System.Drawing.Point(3, 3);
+            this.dataGridStock.MultiSelect = false;
+            this.dataGridStock.Name = "dataGridStock";
+            this.dataGridStock.ReadOnly = true;
+            this.dataGridStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridStock.Size = new System.Drawing.Size(843, 403);
+            this.dataGridStock.TabIndex = 0;
+            this.dataGridStock.NewRowNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridStock_NewRowNeeded);
+            // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
@@ -208,21 +223,6 @@
             this.textBox1.Size = new System.Drawing.Size(244, 20);
             this.textBox1.TabIndex = 1;
             // 
-            // dataGridStock
-            // 
-            this.dataGridStock.AllowUserToAddRows = false;
-            this.dataGridStock.AllowUserToDeleteRows = false;
-            this.dataGridStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridStock.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridStock.Location = new System.Drawing.Point(3, 3);
-            this.dataGridStock.MultiSelect = false;
-            this.dataGridStock.Name = "dataGridStock";
-            this.dataGridStock.ReadOnly = true;
-            this.dataGridStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridStock.Size = new System.Drawing.Size(843, 403);
-            this.dataGridStock.TabIndex = 0;
-            this.dataGridStock.NewRowNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridStock_NewRowNeeded);
-            // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(23, 4);
@@ -253,6 +253,25 @@
             this.tabSuppliers.TabIndex = 3;
             this.tabSuppliers.Text = "Suppliers";
             this.tabSuppliers.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dataGridView1);
+            this.groupBox2.Location = new System.Drawing.Point(123, 76);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(518, 252);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Suppliers";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 16);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(512, 233);
+            this.dataGridView1.TabIndex = 0;
             // 
             // tabSystem
             // 
@@ -294,26 +313,7 @@
             this.buttonLoad.TabIndex = 0;
             this.buttonLoad.Text = "Load OPEA";
             this.buttonLoad.UseVisualStyleBackColor = true;
-            this.buttonLoad.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 16);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(512, 233);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Location = new System.Drawing.Point(123, 76);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(518, 252);
-            this.groupBox2.TabIndex = 6;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Suppliers";
+            this.buttonLoad.Click += new System.EventHandler(this.OPEA_Load_Click);
             // 
             // Main
             // 
@@ -340,10 +340,10 @@
             this.tabStock.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStock)).EndInit();
             this.tabSuppliers.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabSystem.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
