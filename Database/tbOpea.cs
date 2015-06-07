@@ -12,12 +12,12 @@ using System.Data.SQLite;
 
 namespace OPEAManager
 {
-    class dbOpea
+    class tbOpea
     {
         const string PartNo = "Part#";
         const string Descr = "Description";
 
-        private static readonly ILog log = LogManager.GetLogger(typeof(dbOpea));
+        private static readonly ILog log = LogManager.GetLogger(typeof(tbOpea));
 
         public void Insert(opeaLine data, int Company_ID) {
             String sql = "insert or replace into `opea` (" +

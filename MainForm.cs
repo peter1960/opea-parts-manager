@@ -49,10 +49,10 @@ namespace OPEAManager
 
         private void SetupStockTab() {
 
-            dbFranchise fr = new dbFranchise();
+            tbFranchise fr = new tbFranchise();
             fr.FillList(toolStripFranchise);
 
-            dbOpea db = new dbOpea();
+            tbOpea db = new tbOpea();
             db.FillTable(0, 1000, dataGridStock);
         }
 
@@ -88,7 +88,10 @@ namespace OPEAManager
         }
 
         private void buttonComanySave_Click(object sender, EventArgs e) {
-
+            log.Debug("Save Company");
+            tbCompany cp = new tbCompany();
+            cp.Update("x", "x", "x", "x", "x", "x", "x", "x", "x");
+            
         }
 
 

@@ -17,7 +17,7 @@ namespace OPEAManager
         const string PartNo = "Part#";
         const string Descr = "Description";
 
-        private static readonly ILog log = LogManager.GetLogger(typeof(dbOpea));
+        private static readonly ILog log = LogManager.GetLogger(typeof(tbOpea));
 
         public void Update(String Address1,
             String Address2,
@@ -29,7 +29,6 @@ namespace OPEAManager
             String State,
             String URL) {
             String sql = "insert or replace into `company` (COMPANY_ID," +
-
                 "ADDRESS1," +
        "ADDRESS2," +
        "NAME1," +

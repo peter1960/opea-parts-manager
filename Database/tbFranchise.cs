@@ -11,9 +11,9 @@ using System.Data.SQLite;
 
 namespace OPEAManager
 {
-    class dbFranchise
+    class tbFranchise
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(dbFranchise));
+        private static readonly ILog log = LogManager.GetLogger(typeof(tbFranchise));
 
         public void FillList(ToolStripComboBox cb) {
             cb.Items.Clear();

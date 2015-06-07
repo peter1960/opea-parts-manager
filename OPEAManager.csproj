@@ -86,9 +86,9 @@
       <DependentUpon>AddressControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Database\Database.cs" />
-    <Compile Include="Database\dbFranchise.cs" />
+    <Compile Include="Database\tbFranchise.cs" />
     <Compile Include="Database\tbCompany.cs" />
-    <Compile Include="Database\dbOpea.cs" />
+    <Compile Include="Database\tbOpea.cs" />
     <Compile Include="Controls\InputControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

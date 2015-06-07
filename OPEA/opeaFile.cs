@@ -40,7 +40,7 @@ namespace OPEAManager
                 //}
 
                 //try {
-                dbOpea dbs = new dbOpea();
+                tbOpea dbs = new tbOpea();
                 int nCount = 0;
                 Database.Instance.BeginTrans();
                 while ((line = sr.ReadLine()) != null ) {
