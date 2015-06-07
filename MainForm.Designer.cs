@@ -50,6 +50,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabCompany = new System.Windows.Forms.TabPage();
+            this.inputCompanyURL = new OPEAManager.InputControl();
             this.addressControl1 = new OPEAManager.AddressControl();
             this.nameControl1 = new OPEAManager.NameControl();
             this.tabSystem = new System.Windows.Forms.TabPage();
@@ -280,6 +281,7 @@
             // 
             // tabCompany
             // 
+            this.tabCompany.Controls.Add(this.inputCompanyURL);
             this.tabCompany.Controls.Add(this.addressControl1);
             this.tabCompany.Controls.Add(this.nameControl1);
             this.tabCompany.Location = new System.Drawing.Point(23, 4);
@@ -288,6 +290,14 @@
             this.tabCompany.TabIndex = 5;
             this.tabCompany.Text = "Company";
             this.tabCompany.UseVisualStyleBackColor = true;
+            // 
+            // inputCompanyURL
+            // 
+            this.inputCompanyURL.Location = new System.Drawing.Point(27, 222);
+            this.inputCompanyURL.Name = "inputCompanyURL";
+            this.inputCompanyURL.Size = new System.Drawing.Size(434, 35);
+            this.inputCompanyURL.TabIndex = 2;
+            this.inputCompanyURL.txtValue = "";
             // 
             // addressControl1
             // 
@@ -410,6 +420,7 @@
         private System.Windows.Forms.TabPage tabCompany;
         private AddressControl addressControl1;
         private NameControl nameControl1;
+        private InputControl inputCompanyURL;
        
     }
 }

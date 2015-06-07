@@ -42,7 +42,7 @@
             // 
             this.textInput.Location = new System.Drawing.Point(76, 8);
             this.textInput.Name = "textInput";
-            this.textInput.Size = new System.Drawing.Size(173, 20);
+            this.textInput.Size = new System.Drawing.Size(180, 20);
             this.textInput.TabIndex = 1;
             // 
             // InputControl
@@ -52,7 +52,7 @@
             this.Controls.Add(this.textInput);
             this.Controls.Add(this.txtLabel);
             this.Name = "InputControl";
-            this.Size = new System.Drawing.Size(261, 35);
+            this.Size = new System.Drawing.Size(272, 35);
             this.ResumeLayout(false);
             this.PerformLayout();
 
