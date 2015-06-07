@@ -50,12 +50,12 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabCompany = new System.Windows.Forms.TabPage();
+            this.addressControl1 = new OPEAManager.AddressControl();
+            this.nameControl1 = new OPEAManager.NameControl();
             this.tabSystem = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonSystemReset = new System.Windows.Forms.Button();
             this.buttonLoad = new System.Windows.Forms.Button();
-            this.nameControl1 = new OPEAManager.NameControl();
-            this.addressControl1 = new OPEAManager.AddressControl();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStripTop.SuspendLayout();
@@ -289,6 +289,20 @@
             this.tabCompany.Text = "Company";
             this.tabCompany.UseVisualStyleBackColor = true;
             // 
+            // addressControl1
+            // 
+            this.addressControl1.Location = new System.Drawing.Point(23, 91);
+            this.addressControl1.Name = "addressControl1";
+            this.addressControl1.Size = new System.Drawing.Size(265, 135);
+            this.addressControl1.TabIndex = 1;
+            // 
+            // nameControl1
+            // 
+            this.nameControl1.Location = new System.Drawing.Point(23, 24);
+            this.nameControl1.Name = "nameControl1";
+            this.nameControl1.Size = new System.Drawing.Size(265, 70);
+            this.nameControl1.TabIndex = 0;
+            // 
             // tabSystem
             // 
             this.tabSystem.Controls.Add(this.groupBox1);
@@ -330,20 +344,6 @@
             this.buttonLoad.Text = "Load OPEA";
             this.buttonLoad.UseVisualStyleBackColor = true;
             this.buttonLoad.Click += new System.EventHandler(this.OPEA_Load_Click);
-            // 
-            // nameControl1
-            // 
-            this.nameControl1.Location = new System.Drawing.Point(357, 162);
-            this.nameControl1.Name = "nameControl1";
-            this.nameControl1.Size = new System.Drawing.Size(265, 70);
-            this.nameControl1.TabIndex = 0;
-            // 
-            // addressControl1
-            // 
-            this.addressControl1.Location = new System.Drawing.Point(433, 318);
-            this.addressControl1.Name = "addressControl1";
-            this.addressControl1.Size = new System.Drawing.Size(265, 70);
-            this.addressControl1.TabIndex = 1;
             // 
             // Main
             // 

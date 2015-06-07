@@ -14,8 +14,10 @@ namespace OPEAManager
     {
         public AddressControl() {
             InitializeComponent();
-            input1.SetLabel = "Address";
-            input2.HasLabel = false;
+            inputAddress1.SetLabel = "Address";
+            inputAddress2.HasLabel = false;
+            inputCity.SetLabel = "City";
+            inputState.SetLabel = "State";
         }
     }
 }

@@ -25,39 +25,63 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.input1 = new OPEAManager.InputControl();
-            this.input2 = new OPEAManager.InputControl();
+            this.inputAddress1 = new OPEAManager.InputControl();
+            this.inputAddress2 = new OPEAManager.InputControl();
+            this.inputCity = new OPEAManager.InputControl();
+            this.inputState = new OPEAManager.InputControl();
             this.SuspendLayout();
             // 
-            // input1
+            // inputAddress1
             // 
-            this.input1.Location = new System.Drawing.Point(4, 3);
-            this.input1.Name = "input1";
-            this.input1.Size = new System.Drawing.Size(261, 35);
-            this.input1.TabIndex = 0;
+            this.inputAddress1.Location = new System.Drawing.Point(4, 3);
+            this.inputAddress1.Name = "inputAddress1";
+            this.inputAddress1.Size = new System.Drawing.Size(261, 35);
+            this.inputAddress1.TabIndex = 0;
+            this.inputAddress1.txtValue = "";
             // 
-            // input2
+            // inputAddress2
             // 
-            this.input2.Location = new System.Drawing.Point(4, 32);
-            this.input2.Name = "input2";
-            this.input2.Size = new System.Drawing.Size(261, 35);
-            this.input2.TabIndex = 1;
+            this.inputAddress2.Location = new System.Drawing.Point(4, 32);
+            this.inputAddress2.Name = "inputAddress2";
+            this.inputAddress2.Size = new System.Drawing.Size(261, 35);
+            this.inputAddress2.TabIndex = 1;
+            this.inputAddress2.txtValue = "";
+            // 
+            // inputCity
+            // 
+            this.inputCity.Location = new System.Drawing.Point(4, 70);
+            this.inputCity.Name = "inputCity";
+            this.inputCity.Size = new System.Drawing.Size(261, 35);
+            this.inputCity.TabIndex = 2;
+            this.inputCity.txtValue = "";
+            // 
+            // inputState
+            // 
+            this.inputState.Location = new System.Drawing.Point(4, 96);
+            this.inputState.Name = "inputState";
+            this.inputState.Size = new System.Drawing.Size(261, 35);
+            this.inputState.TabIndex = 3;
+            this.inputState.txtValue = "";
             // 
             // AddressControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.input2);
-            this.Controls.Add(this.input1);
+            this.Controls.Add(this.inputState);
+            this.Controls.Add(this.inputCity);
+            this.Controls.Add(this.inputAddress2);
+            this.Controls.Add(this.inputAddress1);
             this.Name = "AddressControl";
-            this.Size = new System.Drawing.Size(265, 70);
+            this.Size = new System.Drawing.Size(265, 137);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private InputControl input1;
-        private InputControl input2;
+        private InputControl inputAddress1;
+        private InputControl inputAddress2;
+        private InputControl inputCity;
+        private InputControl inputState;
     }
 }
