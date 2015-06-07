@@ -53,6 +53,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonSystemReset = new System.Windows.Forms.Button();
             this.buttonLoad = new System.Windows.Forms.Button();
+            this.tabCompany = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStripTop.SuspendLayout();
@@ -148,6 +149,7 @@
             this.MainTabControl.Controls.Add(this.tabOrders);
             this.MainTabControl.Controls.Add(this.tabFranchise);
             this.MainTabControl.Controls.Add(this.tabSuppliers);
+            this.MainTabControl.Controls.Add(this.tabCompany);
             this.MainTabControl.Controls.Add(this.tabSystem);
             this.MainTabControl.Dock = System.Windows.Forms.DockStyle.Top;
             this.MainTabControl.Location = new System.Drawing.Point(3, 3);
@@ -315,6 +317,15 @@
             this.buttonLoad.UseVisualStyleBackColor = true;
             this.buttonLoad.Click += new System.EventHandler(this.OPEA_Load_Click);
             // 
+            // tabCompany
+            // 
+            this.tabCompany.Location = new System.Drawing.Point(23, 4);
+            this.tabCompany.Name = "tabCompany";
+            this.tabCompany.Size = new System.Drawing.Size(849, 409);
+            this.tabCompany.TabIndex = 5;
+            this.tabCompany.Text = "Company";
+            this.tabCompany.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -376,6 +387,7 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TabPage tabCompany;
     }
 }
 
