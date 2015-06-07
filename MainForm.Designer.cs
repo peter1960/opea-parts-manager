@@ -57,6 +57,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonSystemReset = new System.Windows.Forms.Button();
             this.buttonLoad = new System.Windows.Forms.Button();
+            this.buttonComanySave = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStripTop.SuspendLayout();
@@ -281,6 +282,7 @@
             // 
             // tabCompany
             // 
+            this.tabCompany.Controls.Add(this.buttonComanySave);
             this.tabCompany.Controls.Add(this.inputCompanyURL);
             this.tabCompany.Controls.Add(this.addressControl1);
             this.tabCompany.Controls.Add(this.nameControl1);
@@ -355,6 +357,16 @@
             this.buttonLoad.UseVisualStyleBackColor = true;
             this.buttonLoad.Click += new System.EventHandler(this.OPEA_Load_Click);
             // 
+            // buttonComanySave
+            // 
+            this.buttonComanySave.Location = new System.Drawing.Point(213, 274);
+            this.buttonComanySave.Name = "buttonComanySave";
+            this.buttonComanySave.Size = new System.Drawing.Size(75, 23);
+            this.buttonComanySave.TabIndex = 3;
+            this.buttonComanySave.Text = "Save";
+            this.buttonComanySave.UseVisualStyleBackColor = true;
+            this.buttonComanySave.Click += new System.EventHandler(this.buttonComanySave_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -421,6 +433,7 @@
         private AddressControl addressControl1;
         private NameControl nameControl1;
         private InputControl inputCompanyURL;
+        private System.Windows.Forms.Button buttonComanySave;
        
     }
 }

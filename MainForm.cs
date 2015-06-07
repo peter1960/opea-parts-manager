@@ -87,6 +87,10 @@ namespace OPEAManager
             statusStrip1.Refresh();
         }
 
+        private void buttonComanySave_Click(object sender, EventArgs e) {
+
+        }
+
 
     }
 }

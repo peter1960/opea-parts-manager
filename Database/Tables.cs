@@ -85,6 +85,22 @@ namespace OPEAManager
 
         }
         public void CreateCompany() {
+            String sql = "DROP TABLE if exists `company`";
+            Database.Instance.ExecuteNonQuery(sql);
+            sql =
+@"CREATE TABLE company (
+`COMPANY_ID` INTEGER PRIMARY KEY AUTOINCREMENT,
+`ADDRESS1` TEXT ,
+`ADDRESS2` TEXT ,
+`NAME1` INTEGER ,
+`NAME2` TEXT ,
+`PHONE1` TEXT,
+`PHONE2` TEXT,
+`CITY` TEXT,
+`STATE` TEXT,
+`URL` TEXT
+);";
+            Database.Instance.ExecuteNonQuery(sql);
 
         }
     }

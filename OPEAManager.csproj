@@ -87,6 +87,7 @@
     </Compile>
     <Compile Include="Database\Database.cs" />
     <Compile Include="Database\dbFranchise.cs" />
+    <Compile Include="Database\tbCompany.cs" />
     <Compile Include="Database\dbOpea.cs" />
     <Compile Include="Controls\InputControl.cs">
       <SubType>UserControl</SubType>
