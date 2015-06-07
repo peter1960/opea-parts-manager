@@ -49,11 +49,12 @@
             this.tabSuppliers = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tabCompany = new System.Windows.Forms.TabPage();
             this.tabSystem = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonSystemReset = new System.Windows.Forms.Button();
             this.buttonLoad = new System.Windows.Forms.Button();
-            this.tabCompany = new System.Windows.Forms.TabPage();
+            this.nameControl1 = new OPEAManager.NameControl();
             this.addressControl1 = new OPEAManager.AddressControl();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -65,9 +66,9 @@
             this.tabSuppliers.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabCompany.SuspendLayout();
             this.tabSystem.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tabCompany.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -277,6 +278,17 @@
             this.dataGridView1.Size = new System.Drawing.Size(512, 233);
             this.dataGridView1.TabIndex = 0;
             // 
+            // tabCompany
+            // 
+            this.tabCompany.Controls.Add(this.addressControl1);
+            this.tabCompany.Controls.Add(this.nameControl1);
+            this.tabCompany.Location = new System.Drawing.Point(23, 4);
+            this.tabCompany.Name = "tabCompany";
+            this.tabCompany.Size = new System.Drawing.Size(849, 409);
+            this.tabCompany.TabIndex = 5;
+            this.tabCompany.Text = "Company";
+            this.tabCompany.UseVisualStyleBackColor = true;
+            // 
             // tabSystem
             // 
             this.tabSystem.Controls.Add(this.groupBox1);
@@ -319,22 +331,19 @@
             this.buttonLoad.UseVisualStyleBackColor = true;
             this.buttonLoad.Click += new System.EventHandler(this.OPEA_Load_Click);
             // 
-            // tabCompany
+            // nameControl1
             // 
-            this.tabCompany.Controls.Add(this.addressControl1);
-            this.tabCompany.Location = new System.Drawing.Point(23, 4);
-            this.tabCompany.Name = "tabCompany";
-            this.tabCompany.Size = new System.Drawing.Size(849, 409);
-            this.tabCompany.TabIndex = 5;
-            this.tabCompany.Text = "Company";
-            this.tabCompany.UseVisualStyleBackColor = true;
+            this.nameControl1.Location = new System.Drawing.Point(357, 162);
+            this.nameControl1.Name = "nameControl1";
+            this.nameControl1.Size = new System.Drawing.Size(265, 70);
+            this.nameControl1.TabIndex = 0;
             // 
             // addressControl1
             // 
-            this.addressControl1.Location = new System.Drawing.Point(230, 187);
+            this.addressControl1.Location = new System.Drawing.Point(433, 318);
             this.addressControl1.Name = "addressControl1";
             this.addressControl1.Size = new System.Drawing.Size(265, 70);
-            this.addressControl1.TabIndex = 0;
+            this.addressControl1.TabIndex = 1;
             // 
             // Main
             // 
@@ -363,9 +372,9 @@
             this.tabSuppliers.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabCompany.ResumeLayout(false);
             this.tabSystem.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            this.tabCompany.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -400,6 +409,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TabPage tabCompany;
         private AddressControl addressControl1;
+        private NameControl nameControl1;
+       
     }
 }
 
