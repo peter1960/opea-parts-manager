@@ -27,7 +27,6 @@ namespace OPEAManager
             //BasicConfigurator.Configure();
             XmlConfigurator.Configure(new System.IO.FileInfo(@"log4net.xml"));
             log.Info("Application Start");
-            inputCompanyURL.SetLabel = "URL";
             SetupStockTab();
         }
 

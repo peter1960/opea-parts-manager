@@ -50,14 +50,12 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabCompany = new System.Windows.Forms.TabPage();
-            this.inputCompanyURL = new OPEAManager.InputControl();
-            this.addressControl1 = new OPEAManager.AddressControl();
-            this.nameControl1 = new OPEAManager.NameControl();
             this.tabSystem = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonSystemReset = new System.Windows.Forms.Button();
             this.buttonLoad = new System.Windows.Forms.Button();
             this.buttonComanySave = new System.Windows.Forms.Button();
+            this.compamyControl1 = new OPEAManager.Controls.CompamyControl();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStripTop.SuspendLayout();
@@ -282,38 +280,14 @@
             // 
             // tabCompany
             // 
+            this.tabCompany.Controls.Add(this.compamyControl1);
             this.tabCompany.Controls.Add(this.buttonComanySave);
-            this.tabCompany.Controls.Add(this.inputCompanyURL);
-            this.tabCompany.Controls.Add(this.addressControl1);
-            this.tabCompany.Controls.Add(this.nameControl1);
             this.tabCompany.Location = new System.Drawing.Point(23, 4);
             this.tabCompany.Name = "tabCompany";
             this.tabCompany.Size = new System.Drawing.Size(849, 409);
             this.tabCompany.TabIndex = 5;
             this.tabCompany.Text = "Company";
             this.tabCompany.UseVisualStyleBackColor = true;
-            // 
-            // inputCompanyURL
-            // 
-            this.inputCompanyURL.Location = new System.Drawing.Point(27, 222);
-            this.inputCompanyURL.Name = "inputCompanyURL";
-            this.inputCompanyURL.Size = new System.Drawing.Size(434, 35);
-            this.inputCompanyURL.TabIndex = 2;
-            this.inputCompanyURL.txtValue = "";
-            // 
-            // addressControl1
-            // 
-            this.addressControl1.Location = new System.Drawing.Point(23, 91);
-            this.addressControl1.Name = "addressControl1";
-            this.addressControl1.Size = new System.Drawing.Size(265, 135);
-            this.addressControl1.TabIndex = 1;
-            // 
-            // nameControl1
-            // 
-            this.nameControl1.Location = new System.Drawing.Point(23, 24);
-            this.nameControl1.Name = "nameControl1";
-            this.nameControl1.Size = new System.Drawing.Size(265, 70);
-            this.nameControl1.TabIndex = 0;
             // 
             // tabSystem
             // 
@@ -366,6 +340,13 @@
             this.buttonComanySave.Text = "Save";
             this.buttonComanySave.UseVisualStyleBackColor = true;
             this.buttonComanySave.Click += new System.EventHandler(this.buttonComanySave_Click);
+            // 
+            // compamyControl1
+            // 
+            this.compamyControl1.Location = new System.Drawing.Point(6, 27);
+            this.compamyControl1.Name = "compamyControl1";
+            this.compamyControl1.Size = new System.Drawing.Size(282, 241);
+            this.compamyControl1.TabIndex = 4;
             // 
             // Main
             // 
@@ -430,10 +411,8 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TabPage tabCompany;
-        private AddressControl addressControl1;
-        private NameControl nameControl1;
-        private InputControl inputCompanyURL;
         private System.Windows.Forms.Button buttonComanySave;
+        private Controls.CompamyControl compamyControl1;
        
     }
 }
