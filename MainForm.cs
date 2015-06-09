@@ -24,10 +24,19 @@ namespace OPEAManager
         public Main()
         {
             InitializeComponent();
+            this.Cursor = Cursors.WaitCursor;
+            tbVersion tv = new tbVersion();
+            if (tv.Version() == 0) {
+                Tables tb = new Tables();
+                tb.CreateTables();
+
+            }
             //BasicConfigurator.Configure();
             XmlConfigurator.Configure(new System.IO.FileInfo(@"log4net.xml"));
             log.Info("Application Start");
+            SetupCompanyTab();
             SetupStockTab();
+            this.Cursor = Cursors.Default;
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -54,6 +63,10 @@ namespace OPEAManager
             tbOpea db = new tbOpea();
             db.FillTable(0, 1000, dataGridStock);
         }
+        private void SetupCompanyTab() {
+            tbCompany cm = new tbCompany();
+            companyControl1.recValue = cm.Fetch();
+        }
 
         private void tabControl1_Selected(object sender, TabControlEventArgs e) {
             log.Debug("Selected Changed " + e.TabPage.ToString());
@@ -76,6 +89,7 @@ namespace OPEAManager
         }
 
         private void OPEA_Load_Click(object sender, EventArgs e) {
+            this.Cursor = Cursors.WaitCursor;
             log.Debug("Load Started ");
             toolStripStatusLabel1.Text = "OPEA Load Started";
             statusStrip1.Refresh();
@@ -84,12 +98,13 @@ namespace OPEAManager
             toolStripStatusLabel1.Text = "OPEA Load Done";
             log.Debug("Load Complete ");
             statusStrip1.Refresh();
+            this.Cursor = Cursors.Default;
         }
 
         private void buttonComanySave_Click(object sender, EventArgs e) {
             log.Debug("Save Company");
             tbCompany cp = new tbCompany();
-            cp.Update("x", "x", "x", "x", "x", "x", "x", "x", "x");
+            cp.Update(companyControl1.recValue);
             
         }
 

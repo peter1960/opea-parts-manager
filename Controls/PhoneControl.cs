@@ -10,15 +10,15 @@ using System.Windows.Forms;
 
 namespace OPEAManager
 {
-    public partial class NameControl : UserControl
+    public partial class PhoneControl : UserControl
     {
-        public NameControl() {
+        public PhoneControl() {
             InitializeComponent();
-            input1.SetLabel = "Name";
+            input1.SetLabel = "Phone";
             input2.HasLabel = false;
         }
 
-        public string Name1 {
+        public string Phone1 {
             set {
                 input1.txtValue = value;
             }
@@ -26,7 +26,7 @@ namespace OPEAManager
                 return input1.txtValue;
             }
         }
-        public string Name2 {
+        public string Phone2 {
             set {
                 input2.txtValue = value;
             }

@@ -19,7 +19,7 @@ namespace OPEAManager
 
         private static readonly ILog log = LogManager.GetLogger(typeof(tbOpea));
 
-        public void Uddate(stCompany Record) {
+        public void Update(stCompany Record) {
             Update(Record.Address1, Record.Address2, Record.Name1, Record.Name2, Record.Phone1, Record.Phone2, Record.City, Record.State, Record.URL);
         }
         public void Update(String Address1,
@@ -31,6 +31,8 @@ namespace OPEAManager
             String City,
             String State,
             String URL) {
+                log.Debug("Update Company");
+
             String sql = "insert or replace into `company` (COMPANY_ID," +
                 "ADDRESS1," +
        "ADDRESS2," +
@@ -57,9 +59,25 @@ namespace OPEAManager
             Database.Instance.ExecuteNonQuery(sql);
         }
         public stCompany Fetch() {
+            DataTable sql_res;
             stCompany data = new stCompany();
-            data.URL = "http://myshop.com";
-            data.Name1 = "My Shop";
+            sql_res = Database.Instance.FillDataSet("Select * from company");
+            if (sql_res.Rows.Count == 0) {
+                log.Debug("No Rows in Company");
+
+            }
+            else {
+                log.Debug("Company Found");
+                data.Address1 = sql_res.Rows[0].Field<String>("address1");
+                data.Address2 = sql_res.Rows[0].Field<String>("address2");
+                data.Name1 = sql_res.Rows[0].Field<String>("name1");
+                data.Name2 = sql_res.Rows[0].Field<String>("name2");
+                data.Phone1 = sql_res.Rows[0].Field<String>("phone1");
+                data.Phone2 = sql_res.Rows[0].Field<String>("phone2");
+                data.City = sql_res.Rows[0].Field<String>("City");
+                data.State = sql_res.Rows[0].Field<String>("State");
+                data.URL = sql_res.Rows[0].Field<String>("URL");
+            }
             return data;
         }
     }

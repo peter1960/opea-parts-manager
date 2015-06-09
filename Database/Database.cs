@@ -6,9 +6,11 @@ using System.Data.SQLite;
 using System.Data;
 using log4net;
 
-namespace OPEAManager {
+namespace OPEAManager
+{
 
-    public sealed class Database {
+    public sealed class Database
+    {
         private static readonly ILog log = LogManager.GetLogger(typeof(Database));
 
         private static Database instance = null;
@@ -24,6 +26,9 @@ namespace OPEAManager {
             TransOpen = false;
 
         }
+        static SQLiteConnection GetCon() {
+            return sql_con;
+        }
         static Database() {
             instance = new Database();
         }
@@ -36,7 +41,7 @@ namespace OPEAManager {
         //    long val;
         //    sql_cmd = sql_con.CreateCommand();
 
-            
+
         //    sql_cmd.CommandText = "select * from log order by event,date";
         //    using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\data\events.txt")) {
         //        SQLiteDataReader r = sql_cmd.ExecuteReader();
@@ -47,7 +52,7 @@ namespace OPEAManager {
         //            val = (Int64)r["val"];
         //            file.WriteLine((string)r["event"] + " " + (string)r["date"] + "," + val+ "," + (val-totLast));
         //            totLast = val;
-                
+
         //        }
         //    }
 
@@ -89,13 +94,18 @@ namespace OPEAManager {
         }
 
         public DataTable FillDataSet(string txtQuery) {
-            log.Debug("Execute " + txtQuery);            
+            log.Debug("Execute " + txtQuery);
             DataSet DS = new DataSet();
-//            sql_cmd = sql_con.CreateCommand();
+            //            sql_cmd = sql_con.CreateCommand();
             DB = new SQLiteDataAdapter(txtQuery, sql_con);
             DS.Reset();
-            DB.Fill(DS);
-            return DS.Tables[0]; 
+            try {
+                DB.Fill(DS);
+            }
+            catch (System.Data.SQLite.SQLiteException ex) {
+                throw ex;
+            }
+            return DS.Tables[0];
 
         }
 

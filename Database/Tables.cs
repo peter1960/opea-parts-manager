@@ -15,7 +15,7 @@ namespace OPEAManager
 
             String sql = "PRAGMA  foreign_keys = 1";
             Database.Instance.ExecuteNonQuery(sql);
-
+            CreateVersion();
             CreateLocations();
             CreateOpea();
             CreateSupplier();
@@ -28,6 +28,13 @@ namespace OPEAManager
             CreateAccount();
             CreateCompany();
             log.Debug("End Create Tables");
+        }
+        public void CreateVersion() {
+            String sql = "DROP TABLE if exists `version`";
+            Database.Instance.ExecuteNonQuery(sql);
+            sql = "CREATE TABLE `version` (`VER` INTEGER PRIMARY KEY);";
+            Database.Instance.ExecuteNonQuery(sql);
+
         }
         public void CreateLocations() {
 
@@ -92,7 +99,7 @@ namespace OPEAManager
 `COMPANY_ID` INTEGER PRIMARY KEY AUTOINCREMENT,
 `ADDRESS1` TEXT ,
 `ADDRESS2` TEXT ,
-`NAME1` INTEGER ,
+`NAME1` TEXT ,
 `NAME2` TEXT ,
 `PHONE1` TEXT,
 `PHONE2` TEXT,
