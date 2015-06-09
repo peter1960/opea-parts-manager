@@ -50,12 +50,13 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabCompany = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonComanySave = new System.Windows.Forms.Button();
             this.tabSystem = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonSystemReset = new System.Windows.Forms.Button();
             this.buttonLoad = new System.Windows.Forms.Button();
-            this.buttonComanySave = new System.Windows.Forms.Button();
-            this.compamyControl1 = new OPEAManager.Controls.CompamyControl();
+            this.companyControl1 = new OPEAManager.Controls.CompanyControl();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStripTop.SuspendLayout();
@@ -280,7 +281,8 @@
             // 
             // tabCompany
             // 
-            this.tabCompany.Controls.Add(this.compamyControl1);
+            this.tabCompany.Controls.Add(this.label1);
+            this.tabCompany.Controls.Add(this.companyControl1);
             this.tabCompany.Controls.Add(this.buttonComanySave);
             this.tabCompany.Location = new System.Drawing.Point(23, 4);
             this.tabCompany.Name = "tabCompany";
@@ -288,6 +290,26 @@
             this.tabCompany.TabIndex = 5;
             this.tabCompany.Text = "Company";
             this.tabCompany.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(24, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(261, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Values below are used on printed documents";
+            // 
+            // buttonComanySave
+            // 
+            this.buttonComanySave.Location = new System.Drawing.Point(291, 71);
+            this.buttonComanySave.Name = "buttonComanySave";
+            this.buttonComanySave.Size = new System.Drawing.Size(75, 23);
+            this.buttonComanySave.TabIndex = 3;
+            this.buttonComanySave.Text = "Save";
+            this.buttonComanySave.UseVisualStyleBackColor = true;
+            this.buttonComanySave.Click += new System.EventHandler(this.buttonComanySave_Click);
             // 
             // tabSystem
             // 
@@ -331,22 +353,12 @@
             this.buttonLoad.UseVisualStyleBackColor = true;
             this.buttonLoad.Click += new System.EventHandler(this.OPEA_Load_Click);
             // 
-            // buttonComanySave
+            // companyControl1
             // 
-            this.buttonComanySave.Location = new System.Drawing.Point(213, 274);
-            this.buttonComanySave.Name = "buttonComanySave";
-            this.buttonComanySave.Size = new System.Drawing.Size(75, 23);
-            this.buttonComanySave.TabIndex = 3;
-            this.buttonComanySave.Text = "Save";
-            this.buttonComanySave.UseVisualStyleBackColor = true;
-            this.buttonComanySave.Click += new System.EventHandler(this.buttonComanySave_Click);
-            // 
-            // compamyControl1
-            // 
-            this.compamyControl1.Location = new System.Drawing.Point(6, 27);
-            this.compamyControl1.Name = "compamyControl1";
-            this.compamyControl1.Size = new System.Drawing.Size(282, 241);
-            this.compamyControl1.TabIndex = 4;
+            this.companyControl1.Location = new System.Drawing.Point(3, 61);
+            this.companyControl1.Name = "companyControl1";
+            this.companyControl1.Size = new System.Drawing.Size(282, 289);
+            this.companyControl1.TabIndex = 4;
             // 
             // Main
             // 
@@ -376,6 +388,7 @@
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabCompany.ResumeLayout(false);
+            this.tabCompany.PerformLayout();
             this.tabSystem.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -412,7 +425,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TabPage tabCompany;
         private System.Windows.Forms.Button buttonComanySave;
-        private Controls.CompamyControl compamyControl1;
+        private Controls.CompanyControl companyControl1;
+        private System.Windows.Forms.Label label1;
        
     }
 }

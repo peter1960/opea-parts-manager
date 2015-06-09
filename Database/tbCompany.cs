@@ -19,6 +19,9 @@ namespace OPEAManager
 
         private static readonly ILog log = LogManager.GetLogger(typeof(tbOpea));
 
+        public void Uddate(stCompany Record) {
+            Update(Record.Address1, Record.Address2, Record.Name1, Record.Name2, Record.Phone1, Record.Phone2, Record.City, Record.State, Record.URL);
+        }
         public void Update(String Address1,
             String Address2,
             String Name1,
@@ -53,6 +56,11 @@ namespace OPEAManager
 
             Database.Instance.ExecuteNonQuery(sql);
         }
-
+        public stCompany Fetch() {
+            stCompany data = new stCompany();
+            data.URL = "http://myshop.com";
+            data.Name1 = "My Shop";
+            return data;
+        }
     }
 }
