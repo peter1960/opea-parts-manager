@@ -64,7 +64,7 @@ namespace OPEAManager
         public void CreateSupplier() {
             String sql = "DROP TABLE if exists `supplier`";
             Database.Instance.ExecuteNonQuery(sql);
-            sql = "CREATE TABLE supplier (`SUPPLIER_ID` INTEGER PRIMARY KEY AUTOINCREMENT,`ADDRESS1` TEXT ,`ADDRESS2` TEXT ,`NAME1` TEXT,`NAME2` TEXT,`PHONE1` TEXT, `PHONE2` TEXT, `URL` TEXT, `CONTACT` TEXT);";
+            sql = "CREATE TABLE supplier (`SUPPLIER_ID` INTEGER PRIMARY KEY AUTOINCREMENT,`ACTIVE` TEXT, `ADDRESS1` TEXT ,`ADDRESS2` TEXT ,`NAME1` TEXT,`NAME2` TEXT,`PHONE1` TEXT, `PHONE2` TEXT, `URL` TEXT, `CONTACT` TEXT);";
             Database.Instance.ExecuteNonQuery(sql);
         }
         public void CreateOrderHeader() {
@@ -109,6 +109,19 @@ namespace OPEAManager
 );";
             Database.Instance.ExecuteNonQuery(sql);
 
+#if DEBUG
+            log.Debug(" Adding a Compy recors after reset");
+
+            stCompany Record = new stCompany();
+            Record.Address1 = "27 Master Street";
+            Record.Name1 = "Johns Cycles";
+            Record.City = "Drouin";
+            Record.State = "Victoria";
+            Record.Phone1 = "555-234588";
+            Record.URL = "Http://myfastcsyles.com.au";
+            tbCompany sp = new tbCompany();
+            sp.Update(Record);
+#endif
         }
     }
 }
