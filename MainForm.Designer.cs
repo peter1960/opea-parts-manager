@@ -48,15 +48,16 @@
             this.tabFranchise = new System.Windows.Forms.TabPage();
             this.tabSuppliers = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.buttonTabSupplierAdd = new System.Windows.Forms.Button();
+            this.dataGridSuppliers = new System.Windows.Forms.DataGridView();
             this.tabCompany = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonComanySave = new System.Windows.Forms.Button();
+            this.companyControl1 = new OPEAManager.Controls.CompanyControl();
             this.tabSystem = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonSystemReset = new System.Windows.Forms.Button();
             this.buttonLoad = new System.Windows.Forms.Button();
-            this.companyControl1 = new OPEAManager.Controls.CompanyControl();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStripTop.SuspendLayout();
@@ -66,7 +67,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStock)).BeginInit();
             this.tabSuppliers.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSuppliers)).BeginInit();
             this.tabCompany.SuspendLayout();
             this.tabSystem.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -190,6 +191,7 @@
             this.dataGridStock.MultiSelect = false;
             this.dataGridStock.Name = "dataGridStock";
             this.dataGridStock.ReadOnly = true;
+            this.dataGridStock.RowHeadersVisible = false;
             this.dataGridStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridStock.Size = new System.Drawing.Size(843, 403);
             this.dataGridStock.TabIndex = 0;
@@ -262,28 +264,45 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Location = new System.Drawing.Point(123, 76);
+            this.groupBox2.Controls.Add(this.buttonTabSupplierAdd);
+            this.groupBox2.Controls.Add(this.dataGridSuppliers);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(518, 252);
+            this.groupBox2.Size = new System.Drawing.Size(843, 403);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Suppliers";
             // 
-            // dataGridView1
+            // buttonTabSupplierAdd
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 16);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(512, 233);
-            this.dataGridView1.TabIndex = 0;
+            this.buttonTabSupplierAdd.Location = new System.Drawing.Point(762, 16);
+            this.buttonTabSupplierAdd.Name = "buttonTabSupplierAdd";
+            this.buttonTabSupplierAdd.Size = new System.Drawing.Size(75, 23);
+            this.buttonTabSupplierAdd.TabIndex = 1;
+            this.buttonTabSupplierAdd.Text = "Add";
+            this.buttonTabSupplierAdd.UseVisualStyleBackColor = true;
+            this.buttonTabSupplierAdd.Click += new System.EventHandler(this.buttonTabSupplierAdd_Click);
+            // 
+            // dataGridSuppliers
+            // 
+            this.dataGridSuppliers.AllowUserToAddRows = false;
+            this.dataGridSuppliers.AllowUserToDeleteRows = false;
+            this.dataGridSuppliers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridSuppliers.Dock = System.Windows.Forms.DockStyle.Left;
+            this.dataGridSuppliers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
+            this.dataGridSuppliers.Location = new System.Drawing.Point(3, 16);
+            this.dataGridSuppliers.Name = "dataGridSuppliers";
+            this.dataGridSuppliers.RowHeadersVisible = false;
+            this.dataGridSuppliers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridSuppliers.Size = new System.Drawing.Size(600, 384);
+            this.dataGridSuppliers.TabIndex = 0;
             // 
             // tabCompany
             // 
             this.tabCompany.Controls.Add(this.label1);
-            this.tabCompany.Controls.Add(this.companyControl1);
             this.tabCompany.Controls.Add(this.buttonComanySave);
+            this.tabCompany.Controls.Add(this.companyControl1);
             this.tabCompany.Location = new System.Drawing.Point(23, 4);
             this.tabCompany.Name = "tabCompany";
             this.tabCompany.Size = new System.Drawing.Size(849, 409);
@@ -310,6 +329,13 @@
             this.buttonComanySave.Text = "Save";
             this.buttonComanySave.UseVisualStyleBackColor = true;
             this.buttonComanySave.Click += new System.EventHandler(this.buttonComanySave_Click);
+            // 
+            // companyControl1
+            // 
+            this.companyControl1.Location = new System.Drawing.Point(3, 61);
+            this.companyControl1.Name = "companyControl1";
+            this.companyControl1.Size = new System.Drawing.Size(282, 289);
+            this.companyControl1.TabIndex = 4;
             // 
             // tabSystem
             // 
@@ -353,13 +379,6 @@
             this.buttonLoad.UseVisualStyleBackColor = true;
             this.buttonLoad.Click += new System.EventHandler(this.OPEA_Load_Click);
             // 
-            // companyControl1
-            // 
-            this.companyControl1.Location = new System.Drawing.Point(3, 61);
-            this.companyControl1.Name = "companyControl1";
-            this.companyControl1.Size = new System.Drawing.Size(282, 289);
-            this.companyControl1.TabIndex = 4;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -386,7 +405,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStock)).EndInit();
             this.tabSuppliers.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSuppliers)).EndInit();
             this.tabCompany.ResumeLayout(false);
             this.tabCompany.PerformLayout();
             this.tabSystem.ResumeLayout(false);
@@ -421,12 +440,13 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ToolStripComboBox toolStripFranchise;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridSuppliers;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TabPage tabCompany;
         private System.Windows.Forms.Button buttonComanySave;
         private Controls.CompanyControl companyControl1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonTabSupplierAdd;
        
     }
 }

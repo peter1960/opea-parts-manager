@@ -34,6 +34,7 @@ namespace OPEAManager
             //BasicConfigurator.Configure();
             XmlConfigurator.Configure(new System.IO.FileInfo(@"log4net.xml"));
             log.Info("Application Start");
+            SetupSupplierTab();
             SetupCompanyTab();
             SetupStockTab();
             this.Cursor = Cursors.Default;
@@ -63,6 +64,13 @@ namespace OPEAManager
             tbOpea db = new tbOpea();
             db.FillTable(0, 1000, dataGridStock);
         }
+
+        private void SetupSupplierTab() {
+
+            tbSupplier fr = new tbSupplier();
+            fr.FillTable(dataGridSuppliers);
+        }
+
         private void SetupCompanyTab() {
             tbCompany cm = new tbCompany();
             companyControl1.recValue = cm.Fetch();
@@ -106,6 +114,10 @@ namespace OPEAManager
             tbCompany cp = new tbCompany();
             cp.Update(companyControl1.recValue);
             
+        }
+
+        private void buttonTabSupplierAdd_Click(object sender, EventArgs e) {
+            log.Debug("Add Supplier");
         }
 
 

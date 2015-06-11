@@ -99,6 +99,7 @@
     </Compile>
     <Compile Include="Database\Database.cs" />
     <Compile Include="Database\Structures.cs" />
+    <Compile Include="Database\tbSupplier.cs" />
     <Compile Include="Database\tbFranchise.cs" />
     <Compile Include="Database\tbCompany.cs" />
     <Compile Include="Database\tbOpea.cs" />
