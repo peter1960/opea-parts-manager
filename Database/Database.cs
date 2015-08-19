@@ -36,41 +36,6 @@ namespace OPEAManager
             //sql_con.Close();
         }
 
-        //public void DumpEvents() {
-        //    long totLast = 0;
-        //    long val;
-        //    sql_cmd = sql_con.CreateCommand();
-
-
-        //    sql_cmd.CommandText = "select * from log order by event,date";
-        //    using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\data\events.txt")) {
-        //        SQLiteDataReader r = sql_cmd.ExecuteReader();
-        //        while (r.Read()) {
-        //            //val = Max(totLast,(Int64)r["val"]);
-        //            //Only write the max lines
-        //            //if (val == (Int64)r["val"]) {
-        //            val = (Int64)r["val"];
-        //            file.WriteLine((string)r["event"] + " " + (string)r["date"] + "," + val+ "," + (val-totLast));
-        //            totLast = val;
-
-        //        }
-        //    }
-
-        //}
-        //public void DumpSummary() {
-        //    sql_cmd = sql_con.CreateCommand();
-
-
-        //    sql_cmd.CommandText = "select count(*), event from log where type = 'G' group by event";
-        //    using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\data\summary.txt")) {
-        //        file.WriteLine("Grid events");
-        //        SQLiteDataReader r = sql_cmd.ExecuteReader();
-        //        while (r.Read()) {
-        //                file.WriteLine((string)r["event"] + " " + (Int64)r[0] );
-        //            }
-
-        //        }
-        //            }
         private long Max(long val1, long val2) {
             if (val1 > val2) {
                 return val1;
