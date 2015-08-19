@@ -7,7 +7,9 @@ using System.Windows.Forms;
 using log4net;
 using System.Data;
 using System.Data.SQLite;
-
+using System.Drawing;
+using System.Collections;
+using System.ComponentModel;
 
 
 namespace OPEAManager
@@ -16,6 +18,9 @@ namespace OPEAManager
     {
         const string PartNo = "Part#";
         const string Descr = "Description";
+        const string Retail = "Retail";
+        const string List = "List";
+        const string Stock = "Stock";
 
         private static readonly ILog log = LogManager.GetLogger(typeof(tbOpea));
 
@@ -79,7 +84,17 @@ namespace OPEAManager
             dC = new DataColumn();
             dC.ColumnName = Descr;
             t.Columns.Add(dC);
-            
+
+            dC = new DataColumn();
+            dC.ColumnName = List;
+            dC.DataType = typeof(decimal);
+            t.Columns.Add(dC);
+
+            dC = new DataColumn();
+            dC.ColumnName = Retail;
+            dC.DataType = typeof(decimal);
+            t.Columns.Add(dC);
+
             for (int x = 0; x < RowsToHold; x++) {
                 t.Rows.Add();
             }
@@ -93,7 +108,7 @@ namespace OPEAManager
                 t = EmptyTable(Rows);
             }
 
-            String sQuery = "select opea_id, companyid,partno ,description, listprice from opea limit " + Rows + " offset " + Start;
+            String sQuery = "select opea_id, companyid,partno ,description, listprice,retailprice from opea limit " + Rows + " offset " + Start;
 
             DataTable tmp = Database.Instance.FillDataSet(sQuery);
             for (int x = 0; x < Rows; x++) {
@@ -101,10 +116,15 @@ namespace OPEAManager
                     t.Rows[x]["Id"] = tmp.Rows[x][0];
                     t.Rows[x][PartNo] = tmp.Rows[x][2];
                     t.Rows[x][Descr] = tmp.Rows[x][3];
+                    t.Rows[x][List] = tmp.Rows[x][4];
+                    t.Rows[x][Retail] = tmp.Rows[x][5];
+
                 }
                 else {
                     t.Rows[x][PartNo] = "";
                     t.Rows[x][Descr] = "";
+                    t.Rows[x][List] = "";
+                    t.Rows[x][Retail] = "";
                 }
             }
             log.Debug("Rows Found " + grid.RowCount);
@@ -115,6 +135,12 @@ namespace OPEAManager
             grid.Columns[PartNo].Width = 30;
             grid.Columns[PartNo].Width = 100;
             grid.Columns[Descr].Width = 400;
+            grid.Columns[List].Width = 50;
+            grid.Columns[List].DefaultCellStyle.Format = "C";
+            grid.Columns[List].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            grid.Columns[Retail].Width = 50;
+            grid.Columns[Retail].DefaultCellStyle.Format = "C";
+            grid.Columns[Retail].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
     }
 }
