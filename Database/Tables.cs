@@ -93,6 +93,10 @@ namespace OPEAManager
         }
         public void CreateStock() {
             log.Info(" Adding Stock Table");
+            String sql = "DROP TABLE if exists `stock`";
+            Database.Instance.ExecuteNonQuery(sql);
+            sql = "CREATE TABLE stock (`STOCK_ID` INTEGER PRIMARY KEY AUTOINCREMENT,`LOCATION_ID` INTEGER ,`OPEA_ID` INTEGER ,`QTY` INTEGER ,`CHECKED_DATE` TEXT);";
+            Database.Instance.ExecuteNonQuery(sql);
 
         }
         public void CreateCustomer() {
@@ -107,19 +111,8 @@ namespace OPEAManager
             log.Info(" Adding Company Table");
             String sql = "DROP TABLE if exists `company`";
             Database.Instance.ExecuteNonQuery(sql);
-            sql =
-@"CREATE TABLE company (
-`COMPANY_ID` INTEGER PRIMARY KEY AUTOINCREMENT,
-`ADDRESS1` TEXT ,
-`ADDRESS2` TEXT ,
-`NAME1` TEXT ,
-`NAME2` TEXT ,
-`PHONE1` TEXT,
-`PHONE2` TEXT,
-`CITY` TEXT,
-`STATE` TEXT,
-`URL` TEXT
-);";
+            sql = @"CREATE TABLE company (`COMPANY_ID` INTEGER PRIMARY KEY AUTOINCREMENT,`ADDRESS1` TEXT ,
+`ADDRESS2` TEXT ,`NAME1` TEXT ,`NAME2` TEXT ,`PHONE1` TEXT,`PHONE2` TEXT,`CITY` TEXT,`STATE` TEXT,`URL` TEXT);";
             Database.Instance.ExecuteNonQuery(sql);
 
 #if DEBUG
