@@ -33,7 +33,9 @@ namespace OPEAManager
             }
             //BasicConfigurator.Configure();
             XmlConfigurator.Configure(new System.IO.FileInfo(@"log4net.xml"));
-            log.Info("Application Start");
+            log.Info("====================== Application Start ======================");
+            tbVersion v = new tbVersion();
+            v.Version();
             SetupSupplierTab();
             SetupCompanyTab();
             SetupStockTab();

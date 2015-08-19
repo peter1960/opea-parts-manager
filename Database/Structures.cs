@@ -19,4 +19,8 @@ namespace OPEAManager
         public String URL;
 
     }
+    public struct stVersion
+    {
+        public int Ver;
+    }
 }
