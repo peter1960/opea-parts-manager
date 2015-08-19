@@ -24,18 +24,19 @@ namespace OPEAManager
         public Main()
         {
             InitializeComponent();
+            XmlConfigurator.Configure(new System.IO.FileInfo(@"log4net.xml"));
+            log.Info("====================== Application Start ======================");
             this.Cursor = Cursors.WaitCursor;
             tbVersion tv = new tbVersion();
             if (tv.Version() == 0) {
+                log.Info("No Version so new system");
                 Tables tb = new Tables();
                 tb.CreateTables();
 
             }
             //BasicConfigurator.Configure();
-            XmlConfigurator.Configure(new System.IO.FileInfo(@"log4net.xml"));
-            log.Info("====================== Application Start ======================");
-            tbVersion v = new tbVersion();
-            v.Version();
+            //tbVersion v = new tbVersion();
+            //v.Version();
             SetupSupplierTab();
             SetupCompanyTab();
             SetupStockTab();
