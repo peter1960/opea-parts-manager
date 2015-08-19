@@ -47,6 +47,7 @@ namespace OPEAManager
 
         private void buttonSystemReset_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             Tables tb = new Tables();
             tb.CreateTables();
             //Database.Instance.CreateTables();
@@ -54,6 +55,7 @@ namespace OPEAManager
             log.Info("Reset Database");
 
             statusStrip1.Refresh();
+            this.Cursor = Cursors.Default;
         }
 
         private void SetupStockTab() {
