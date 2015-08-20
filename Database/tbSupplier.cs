@@ -47,7 +47,7 @@ namespace OPEAManager
 
 
         public void FillTable(DataGridView grid) {
-            log.Debug("Fill Table from ");
+            log.Debug("Fill Table Supplier");
             DataTable t = (DataTable)grid.DataSource;
             if (t == null) {
                 t = EmptyTable();

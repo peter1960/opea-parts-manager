@@ -24,6 +24,8 @@ namespace OPEAManager
         public Main()
         {
             InitializeComponent();
+            Main_Resize(null,null);
+
             XmlConfigurator.Configure(new System.IO.FileInfo(@"log4net.xml"));
             log.Info("====================== Application Start ======================");
             this.Cursor = Cursors.WaitCursor;
@@ -41,6 +43,7 @@ namespace OPEAManager
             //BasicConfigurator.Configure();
             //tbVersion v = new tbVersion();
             //v.Version();
+            SetupFranchiseTab();
             SetupSupplierTab();
             SetupCompanyTab();
             SetupStockTab();
@@ -80,6 +83,13 @@ namespace OPEAManager
             fr.FillTable(dataGridSuppliers);
         }
 
+        private void SetupFranchiseTab() {
+
+            tbFranchise fr = new tbFranchise();
+            fr.FillTable(dataGridFranchise);
+        }
+
+
         private void SetupCompanyTab() {
             tbCompany cm = new tbCompany();
             companyControl1.recValue = cm.Fetch();
@@ -102,7 +112,8 @@ namespace OPEAManager
 
         private void Main_Resize(object sender, EventArgs e) {
             MainTabControl.Width = this.Width - 12;
-            MainTabControl.Height = this.Height - 104;
+            MainTabControl.Height = this.Height - 80;
+            dataGridStock.Height = this.Height - 148;
         }
 
         private void OPEA_Load_Click(object sender, EventArgs e) {
@@ -127,6 +138,10 @@ namespace OPEAManager
 
         private void buttonTabSupplierAdd_Click(object sender, EventArgs e) {
             log.Debug("Add Supplier");
+        }
+
+        private void dataGridStock_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+
         }
 
 

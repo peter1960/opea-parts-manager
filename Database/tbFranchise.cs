@@ -15,59 +15,66 @@ namespace OPEAManager
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(tbFranchise));
 
+        const string Id = "Id";
+        const string Active = "Active";
+        const string Prefix = "Prefix";
+        const string Supplier = "Supplier";
+
+
         public void FillList(ToolStripComboBox cb) {
             cb.Items.Clear();
             cb.Items.Add("All");
             cb.SelectedIndex = 0;
         }
 
-        private DataTable EmptyTable(int RowsToHold) {
+        private DataTable EmptyTable() {
             log.Debug("Create empty DS");
 
             DataTable t = new DataTable();
             DataColumn dC;
             dC = new DataColumn();
-            dC.ColumnName = "Fr";
+            dC.ColumnName = Id;
             t.Columns.Add(dC);
 
             dC = new DataColumn();
-            dC.ColumnName = "Part";
+            dC.ColumnName = Active;
             t.Columns.Add(dC);
 
             dC = new DataColumn();
-            dC.ColumnName = "Description";
+            dC.ColumnName = Prefix;
             t.Columns.Add(dC);
 
-            for (int x = 0; x < RowsToHold; x++) {
-                t.Rows.Add();
-            }
+            dC = new DataColumn();
+            dC.ColumnName = Supplier;
+            t.Columns.Add(dC);
+
             return t;
         }
 
 
-        public void FillTable(int Start, int Rows, DataGridView grid) {
-            log.Debug("Fill Table from ");
+        public void FillTable(DataGridView grid) {
+
+            log.Debug("Fill Table Franchise");
             DataTable t = (DataTable)grid.DataSource;
             if (t == null) {
-                t = EmptyTable(Rows);
+                t = EmptyTable();
             }
-            DataTable tmp = Database.Instance.FillDataSet("select companyid,partno ,description, listprice from franchise");
-            for (int x = 0; x < Rows; x++) {
-                if (x < tmp.Rows.Count) {
-                    t.Rows[x]["Part"] = tmp.Rows[x][1];
-                    t.Rows[x]["Description"] = tmp.Rows[x][2];
-                }
-                else {
-                    t.Rows[x]["Part"] = "";
-                    t.Rows[x]["Description"] = "";
-                }
+            DataTable tmp = Database.Instance.FillDataSet("select FRANCHISE_ID, franchise.Active , PREFIX, trim(name1) || ' ' ||name2 from franchise,supplier where franchise.supplier_id = supplier.supplier_id");
+            for (int x = 0; x < tmp.Rows.Count; x++) {
+                t.Rows.Add();
+                t.Rows[x][Id] = tmp.Rows[x][0];
+                t.Rows[x][Active] = tmp.Rows[x][1];
+                t.Rows[x][Prefix] = tmp.Rows[x][2];
+                t.Rows[x][Supplier] = tmp.Rows[x][3];
             }
             log.Debug("Rows Found " + grid.RowCount);
 
             grid.DataSource = t;
-            grid.Columns[0].Width = 30;
-            grid.Columns[1].Width = 100;
-            grid.Columns[2].Width = 400;
+            grid.Columns[Id].Visible = false;
+            grid.Columns[Active].Width = 50;
+            grid.Columns[Active].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            grid.Columns[Prefix].Width = 60;
+            grid.Columns[Supplier].Width = 500;
         }
 
         public void Update(stFranchise Record) {
