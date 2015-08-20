@@ -10,7 +10,6 @@ using System.Data.SQLite;
 namespace OPEAManager
 {
     class tbVersion
-
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(tbOpea));
         public int Version() {
@@ -32,6 +31,19 @@ namespace OPEAManager
             log.Info("Database Version: " + ver.ToString());
             return ver;
         }
+        public void DBVersion() {
+            DataTable sql_res;
+            log.Info("Check SQLite");
+
+            try {
+                sql_res = Database.Instance.FillDataSet("Select sqlite_version()");
+            }
+            catch (System.Data.SQLite.SQLiteException ex) {
+                log.Error(ex);
+                return;
+            }
+            log.Info("       Version: " + sql_res.Rows[0].Field<string>(0).ToString());
+        }
 
         public void Update(stVersion Record) {
             Update(Record.Ver);
@@ -39,7 +51,7 @@ namespace OPEAManager
         public void Update(int Ver) {
             log.Debug("Update Version");
 
-            String sql = "insert or replace into `version` (VER_ID,VER) values (1," + Ver.ToString() +");";
+            String sql = "insert or replace into `version` (VER_ID,VER) values (1," + Ver.ToString() + ");";
 
             Database.Instance.ExecuteNonQuery(sql);
         }

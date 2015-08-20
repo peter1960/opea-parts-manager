@@ -69,6 +69,44 @@ namespace OPEAManager
             grid.Columns[Phone].Width = 100;
         }
 
+        public void Update(stSupplier Record) {
+            Update(Record.Supplier_id,Record.Active, Record.Address1, Record.Address2, Record.Name1, Record.Name2, Record.Phone1, Record.Phone2, Record.City, Record.State, Record.URL);
+        }
+        public void Update(int supplier_id,String Active,String Address1,
+String Address2,
+String Name1,
+String Name2,
+String Phone1,
+String Phone2,
+String City,
+String State,
+String URL) {
+            log.Debug("Update Supplier");
 
+            String sql = "insert or replace into `supplier` (ACTIVE," +
+                "ADDRESS1," +
+       "ADDRESS2," +
+       "NAME1," +
+       "NAME2," +
+       "PHONE1," +
+       "PHONE2," +
+       "CITY," +
+       "STATE," +
+       "URL" +
+            ") values (" +
+       "'" + Active + "'," +
+       "'" + Address1 + "'," +
+       "'" + Address2 + "'," +
+       "'" + Name1 + "'," +
+       "'" + Name2 + "'," +
+       "'" + Phone1 + "'," +
+       "'" + Phone2 + "'," +
+       "'" + City + "'," +
+       "'" + State + "'," +
+       "'" + URL + "'" +
+       ");";
+
+            Database.Instance.ExecuteNonQuery(sql);
+        }
     }
 }

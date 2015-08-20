@@ -51,7 +51,7 @@ namespace OPEAManager
             if (t == null) {
                 t = EmptyTable(Rows);
             }
-            DataTable tmp = Database.Instance.FillDataSet("select companyid,partno ,description, listprice from franchise" );
+            DataTable tmp = Database.Instance.FillDataSet("select companyid,partno ,description, listprice from franchise");
             for (int x = 0; x < Rows; x++) {
                 if (x < tmp.Rows.Count) {
                     t.Rows[x]["Part"] = tmp.Rows[x][1];
@@ -68,6 +68,20 @@ namespace OPEAManager
             grid.Columns[0].Width = 30;
             grid.Columns[1].Width = 100;
             grid.Columns[2].Width = 400;
+        }
+
+        public void Update(stFranchise Record) {
+            Update(Record.Franschise_id, Record.Active, Record.Custom, Record.Prefix, Record.Supplier_id);
+        }
+        public void Update(int Franchise_id, String Active, String Custom, String Prefix, int Supplier_id) {
+            log.Debug("Update Franchise");
+
+            String sql = "";
+            sql += "insert or replace into `Franchise` (ACTIVE,CUSTOM,PREFIX,SUPPLIER_ID)";
+            sql += " values (";
+            sql += "'" + Active + "','" + Custom + "','" + Prefix + "'," + Supplier_id.ToString() + ");";
+
+            Database.Instance.ExecuteNonQuery(sql);
         }
 
 

@@ -21,13 +21,14 @@ namespace OPEAManager
         const string Retail = "Retail";
         const string List = "List";
         const string Stock = "Stock";
+        const string Franchise = "F";
 
         private static readonly ILog log = LogManager.GetLogger(typeof(tbOpea));
 
         public void Insert(opeaLine data, int Company_ID) {
             String sql = "insert or replace into `opea` (" +
        "TYPE," +
-       "COMPANYID," +
+       "FRANCHISE_ID," +
        "EFFECTIVEDATE," +
        "DIRTY," +
        "PARTNO," +
@@ -44,7 +45,7 @@ namespace OPEAManager
        "CLEANPART" +
        " ) values (" +
        "'" + data.Type + "'," +
-       "'" + 1 + "'," +
+       "'" + data.Franchise + "'," +
        "'" + data.EffectiveDate + "'," +
        "'F'," +
        "'" + data.PartNo + "'," +
@@ -74,7 +75,7 @@ namespace OPEAManager
 
             
             dC = new DataColumn();
-            dC.ColumnName = "Fr";
+            dC.ColumnName = Franchise;
             t.Columns.Add(dC);
 
             dC = new DataColumn();
@@ -108,12 +109,13 @@ namespace OPEAManager
                 t = EmptyTable(Rows);
             }
 
-            String sQuery = "select opea_id, companyid,partno ,description, listprice,retailprice from opea limit " + Rows + " offset " + Start;
+            String sQuery = "select opea_id, franchise_id,partno ,description, listprice,retailprice from opea limit " + Rows + " offset " + Start;
 
             DataTable tmp = Database.Instance.FillDataSet(sQuery);
             for (int x = 0; x < Rows; x++) {
                 if (x < tmp.Rows.Count) {
                     t.Rows[x]["Id"] = tmp.Rows[x][0];
+                    t.Rows[x][Franchise] = tmp.Rows[x][1];
                     t.Rows[x][PartNo] = tmp.Rows[x][2];
                     t.Rows[x][Descr] = tmp.Rows[x][3];
                     t.Rows[x][List] = tmp.Rows[x][4];
@@ -123,14 +125,14 @@ namespace OPEAManager
                 else {
                     t.Rows[x][PartNo] = "";
                     t.Rows[x][Descr] = "";
-                    t.Rows[x][List] = "";
-                    t.Rows[x][Retail] = "";
+                    t.Rows[x][List] = 0;
+                    t.Rows[x][Retail] = 0;
                 }
             }
             log.Debug("Rows Found " + grid.RowCount);
 
             grid.DataSource = t;
-            grid.Columns["Fr"].Width = 30;
+            grid.Columns[Franchise].Width = 30;
             grid.Columns[0].Visible = false;
             grid.Columns[PartNo].Width = 30;
             grid.Columns[PartNo].Width = 100;

@@ -27,7 +27,11 @@ namespace OPEAManager
             XmlConfigurator.Configure(new System.IO.FileInfo(@"log4net.xml"));
             log.Info("====================== Application Start ======================");
             this.Cursor = Cursors.WaitCursor;
+
             tbVersion tv = new tbVersion();
+            //Dump the version to the logs
+            tv.DBVersion();
+
             if (tv.Version() == 0) {
                 log.Info("No Version so new system");
                 Tables tb = new Tables();
