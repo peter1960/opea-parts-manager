@@ -22,6 +22,7 @@ namespace OPEAManager
         const string List = "List";
         const string Stock = "Stock";
         const string Franchise = "F";
+        const string Qty = "Avail";
 
         private static readonly ILog log = LogManager.GetLogger(typeof(tbOpea));
 
@@ -73,7 +74,7 @@ namespace OPEAManager
             dC.ColumnName = "id";
             t.Columns.Add(dC);
 
-            
+
             dC = new DataColumn();
             dC.ColumnName = Franchise;
             t.Columns.Add(dC);
@@ -96,20 +97,32 @@ namespace OPEAManager
             dC.DataType = typeof(decimal);
             t.Columns.Add(dC);
 
+            dC = new DataColumn();
+            dC.ColumnName = Qty;
+            dC.DataType = typeof(decimal);
+            t.Columns.Add(dC);
+
             for (int x = 0; x < RowsToHold; x++) {
                 t.Rows.Add();
             }
             return t;
         }
 
-        public void FillTable(int Start, int Rows, DataGridView grid) {
+        public void FillTable(int Start, int Rows, DataGridView grid, bool bStocked) {
             log.Debug("Fill Table from " + Start + " with " + Rows + " rows");
             DataTable t = (DataTable)grid.DataSource;
             if (t == null) {
                 t = EmptyTable(Rows);
             }
 
-            String sQuery = "select opea_id, franchise_id,partno ,description, listprice,retailprice from opea limit " + Rows + " offset " + Start;
+            String sQuery = "select opea.opea_id, franchise_id,partno ,description, listprice,retailprice,qty from opea ";
+            if (bStocked) {
+                sQuery += ", stock where ";
+            }
+            else {
+                sQuery += " LEFT JOIN stock on ";
+            }
+            sQuery += "opea.OPEA_ID = stock.OPEA_ID limit " + Rows + " offset " + Start;
 
             DataTable tmp = Database.Instance.FillDataSet(sQuery);
             for (int x = 0; x < Rows; x++) {
@@ -120,16 +133,19 @@ namespace OPEAManager
                     t.Rows[x][Descr] = tmp.Rows[x][3];
                     t.Rows[x][List] = tmp.Rows[x][4];
                     t.Rows[x][Retail] = tmp.Rows[x][5];
+                    t.Rows[x][Qty] = tmp.Rows[x][6];
 
                 }
                 else {
                     t.Rows[x][PartNo] = "";
                     t.Rows[x][Descr] = "";
-                    t.Rows[x][List] = 0;
-                    t.Rows[x][Retail] = 0;
+                    t.Rows[x][List] = DBNull.Value;
+                    t.Rows[x][Retail] = DBNull.Value;
+                    t.Rows[x][Qty] = DBNull.Value;
                 }
             }
-            log.Debug("Rows Found " + grid.RowCount);
+
+            log.Debug("Rows Found " + tmp.Rows.Count);
 
             grid.DataSource = t;
             grid.Columns[Franchise].Width = 30;
@@ -143,6 +159,8 @@ namespace OPEAManager
             grid.Columns[Retail].Width = 50;
             grid.Columns[Retail].DefaultCellStyle.Format = "C";
             grid.Columns[Retail].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            grid.Columns[Qty].Width = 40;
+            grid.Columns[Qty].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
     }
 }

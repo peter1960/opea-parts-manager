@@ -74,7 +74,7 @@ namespace OPEAManager
             fr.FillList(toolStripFranchise);
 
             tbOpea db = new tbOpea();
-            db.FillTable(0, 1000, dataGridStock);
+            db.FillTable(0, 1000, dataGridStock,false);
         }
 
         private void SetupSupplierTab() {
@@ -141,6 +141,23 @@ namespace OPEAManager
         }
 
         private void dataGridStock_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+
+        }
+
+        private void checkBoxStocked_CheckedChanged(object sender, EventArgs e) {
+            log.Debug("Stocked filter toggled");
+            tbOpea db = new tbOpea();
+            db.FillTable(0, 1000, dataGridStock, checkBoxStocked.Checked);
+
+        }
+
+        private void toolStripButtonCart_Click(object sender, EventArgs e) {
+            log.Debug("Cart Pressed");
+
+        }
+
+        private void toolStripButtonStock_Click(object sender, EventArgs e) {
+            log.Debug("Stock Pressed");
 
         }
 

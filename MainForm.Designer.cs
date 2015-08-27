@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.Menu1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -36,11 +37,11 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.MainTabControl = new System.Windows.Forms.TabControl();
             this.tabStock = new System.Windows.Forms.TabPage();
-            this.toolStripTop = new System.Windows.Forms.ToolStrip();
+            this.toolStripStock = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripFranchise = new System.Windows.Forms.ToolStripComboBox();
             this.dataGridStock = new System.Windows.Forms.DataGridView();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBoxStocked = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabOrders = new System.Windows.Forms.TabPage();
@@ -61,13 +62,25 @@
             this.buttonSystemReset = new System.Windows.Forms.Button();
             this.buttonLoad = new System.Windows.Forms.Button();
             this.tabCart = new System.Windows.Forms.TabPage();
+            this.toolStripButtonCart = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonStock = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripCart = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.companyControl1 = new OPEAManager.Controls.CompanyControl();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.MainTabControl.SuspendLayout();
             this.tabStock.SuspendLayout();
-            this.toolStripTop.SuspendLayout();
+            this.toolStripStock.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStock)).BeginInit();
             this.tabFranchise.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -78,6 +91,9 @@
             this.tabCompany.SuspendLayout();
             this.tabSystem.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabCart.SuspendLayout();
+            this.toolStripCart.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -140,6 +156,7 @@
             this.MainTabControl.Controls.Add(this.tabSuppliers);
             this.MainTabControl.Controls.Add(this.tabCompany);
             this.MainTabControl.Controls.Add(this.tabSystem);
+            this.MainTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainTabControl.Location = new System.Drawing.Point(3, 3);
             this.MainTabControl.Multiline = true;
             this.MainTabControl.Name = "MainTabControl";
@@ -151,9 +168,9 @@
             // 
             // tabStock
             // 
-            this.tabStock.Controls.Add(this.toolStripTop);
+            this.tabStock.Controls.Add(this.toolStripStock);
             this.tabStock.Controls.Add(this.dataGridStock);
-            this.tabStock.Controls.Add(this.checkBox1);
+            this.tabStock.Controls.Add(this.checkBoxStocked);
             this.tabStock.Controls.Add(this.button2);
             this.tabStock.Controls.Add(this.textBox1);
             this.tabStock.Location = new System.Drawing.Point(23, 4);
@@ -164,18 +181,26 @@
             this.tabStock.Text = "Stock";
             this.tabStock.UseVisualStyleBackColor = true;
             // 
-            // toolStripTop
+            // toolStripStock
             // 
-            this.toolStripTop.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStripTop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStock.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.toolStripStock.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStripStock.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStripStock.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
-            this.toolStripFranchise});
-            this.toolStripTop.Location = new System.Drawing.Point(3, 3);
-            this.toolStripTop.Name = "toolStripTop";
-            this.toolStripTop.Size = new System.Drawing.Size(843, 25);
-            this.toolStripTop.Stretch = true;
-            this.toolStripTop.TabIndex = 5;
-            this.toolStripTop.Text = "toolStrip1";
+            this.toolStripFranchise,
+            this.toolStripSeparator1,
+            this.toolStripButtonCart,
+            this.toolStripSeparator2,
+            this.toolStripButtonStock,
+            this.toolStripSeparator3});
+            this.toolStripStock.Location = new System.Drawing.Point(3, 3);
+            this.toolStripStock.Name = "toolStripStock";
+            this.toolStripStock.Size = new System.Drawing.Size(266, 25);
+            this.toolStripStock.Stretch = true;
+            this.toolStripStock.TabIndex = 5;
+            this.toolStripStock.Text = "toolStrip1";
             // 
             // toolStripLabel1
             // 
@@ -205,16 +230,17 @@
             this.dataGridStock.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridStock_CellContentClick);
             this.dataGridStock.NewRowNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridStock_NewRowNeeded);
             // 
-            // checkBox1
+            // checkBoxStocked
             // 
-            this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(334, 413);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(66, 17);
-            this.checkBox1.TabIndex = 3;
-            this.checkBox1.Text = "Stocked";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBoxStocked.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkBoxStocked.AutoSize = true;
+            this.checkBoxStocked.Location = new System.Drawing.Point(334, 413);
+            this.checkBoxStocked.Name = "checkBoxStocked";
+            this.checkBoxStocked.Size = new System.Drawing.Size(66, 17);
+            this.checkBoxStocked.TabIndex = 3;
+            this.checkBoxStocked.Text = "Stocked";
+            this.checkBoxStocked.UseVisualStyleBackColor = true;
+            this.checkBoxStocked.CheckedChanged += new System.EventHandler(this.checkBoxStocked_CheckedChanged);
             // 
             // button2
             // 
@@ -246,10 +272,10 @@
             // 
             // tabLocations
             // 
-            this.tabLocations.Location = new System.Drawing.Point(23, 4);
+            this.tabLocations.Location = new System.Drawing.Point(44, 4);
             this.tabLocations.Name = "tabLocations";
             this.tabLocations.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLocations.Size = new System.Drawing.Size(849, 434);
+            this.tabLocations.Size = new System.Drawing.Size(828, 434);
             this.tabLocations.TabIndex = 6;
             this.tabLocations.Text = "Locations";
             this.tabLocations.UseVisualStyleBackColor = true;
@@ -257,10 +283,10 @@
             // tabFranchise
             // 
             this.tabFranchise.Controls.Add(this.groupBox3);
-            this.tabFranchise.Location = new System.Drawing.Point(23, 4);
+            this.tabFranchise.Location = new System.Drawing.Point(44, 4);
             this.tabFranchise.Name = "tabFranchise";
             this.tabFranchise.Padding = new System.Windows.Forms.Padding(3);
-            this.tabFranchise.Size = new System.Drawing.Size(849, 434);
+            this.tabFranchise.Size = new System.Drawing.Size(828, 434);
             this.tabFranchise.TabIndex = 2;
             this.tabFranchise.Text = "Franchise";
             this.tabFranchise.UseVisualStyleBackColor = true;
@@ -272,7 +298,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(843, 428);
+            this.groupBox3.Size = new System.Drawing.Size(822, 428);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Franchise";
@@ -303,10 +329,10 @@
             // tabSuppliers
             // 
             this.tabSuppliers.Controls.Add(this.groupBox2);
-            this.tabSuppliers.Location = new System.Drawing.Point(23, 4);
+            this.tabSuppliers.Location = new System.Drawing.Point(44, 4);
             this.tabSuppliers.Name = "tabSuppliers";
             this.tabSuppliers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSuppliers.Size = new System.Drawing.Size(849, 434);
+            this.tabSuppliers.Size = new System.Drawing.Size(828, 434);
             this.tabSuppliers.TabIndex = 3;
             this.tabSuppliers.Text = "Suppliers";
             this.tabSuppliers.UseVisualStyleBackColor = true;
@@ -318,7 +344,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(843, 428);
+            this.groupBox2.Size = new System.Drawing.Size(822, 428);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Suppliers";
@@ -352,9 +378,9 @@
             this.tabCompany.Controls.Add(this.label1);
             this.tabCompany.Controls.Add(this.buttonComanySave);
             this.tabCompany.Controls.Add(this.companyControl1);
-            this.tabCompany.Location = new System.Drawing.Point(23, 4);
+            this.tabCompany.Location = new System.Drawing.Point(44, 4);
             this.tabCompany.Name = "tabCompany";
-            this.tabCompany.Size = new System.Drawing.Size(849, 434);
+            this.tabCompany.Size = new System.Drawing.Size(828, 434);
             this.tabCompany.TabIndex = 5;
             this.tabCompany.Text = "Company";
             this.tabCompany.UseVisualStyleBackColor = true;
@@ -383,10 +409,10 @@
             // 
             this.tabSystem.Controls.Add(this.groupBox1);
             this.tabSystem.Controls.Add(this.buttonLoad);
-            this.tabSystem.Location = new System.Drawing.Point(23, 4);
+            this.tabSystem.Location = new System.Drawing.Point(44, 4);
             this.tabSystem.Name = "tabSystem";
             this.tabSystem.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSystem.Size = new System.Drawing.Size(849, 434);
+            this.tabSystem.Size = new System.Drawing.Size(828, 434);
             this.tabSystem.TabIndex = 4;
             this.tabSystem.Text = "System";
             this.tabSystem.UseVisualStyleBackColor = true;
@@ -423,12 +449,122 @@
             // 
             // tabCart
             // 
+            this.tabCart.Controls.Add(this.dataGridView1);
+            this.tabCart.Controls.Add(this.toolStripCart);
             this.tabCart.Location = new System.Drawing.Point(23, 4);
             this.tabCart.Name = "tabCart";
             this.tabCart.Size = new System.Drawing.Size(849, 434);
             this.tabCart.TabIndex = 7;
             this.tabCart.Text = "Cart";
             this.tabCart.UseVisualStyleBackColor = true;
+            // 
+            // toolStripButtonCart
+            // 
+            this.toolStripButtonCart.BackColor = System.Drawing.SystemColors.Control;
+            this.toolStripButtonCart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonCart.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonCart.Image")));
+            this.toolStripButtonCart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonCart.Name = "toolStripButtonCart";
+            this.toolStripButtonCart.Size = new System.Drawing.Size(32, 22);
+            this.toolStripButtonCart.Text = "Cart";
+            this.toolStripButtonCart.ToolTipText = "Add selected to Cart";
+            this.toolStripButtonCart.Click += new System.EventHandler(this.toolStripButtonCart_Click);
+            // 
+            // toolStripButtonStock
+            // 
+            this.toolStripButtonStock.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonStock.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonStock.Image")));
+            this.toolStripButtonStock.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonStock.Name = "toolStripButtonStock";
+            this.toolStripButtonStock.Size = new System.Drawing.Size(37, 22);
+            this.toolStripButtonStock.Text = "Stock";
+            this.toolStripButtonStock.ToolTipText = "Adjust Stock for selected";
+            this.toolStripButtonStock.Click += new System.EventHandler(this.toolStripButtonStock_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripCart
+            // 
+            this.toolStripCart.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStripCart.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStripCart.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator4,
+            this.toolStripButton1,
+            this.toolStripSeparator5,
+            this.toolStripButton2,
+            this.toolStripSeparator6});
+            this.toolStripCart.Location = new System.Drawing.Point(74, 0);
+            this.toolStripCart.Name = "toolStripCart";
+            this.toolStripCart.Size = new System.Drawing.Size(90, 25);
+            this.toolStripCart.Stretch = true;
+            this.toolStripCart.TabIndex = 6;
+            this.toolStripCart.Text = "toolStrip1";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.BackColor = System.Drawing.SystemColors.Control;
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(32, 22);
+            this.toolStripButton1.Text = "Cart";
+            this.toolStripButton1.ToolTipText = "Add selected to Cart";
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(37, 22);
+            this.toolStripButton2.Text = "Stock";
+            this.toolStripButton2.ToolTipText = "Adjust Stock for selected";
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 28);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(863, 403);
+            this.dataGridView1.TabIndex = 7;
             // 
             // companyControl1
             // 
@@ -457,8 +593,8 @@
             this.MainTabControl.ResumeLayout(false);
             this.tabStock.ResumeLayout(false);
             this.tabStock.PerformLayout();
-            this.toolStripTop.ResumeLayout(false);
-            this.toolStripTop.PerformLayout();
+            this.toolStripStock.ResumeLayout(false);
+            this.toolStripStock.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStock)).EndInit();
             this.tabFranchise.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
@@ -470,6 +606,11 @@
             this.tabCompany.PerformLayout();
             this.tabSystem.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.tabCart.ResumeLayout(false);
+            this.tabCart.PerformLayout();
+            this.toolStripCart.ResumeLayout(false);
+            this.toolStripCart.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -485,11 +626,11 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.TabControl MainTabControl;
         private System.Windows.Forms.TabPage tabStock;
-        private System.Windows.Forms.ToolStrip toolStripTop;
+        private System.Windows.Forms.ToolStrip toolStripStock;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripComboBox toolStripFranchise;
         private System.Windows.Forms.DataGridView dataGridStock;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBoxStocked;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TabPage tabOrders;
@@ -511,6 +652,18 @@
         private System.Windows.Forms.Button buttonSystemReset;
         private System.Windows.Forms.Button buttonLoad;
         private System.Windows.Forms.TabPage tabCart;
+        private System.Windows.Forms.ToolStripButton toolStripButtonCart;
+        private System.Windows.Forms.ToolStripButton toolStripButtonStock;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStrip toolStripCart;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.DataGridView dataGridView1;
        
     }
 }
