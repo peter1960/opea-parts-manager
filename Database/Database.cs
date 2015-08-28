@@ -52,7 +52,16 @@ namespace OPEAManager
                 TransOpen = false;
             }
         }
+
+
         public void ExecuteNonQuery(string txtQuery) {
+            ExecuteNonQuery(txtQuery, true);
+        }
+
+        public void ExecuteNonQuery(string txtQuery,bool Logit) {
+            if (Logit) {
+                log.Debug("Execute " + txtQuery);
+            }
             sql_cmd = sql_con.CreateCommand();
             sql_cmd.CommandText = txtQuery;
             sql_cmd.ExecuteNonQuery();
