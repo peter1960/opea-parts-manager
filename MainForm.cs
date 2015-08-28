@@ -158,7 +158,27 @@ namespace OPEAManager
 
         private void toolStripButtonStock_Click(object sender, EventArgs e) {
             log.Debug("Stock Pressed");
-
+            FormStock fs = new FormStock();
+            DataGridViewSelectedRowCollection Row = dataGridStock.SelectedRows;
+            String name = (String)Row[0].Cells[3].Value;
+            decimal qty = 0;
+            // with invalid cast then the value was null
+            // and wil now be set to "0"
+            try {
+                qty = (decimal)Row[0].Cells[6].Value;
+            }
+            catch (InvalidCastException ex) {
+                log.Debug("null qty");
+            }
+            fs.PartName = name;
+            fs.Qty = qty;
+            if (fs.ShowDialog(this) == DialogResult.OK) {
+                log.Debug(Row[0].Cells[0].Value);
+                Row[0].Cells[6].Value = fs.Qty;
+                tbStock op = new tbStock();
+                op.UpdateStock((String)Row[0].Cells[0].Value,fs.Qty);
+            }
+            fs.Dispose();
         }
 
 
