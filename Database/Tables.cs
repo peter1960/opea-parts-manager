@@ -120,6 +120,8 @@ namespace OPEAManager
             Database.Instance.ExecuteNonQuery(sql);
             sql = "CREATE TABLE stock (`STOCK_ID` INTEGER PRIMARY KEY AUTOINCREMENT,`LOCATION_ID` INTEGER ,`OPEA_ID` INTEGER ,`QTY` INTEGER ,`CHECKED_DATE` TEXT);";
             Database.Instance.ExecuteNonQuery(sql);
+            sql = "CREATE UNIQUE INDEX stock_idx1 on stock (location_id,opea_id);";
+            Database.Instance.ExecuteNonQuery(sql);
 
         }
         public void CreateCustomer() {
