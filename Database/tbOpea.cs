@@ -63,8 +63,11 @@ namespace OPEAManager
        "'" + data.Clean + "'" +
        ");";
 
-            Database.Instance.ExecuteNonQuery(sql);
+            Database.Instance.ExecuteNonQuery(sql,false);
         }
+
+
+  
         private DataTable EmptyTable(int RowsToHold) {
             log.Debug("Create empty DS");
 
@@ -122,7 +125,7 @@ namespace OPEAManager
             else {
                 sQuery += " LEFT JOIN stock on ";
             }
-            sQuery += "opea.OPEA_ID = stock.OPEA_ID limit " + Rows + " offset " + Start;
+            sQuery += "opea.OPEA_ID = stock.OPEA_ID order by partno limit " + Rows + " offset " + Start;
 
             DataTable tmp = Database.Instance.FillDataSet(sQuery);
             for (int x = 0; x < Rows; x++) {
