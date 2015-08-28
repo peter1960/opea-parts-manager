@@ -23,6 +23,7 @@ namespace OPEAManager
         const string Stock = "Stock";
         const string Franchise = "F";
         const string Qty = "Avail";
+        const string Id = "Id";
 
         private static readonly ILog log = LogManager.GetLogger(typeof(tbOpea));
 
@@ -74,7 +75,7 @@ namespace OPEAManager
             DataTable t = new DataTable();
             DataColumn dC;
             dC = new DataColumn();
-            dC.ColumnName = "id";
+            dC.ColumnName = Id;
             t.Columns.Add(dC);
 
 
@@ -130,7 +131,7 @@ namespace OPEAManager
             DataTable tmp = Database.Instance.FillDataSet(sQuery);
             for (int x = 0; x < Rows; x++) {
                 if (x < tmp.Rows.Count) {
-                    t.Rows[x]["Id"] = tmp.Rows[x][0];
+                    t.Rows[x][Id] = tmp.Rows[x][0];
                     t.Rows[x][Franchise] = tmp.Rows[x][1];
                     t.Rows[x][PartNo] = tmp.Rows[x][2];
                     t.Rows[x][Descr] = tmp.Rows[x][3];
@@ -140,6 +141,8 @@ namespace OPEAManager
 
                 }
                 else {
+                    t.Rows[x][Id] = DBNull.Value;
+                    t.Rows[x][Franchise] = DBNull.Value;
                     t.Rows[x][PartNo] = "";
                     t.Rows[x][Descr] = "";
                     t.Rows[x][List] = DBNull.Value;
@@ -151,10 +154,9 @@ namespace OPEAManager
             log.Debug("Rows Found " + tmp.Rows.Count);
 
             grid.DataSource = t;
-            grid.Columns[Franchise].Width = 30;
-            grid.Columns[0].Visible = false;
-            grid.Columns[PartNo].Width = 30;
-            grid.Columns[PartNo].Width = 100;
+            grid.Columns[Franchise].Width = 45;
+            grid.Columns[Id].Visible = false;
+            grid.Columns[PartNo].Width = 110;
             grid.Columns[Descr].Width = 400;
             grid.Columns[List].Width = 50;
             grid.Columns[List].DefaultCellStyle.Format = "C";
