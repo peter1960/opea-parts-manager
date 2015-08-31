@@ -11,6 +11,7 @@ using System.Data.SQLite;
 using log4net;
 using log4net.Config;
 
+
 namespace OPEAManager
 {
     public partial class Main : Form
@@ -179,6 +180,21 @@ namespace OPEAManager
                 op.UpdateStock((String)Row[0].Cells[0].Value,fs.Qty);
             }
             fs.Dispose();
+        }
+
+        private void stockLevelsToolStripMenuItem_Click(object sender, EventArgs e) {
+            StockDocument ps = new StockDocument();
+            PrintDialog printdlg = new PrintDialog();
+            PrintPreviewDialog printPrvDlg = new PrintPreviewDialog();
+            printPrvDlg.Document = ps;
+            printPrvDlg.Width = 300;
+            printPrvDlg.ShowDialog(); // this shows the preview and then show the Printer Dlg below
+
+            //printdlg.Document = ps;
+
+            //if (printdlg.ShowDialog() == DialogResult.OK) {
+               // ps.Print();
+           // }
         }
 
 
