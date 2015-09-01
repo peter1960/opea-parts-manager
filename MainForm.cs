@@ -148,9 +148,17 @@ namespace OPEAManager
         private void checkBoxStocked_CheckedChanged(object sender, EventArgs e) {
             log.Debug("Stocked filter toggled");
             tbOpea db = new tbOpea();
-            db.FillTable(0, 1000, dataGridStock, checkBoxStocked.Checked);
+            db.FillTable(0, 1000, dataGridStock, checkBoxStocked.Checked, textStockSearch.Text.Trim());
 
         }
+
+        private void buttonStockSearch_Click(object sender, EventArgs e) {
+            log.Debug("Stocked Search");
+            tbOpea db = new tbOpea();
+            db.FillTable(0, 1000, dataGridStock, checkBoxStocked.Checked, textStockSearch.Text.Trim());
+
+        }
+
 
         private void toolStripButtonCart_Click(object sender, EventArgs e) {
             log.Debug("Cart Pressed");
@@ -196,6 +204,12 @@ namespace OPEAManager
                // ps.Print();
            // }
         }
+
+        private void toolStripButtonEdit_Click(object sender, EventArgs e) {
+
+        }
+
+
 
 
     }

@@ -64,11 +64,11 @@ namespace OPEAManager
        "'" + data.Clean + "'" +
        ");";
 
-            Database.Instance.ExecuteNonQuery(sql,false);
+            Database.Instance.ExecuteNonQuery(sql, false);
         }
 
 
-  
+
         private DataTable EmptyTable(int RowsToHold) {
             log.Debug("Create empty DS");
 
@@ -113,6 +113,9 @@ namespace OPEAManager
         }
 
         public void FillTable(int Start, int Rows, DataGridView grid, bool bStocked) {
+            FillTable(Start, Rows, grid, bStocked, "");
+        }
+        public void FillTable(int Start, int Rows, DataGridView grid, bool bStocked, String Pattern) {
             log.Debug("Fill Table from " + Start + " with " + Rows + " rows");
             DataTable t = (DataTable)grid.DataSource;
             if (t == null) {
@@ -122,11 +125,21 @@ namespace OPEAManager
             String sQuery = "select opea.opea_id, franchise_id,partno ,description, listprice,retailprice,qty from opea ";
             if (bStocked) {
                 sQuery += ", stock where ";
+                if (Pattern.Length > 0) {
+                    sQuery += " (cleanpart like '%" + Pattern + "%' or description like '%"+Pattern+"%'  ) AND ";
+                }
             }
             else {
                 sQuery += " LEFT JOIN stock on ";
             }
-            sQuery += "opea.OPEA_ID = stock.OPEA_ID order by partno limit " + Rows + " offset " + Start;
+            sQuery += "opea.OPEA_ID = stock.OPEA_ID ";
+
+            if (!bStocked) {
+                sQuery += " where (cleanpart like '%" + Pattern + "%' or description like '%" + Pattern + "%') ";
+
+            }
+
+            sQuery += "order by partno limit " + Rows + " offset " + Start;
 
             DataTable tmp = Database.Instance.FillDataSet(sQuery);
             for (int x = 0; x < Rows; x++) {

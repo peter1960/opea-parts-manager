@@ -141,7 +141,7 @@ namespace OPEAManager
             String result = part.Replace(" ", "");
             result = result.Replace("`", "");
             result = result.Replace("-", "");
-            return result;
+            return result.ToUpper();
         }
         private String quotes(String part) {
             String result = part.Replace("'", " ");

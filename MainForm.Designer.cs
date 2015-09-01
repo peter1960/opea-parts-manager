@@ -32,6 +32,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.Menu1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stockLevelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -51,8 +53,8 @@
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.dataGridStock = new System.Windows.Forms.DataGridView();
             this.checkBoxStocked = new System.Windows.Forms.CheckBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.buttonStockSearch = new System.Windows.Forms.Button();
+            this.textStockSearch = new System.Windows.Forms.TextBox();
             this.tabCart = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.toolStripCart = new System.Windows.Forms.ToolStrip();
@@ -74,13 +76,11 @@
             this.tabCompany = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonComanySave = new System.Windows.Forms.Button();
-            this.companyControl1 = new OPEAManager.Controls.CompanyControl();
             this.tabSystem = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonSystemReset = new System.Windows.Forms.Button();
             this.buttonLoad = new System.Windows.Forms.Button();
-            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stockLevelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.companyControl1 = new OPEAManager.Controls.CompanyControl();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -125,8 +125,23 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            // 
+            // printToolStripMenuItem
+            // 
+            this.printToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stockLevelsToolStripMenuItem});
+            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.printToolStripMenuItem.Text = "Print";
+            // 
+            // stockLevelsToolStripMenuItem
+            // 
+            this.stockLevelsToolStripMenuItem.Name = "stockLevelsToolStripMenuItem";
+            this.stockLevelsToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.stockLevelsToolStripMenuItem.Text = "Stock Levels";
+            this.stockLevelsToolStripMenuItem.Click += new System.EventHandler(this.stockLevelsToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -178,8 +193,8 @@
             this.tabStock.Controls.Add(this.toolStripStock);
             this.tabStock.Controls.Add(this.dataGridStock);
             this.tabStock.Controls.Add(this.checkBoxStocked);
-            this.tabStock.Controls.Add(this.button2);
-            this.tabStock.Controls.Add(this.textBox1);
+            this.tabStock.Controls.Add(this.buttonStockSearch);
+            this.tabStock.Controls.Add(this.textStockSearch);
             this.tabStock.Location = new System.Drawing.Point(23, 4);
             this.tabStock.Name = "tabStock";
             this.tabStock.Padding = new System.Windows.Forms.Padding(3);
@@ -206,7 +221,7 @@
             this.toolStripSeparator8});
             this.toolStripStock.Location = new System.Drawing.Point(3, 3);
             this.toolStripStock.Name = "toolStripStock";
-            this.toolStripStock.Size = new System.Drawing.Size(337, 25);
+            this.toolStripStock.Size = new System.Drawing.Size(368, 25);
             this.toolStripStock.Stretch = true;
             this.toolStripStock.TabIndex = 5;
             this.toolStripStock.Text = "toolStrip1";
@@ -270,6 +285,7 @@
             this.toolStripButtonEdit.Size = new System.Drawing.Size(29, 22);
             this.toolStripButtonEdit.Text = "Edit";
             this.toolStripButtonEdit.ToolTipText = "Edit the part details";
+            this.toolStripButtonEdit.Click += new System.EventHandler(this.toolStripButtonEdit_Click);
             // 
             // toolStripSeparator7
             // 
@@ -319,23 +335,24 @@
             this.checkBoxStocked.UseVisualStyleBackColor = true;
             this.checkBoxStocked.CheckedChanged += new System.EventHandler(this.checkBoxStocked_CheckedChanged);
             // 
-            // button2
+            // buttonStockSearch
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.Location = new System.Drawing.Point(253, 411);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Search";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonStockSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonStockSearch.Location = new System.Drawing.Point(253, 411);
+            this.buttonStockSearch.Name = "buttonStockSearch";
+            this.buttonStockSearch.Size = new System.Drawing.Size(75, 23);
+            this.buttonStockSearch.TabIndex = 2;
+            this.buttonStockSearch.Text = "Search";
+            this.buttonStockSearch.UseVisualStyleBackColor = true;
+            this.buttonStockSearch.Click += new System.EventHandler(this.buttonStockSearch_Click);
             // 
-            // textBox1
+            // textStockSearch
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBox1.Location = new System.Drawing.Point(3, 411);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(244, 20);
-            this.textBox1.TabIndex = 1;
+            this.textStockSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textStockSearch.Location = new System.Drawing.Point(3, 411);
+            this.textStockSearch.Name = "textStockSearch";
+            this.textStockSearch.Size = new System.Drawing.Size(244, 20);
+            this.textStockSearch.TabIndex = 1;
             // 
             // tabCart
             // 
@@ -563,13 +580,6 @@
             this.buttonComanySave.UseVisualStyleBackColor = true;
             this.buttonComanySave.Click += new System.EventHandler(this.buttonComanySave_Click);
             // 
-            // companyControl1
-            // 
-            this.companyControl1.Location = new System.Drawing.Point(3, 61);
-            this.companyControl1.Name = "companyControl1";
-            this.companyControl1.Size = new System.Drawing.Size(282, 289);
-            this.companyControl1.TabIndex = 4;
-            // 
             // tabSystem
             // 
             this.tabSystem.Controls.Add(this.groupBox1);
@@ -612,20 +622,12 @@
             this.buttonLoad.UseVisualStyleBackColor = true;
             this.buttonLoad.Click += new System.EventHandler(this.OPEA_Load_Click);
             // 
-            // printToolStripMenuItem
+            // companyControl1
             // 
-            this.printToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stockLevelsToolStripMenuItem});
-            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
-            this.printToolStripMenuItem.Text = "Print";
-            // 
-            // stockLevelsToolStripMenuItem
-            // 
-            this.stockLevelsToolStripMenuItem.Name = "stockLevelsToolStripMenuItem";
-            this.stockLevelsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.stockLevelsToolStripMenuItem.Text = "Stock Levels";
-            this.stockLevelsToolStripMenuItem.Click += new System.EventHandler(this.stockLevelsToolStripMenuItem_Click);
+            this.companyControl1.Location = new System.Drawing.Point(3, 61);
+            this.companyControl1.Name = "companyControl1";
+            this.companyControl1.Size = new System.Drawing.Size(282, 289);
+            this.companyControl1.TabIndex = 4;
             // 
             // Main
             // 
@@ -685,8 +687,8 @@
         private System.Windows.Forms.ToolStripComboBox toolStripFranchise;
         private System.Windows.Forms.DataGridView dataGridStock;
         private System.Windows.Forms.CheckBox checkBoxStocked;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button buttonStockSearch;
+        private System.Windows.Forms.TextBox textStockSearch;
         private System.Windows.Forms.TabPage tabOrders;
         private System.Windows.Forms.TabPage tabLocations;
         private System.Windows.Forms.TabPage tabFranchise;
