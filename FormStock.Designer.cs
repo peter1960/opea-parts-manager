@@ -91,6 +91,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormStock";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Stock Adjustment";
             this.ResumeLayout(false);
             this.PerformLayout();
