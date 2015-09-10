@@ -57,7 +57,7 @@ namespace OPEAManager
             log.Info(" Adding Opea Table");
             String sql = "DROP TABLE if exists `opea`";
             Database.Instance.ExecuteNonQuery(sql);
-            sql = "CREATE TABLE opea (`OPEA_ID` INTEGER PRIMARY KEY AUTOINCREMENT,TYPE TEXT default 'C',FRANCHISE_ID TEXT default NULL,EFFECTIVEDATE TEXT default NULL,DIRTY BOOLEAN default NULL,PARTNO varchar(20) default NULL,DESCRIPTION varchar(35) default NULL,LISTPRICE double default NULL,RETAILPRICE double default NULL,DISCOUNTCODE varchar(2) default NULL,SUPERCESSION varchar(20) default NULL,STATUS varchar(1) default NULL,TAXCODE varchar(1) default NULL,STOCKINGCODE varchar(1) default NULL,MINORDER int default NULL,CLASS varchar(4) default NULL,CLEANPART varchar(20) default NULL);";
+            sql = "CREATE TABLE opea (`OPEA_ID` INTEGER PRIMARY KEY AUTOINCREMENT,TYPE TEXT default 'C',FRANCHISE_ID TEXT default NULL,`SUPPLIER_ID` INTEGER default 0, EFFECTIVEDATE TEXT default NULL,DIRTY BOOLEAN default NULL,PARTNO varchar(20) default NULL,DESCRIPTION varchar(35) default NULL,LISTPRICE double default NULL,RETAILPRICE double default NULL,DISCOUNTCODE varchar(2) default NULL,SUPERCESSION varchar(20) default NULL,STATUS varchar(1) default NULL,TAXCODE varchar(1) default NULL,STOCKINGCODE varchar(1) default NULL,MINORDER int default NULL,CLASS varchar(4) default NULL,CLEANPART varchar(20) default NULL);";
             Database.Instance.ExecuteNonQuery(sql);
             sql = "CREATE UNIQUE INDEX opea_idx1 on opea (partno asc);";
             Database.Instance.ExecuteNonQuery(sql);
@@ -80,6 +80,19 @@ namespace OPEAManager
             Record.URL = "http://kawasaki.com.au";
             tbSupplier sp = new tbSupplier();
             sp.Update(Record);
+#if DEBUG
+
+            Record.Active = "Y";
+            Record.Address1 = "2 Master Street";
+            Record.Address2 = "Melbourne";
+            Record.Name1 = "Big Johns parts";
+            Record.City = "Melbourne";
+            Record.State = "Victoria";
+            Record.Phone1 = "333-234588";
+            Record.URL = "http://johns.com.au";
+            sp.Update(Record);
+#endif
+
         }
 
         public void CreateFranchise() {
