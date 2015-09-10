@@ -12,118 +12,108 @@ namespace OPEAManager
 {
     class opeaLine
     {
-        private String mFranchise;
-        private String mPart;
-        private String mClean;
-        private String mDescription;
-        private Boolean Valid = true;
-        private String mEffectiveDate;
-        private String mListPrice;
-        private String mRetailPrice;
-        private String mDiscountCode;
-        private String mSupercession;
-        private String mStatus;
-        private String mTaxCode;
-        private String mStockingCode;
-        private int mMinOrder;
-        private String mClass;
-        private String mFiller;
-        private String mCode;
-        private String mType = "F";
+        private stOPEA oLine;
 
         public void ParseLine(String opeaText) {
-            mFranchise = opeaText.Substring(0, 4);
-            mEffectiveDate = opeaText.Substring(4, 6);
-            mPart = opeaText.Substring(10, 20);
-            mClean = clean(mPart);
-            mDescription = quotes(opeaText.Substring(30, 35));
-            mListPrice = addPoint(opeaText.Substring(65, 10));
-            mRetailPrice = addPoint(opeaText.Substring(75, 10));
-            mDiscountCode = opeaText.Substring(85, 2);
-            mSupercession = opeaText.Substring(87, 20);
-            mStatus = opeaText.Substring(107, 1);
-            mTaxCode = opeaText.Substring(108, 1);
-            mStockingCode = opeaText.Substring(109, 1);
-            mMinOrder = Int16.Parse(opeaText.Substring(110, 4));
-            mClass = opeaText.Substring(114, 4);
-            mFiller = "";// line.substring(118, 126);
+            oLine.Valid = true;
+            oLine.mType = stOPEATypes.Type.Fixed;
+            oLine.mFranchise = opeaText.Substring(0, 4);
+            oLine.mEffectiveDate = opeaText.Substring(4, 6);
+            oLine.mPart = opeaText.Substring(10, 20);
+            oLine.mClean = clean(oLine.mPart);
+            oLine.mDescription = quotes(opeaText.Substring(30, 35));
+            oLine.mListPrice = Decimal.Parse(addPoint(opeaText.Substring(65, 10)));
+            oLine.mRetailPrice = Decimal.Parse (addPoint(opeaText.Substring(75, 10)));
+            oLine.mDiscountCode = opeaText.Substring(85, 2);
+            oLine.mSupercession = opeaText.Substring(87, 20);
+            oLine.mStatus = opeaText.Substring(107, 1);
+            oLine.mTaxCode = opeaText.Substring(108, 1);
+            oLine.mStockingCode = opeaText.Substring(109, 1);
+            oLine.mMinOrder = Int16.Parse(opeaText.Substring(110, 4));
+            oLine.mClass = opeaText.Substring(114, 4);
+            oLine.mFiller = "";// line.substring(118, 126);
 
         }
         public string PartNo {
-            get { return mPart; }
+            get { return oLine.mPart; }
         }
 
         public string Franchise {
             get {
-                return mFranchise;
+                return oLine.mFranchise;
             }
         }
         public string EffectiveDate {
             get {
-                return mEffectiveDate;
+                return oLine.mEffectiveDate;
             }
         }
         public string Clean {
             get {
-                return mClean;
+                return oLine.mClean;
             }
         }
         public string Description {
             get {
-                return mDescription;
+                return oLine.mDescription;
             }
         }
-        public string ListPrice {
+        public Decimal ListPrice {
             get {
-                return mListPrice;
+                return oLine.mListPrice;
             }
         }
-        public string RetailPrice {
+        public Decimal RetailPrice {
             get {
-                return mRetailPrice;
+                return oLine.mRetailPrice;
             }
         }
         public string DiscountCode {
             get {
-                return mDiscountCode;
+                return oLine.mDiscountCode;
             }
         }
         public string Supercession {
             get {
-                return mSupercession;
+                return oLine.mSupercession;
             }
         }
         public string Status {
             get {
-                return mStatus;
+                return oLine.mStatus;
             }
         }
         public string TaxCode {
             get {
-                return mTaxCode;
+                return oLine.mTaxCode;
             }
         }
         public string StockingCode {
             get {
-                return mStockingCode;
+                return oLine.mStockingCode;
             }
         }
         public int MinOrder {
             get {
-                return mMinOrder;
+                return oLine.mMinOrder;
             }
         }
         public string Class {
             get {
-                return mClass;
+                return oLine.mClass;
             }
         }
-        public string Type {
+        public stOPEATypes.Type Type {
             get {
-                return mType;
+                return oLine.mType;
             }
         }
 
+        public stOPEA FullData {
+            get {
+                return oLine;
+            }
+        }
         /**
          * The price does not contain the decimal so it's
          * added at the correct place

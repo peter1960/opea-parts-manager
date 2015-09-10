@@ -301,6 +301,7 @@
             this.toolStripButtonAdd.Size = new System.Drawing.Size(30, 22);
             this.toolStripButtonAdd.Text = "Add";
             this.toolStripButtonAdd.ToolTipText = "Add Item to custom Franchise";
+            this.toolStripButtonAdd.Click += new System.EventHandler(this.toolStripButtonAdd_Click);
             // 
             // toolStripSeparator8
             // 

@@ -43,6 +43,36 @@ namespace OPEAManager
         public int Supplier_id;
     }
 
+    public struct stOPEA
+    {
+        public int OPEA_id;
+        public String mFranchise;
+        public String mPart;
+        public String mClean;
+        public String mDescription;
+        public Boolean Valid;
+        public String mEffectiveDate;
+        public Decimal mListPrice;
+        public Decimal mRetailPrice;
+        public String mDiscountCode;
+        public String mSupercession;
+        public String mStatus;
+        public String mTaxCode;
+        public String mStockingCode;
+        public int mMinOrder;
+        public String mClass;
+        public String mFiller;
+        public String mCode;
+        public stOPEATypes.Type mType;
+
+    }
+    public struct stOPEATypes
+    {
+        public enum Type{
+            Fixed,
+            Custom
+        }
+    }
     public struct stVersion
     {
         public int Ver;

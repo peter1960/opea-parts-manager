@@ -206,7 +206,15 @@ namespace OPEAManager
         }
 
         private void toolStripButtonEdit_Click(object sender, EventArgs e) {
+            DataGridViewSelectedRowCollection Row = dataGridStock.SelectedRows;
+            String sOPEA_ID = (String)Row[0].Cells[0].Value;
+            FormOPEA fm = new FormOPEA(long.Parse (sOPEA_ID));
+            fm.ShowDialog();
+        }
 
+        private void toolStripButtonAdd_Click(object sender, EventArgs e) {
+            FormOPEA fm = new FormOPEA();
+            fm.ShowDialog();
         }
 
 

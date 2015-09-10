@@ -67,7 +67,16 @@ namespace OPEAManager
             Database.Instance.ExecuteNonQuery(sql, false);
         }
 
-
+        public stOPEA FetchRecord(long oped_id) {
+            stOPEA st = new stOPEA();
+            String sQuery = "select opea_id, franchise_id,partno ,description, listprice,retailprice from opea where opea_id = " + oped_id.ToString();
+            DataTable tmp = Database.Instance.FillDataSet(sQuery);
+            st.mPart = (String)tmp.Rows[0]["partno"];
+            st.mDescription = (String)tmp.Rows[0]["description"];
+            st.mListPrice = (Decimal)(Double)tmp.Rows[0]["listprice"];
+            st.mRetailPrice = (Decimal)(Double)tmp.Rows[0]["retailprice"];
+            return st;
+        }
 
         private DataTable EmptyTable(int RowsToHold) {
             log.Debug("Create empty DS");
@@ -115,6 +124,7 @@ namespace OPEAManager
         public void FillTable(int Start, int Rows, DataGridView grid, bool bStocked) {
             FillTable(Start, Rows, grid, bStocked, "");
         }
+
         public void FillTable(int Start, int Rows, DataGridView grid, bool bStocked, String Pattern) {
             log.Debug("Fill Table from " + Start + " with " + Rows + " rows");
             DataTable t = (DataTable)grid.DataSource;
@@ -144,13 +154,13 @@ namespace OPEAManager
             DataTable tmp = Database.Instance.FillDataSet(sQuery);
             for (int x = 0; x < Rows; x++) {
                 if (x < tmp.Rows.Count) {
-                    t.Rows[x][Id] = tmp.Rows[x][0];
-                    t.Rows[x][Franchise] = tmp.Rows[x][1];
-                    t.Rows[x][PartNo] = tmp.Rows[x][2];
-                    t.Rows[x][Descr] = tmp.Rows[x][3];
-                    t.Rows[x][List] = tmp.Rows[x][4];
-                    t.Rows[x][Retail] = tmp.Rows[x][5];
-                    t.Rows[x][Qty] = tmp.Rows[x][6];
+                    t.Rows[x][Id] = tmp.Rows[x]["opea_id"];
+                    t.Rows[x][Franchise] = tmp.Rows[x]["franchise_id"];
+                    t.Rows[x][PartNo] = tmp.Rows[x]["partno"];
+                    t.Rows[x][Descr] = tmp.Rows[x]["description"];
+                    t.Rows[x][List] = tmp.Rows[x]["listprice"];
+                    t.Rows[x][Retail] = tmp.Rows[x]["retailprice"];
+                    t.Rows[x][Qty] = tmp.Rows[x]["qty"];
 
                 }
                 else {
