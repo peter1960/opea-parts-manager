@@ -75,6 +75,7 @@ namespace OPEAManager
             st.mDescription = (String)tmp.Rows[0]["description"];
             st.mListPrice = (Decimal)(Double)tmp.Rows[0]["listprice"];
             st.mRetailPrice = (Decimal)(Double)tmp.Rows[0]["retailprice"];
+            st.mFranchise = (String)tmp.Rows[0]["franchise_id"];
             return st;
         }
 

@@ -92,5 +92,34 @@ namespace OPEAManager
         }
 
 
+
+        public void FillDrop(ComboBox cb) {
+            DataTable tmp = Database.Instance.FillDataSet("select Prefix from Franchise where active = 'Y' order by prefix");
+            for (int x = 0; x < tmp.Rows.Count; x++) {
+                cb.Items.Add(new tbFranchiseItem((String)tmp.Rows[x][0]));
+            }
+
+        }
     }
+
+
+
+    class tbFranchiseItem
+    {
+
+        private static readonly ILog log = LogManager.GetLogger(typeof(tbFranchiseItem));
+
+        String m_Prefix_Id;
+        String m_Name1;
+
+        public tbFranchiseItem(String Prefix_Id) {
+            log.Debug("Fanchise : " + Prefix_Id);
+            m_Prefix_Id = Prefix_Id;
+        }
+
+        public override String ToString() {
+            return m_Prefix_Id;
+        }
+    }
+
 }

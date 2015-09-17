@@ -26,6 +26,8 @@ namespace OPEAManager
         }
 
         private void FormOPEA_Load(object sender, EventArgs e) {
+            FillDropLists();
+
             if (Id == 0) {
                 log.Debug("Add Mode");
             }
@@ -37,7 +39,29 @@ namespace OPEAManager
                 textDescription.Text = st.mDescription;
                 textList.Text = st.mListPrice.ToString("$0.00");
                 textRetail.Text = st.mRetailPrice.ToString("$0.00");
+                if (st.mType == stOPEATypes.Type.Fixed) {
+                    comboSupplier.Enabled = false;
+                    comboFranchise.SelectedIndex = comboFranchise.FindString(st.mFranchise);
+                }
+                
             }
+        }
+        private void FillDropLists() {
+            tbSupplier sp = new tbSupplier();
+            sp.FillDrop(comboSupplier);
+            tbFranchise fr = new tbFranchise();
+            fr.FillDrop(comboFranchise);
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e) {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e) {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+
         }
     }
 }

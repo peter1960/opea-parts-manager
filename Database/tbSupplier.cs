@@ -45,6 +45,13 @@ namespace OPEAManager
             return t;
         }
 
+        public void FillDrop(ComboBox cb) {
+            DataTable tmp = Database.Instance.FillDataSet("select SUPPLIER_ID, Name1 from supplier where active = 'Y' order by Name1");
+            for (int x = 0; x < tmp.Rows.Count; x++) {
+                cb.Items.Add(new tbSupplierItem((long)tmp.Rows[x][0], (String)tmp.Rows[x][1]));
+            }
+
+        }
 
         public void FillTable(DataGridView grid) {
             log.Debug("Fill Table Supplier");
@@ -107,6 +114,25 @@ String URL) {
        ");";
 
             Database.Instance.ExecuteNonQuery(sql);
+        }
+    }
+
+    class tbSupplierItem
+    {
+
+        private static readonly ILog log = LogManager.GetLogger(typeof(tbSupplierItem));
+
+        long m_Supplier_Id;
+        String m_Name1;
+
+        public tbSupplierItem(long Supplier_Id, String Name1) {
+            log.Debug("Supplier : " + Name1);
+            m_Supplier_Id = Supplier_Id;
+            m_Name1 = Name1;
+        }
+
+        public override String ToString() {
+            return m_Name1;
         }
     }
 }
