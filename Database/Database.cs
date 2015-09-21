@@ -21,7 +21,8 @@ namespace OPEAManager
         private static SQLiteTransaction Trans;
         private static Boolean TransOpen;
         private Database() {
-            sql_con = new SQLiteConnection("Data Source=c:\\data\\opea.db;Version=3;New=True;Compress=True;");
+            string dbPath = Properties.Settings.Default.DatabasePath;
+            sql_con = new SQLiteConnection("Data Source="+dbPath+"\\opea.db;Version=3;New=True;Compress=True;");
             sql_con.Open();
             TransOpen = false;
 
