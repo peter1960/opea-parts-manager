@@ -70,7 +70,8 @@ namespace OPEAManager
     {
         public enum Type{
             Fixed,
-            Custom
+            Custom,
+            Supplier
         }
     }
     public struct stVersion
