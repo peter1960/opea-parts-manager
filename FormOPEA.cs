@@ -41,7 +41,13 @@ namespace OPEAManager
                 textRetail.Text = st.mRetailPrice.ToString("$0.00");
                 if (st.mType == stOPEATypes.Type.Fixed) {
                     comboSupplier.Enabled = false;
+                    comboFranchise.Enabled = false;
                     comboFranchise.SelectedIndex = comboFranchise.FindString(st.mFranchise);
+                    radioButtonFranchise.Checked = true;
+                    radioButtonFranchise.Enabled = false;
+                    radioButtonSupplier.Enabled = false;
+                    textPartNo.ReadOnly = true;
+                    textDescription.ReadOnly = true;
                 }
                 
             }

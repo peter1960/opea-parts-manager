@@ -37,17 +37,25 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.comboFranchise = new System.Windows.Forms.ComboBox();
             this.comboSupplier = new System.Windows.Forms.ComboBox();
+            this.comboFranchise = new System.Windows.Forms.ComboBox();
+            this.radioButtonSupplier = new System.Windows.Forms.RadioButton();
+            this.radioButtonFranchise = new System.Windows.Forms.RadioButton();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(611, 27);
+            this.buttonSave.Location = new System.Drawing.Point(600, 24);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 0;
@@ -57,7 +65,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(611, 56);
+            this.buttonCancel.Location = new System.Drawing.Point(600, 56);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 1;
@@ -149,45 +157,14 @@
             // 
             this.groupBox2.Controls.Add(this.comboSupplier);
             this.groupBox2.Controls.Add(this.comboFranchise);
-            this.groupBox2.Controls.Add(this.radioButton2);
-            this.groupBox2.Controls.Add(this.radioButton1);
+            this.groupBox2.Controls.Add(this.radioButtonSupplier);
+            this.groupBox2.Controls.Add(this.radioButtonFranchise);
             this.groupBox2.Location = new System.Drawing.Point(24, 65);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(292, 73);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Part Origin";
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(9, 42);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(63, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Supplier";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(9, 19);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(71, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Franchise";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // comboFranchise
-            // 
-            this.comboFranchise.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboFranchise.FormattingEnabled = true;
-            this.comboFranchise.Location = new System.Drawing.Point(106, 15);
-            this.comboFranchise.Name = "comboFranchise";
-            this.comboFranchise.Size = new System.Drawing.Size(174, 21);
-            this.comboFranchise.TabIndex = 2;
             // 
             // comboSupplier
             // 
@@ -198,11 +175,106 @@
             this.comboSupplier.Size = new System.Drawing.Size(174, 21);
             this.comboSupplier.TabIndex = 3;
             // 
+            // comboFranchise
+            // 
+            this.comboFranchise.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboFranchise.FormattingEnabled = true;
+            this.comboFranchise.Location = new System.Drawing.Point(106, 15);
+            this.comboFranchise.Name = "comboFranchise";
+            this.comboFranchise.Size = new System.Drawing.Size(174, 21);
+            this.comboFranchise.TabIndex = 2;
+            // 
+            // radioButtonSupplier
+            // 
+            this.radioButtonSupplier.AutoSize = true;
+            this.radioButtonSupplier.Location = new System.Drawing.Point(9, 42);
+            this.radioButtonSupplier.Name = "radioButtonSupplier";
+            this.radioButtonSupplier.Size = new System.Drawing.Size(63, 17);
+            this.radioButtonSupplier.TabIndex = 1;
+            this.radioButtonSupplier.TabStop = true;
+            this.radioButtonSupplier.Text = "Supplier";
+            this.radioButtonSupplier.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonFranchise
+            // 
+            this.radioButtonFranchise.AutoSize = true;
+            this.radioButtonFranchise.Location = new System.Drawing.Point(9, 19);
+            this.radioButtonFranchise.Name = "radioButtonFranchise";
+            this.radioButtonFranchise.Size = new System.Drawing.Size(71, 17);
+            this.radioButtonFranchise.TabIndex = 0;
+            this.radioButtonFranchise.TabStop = true;
+            this.radioButtonFranchise.Text = "Franchise";
+            this.radioButtonFranchise.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.textBox4);
+            this.groupBox3.Controls.Add(this.textBox3);
+            this.groupBox3.Controls.Add(this.textBox2);
+            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Location = new System.Drawing.Point(24, 144);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(651, 89);
+            this.groupBox3.TabIndex = 8;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Alternatives";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(212, 54);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(421, 20);
+            this.textBox4.TabIndex = 6;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(212, 20);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(421, 20);
+            this.textBox3.TabIndex = 5;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(106, 54);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 4;
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(106, 19);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(9, 57);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(86, 13);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Superceeded By";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 27);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(64, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Superceeds";
+            // 
             // FormOPEA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(733, 464);
+            this.ClientSize = new System.Drawing.Size(733, 271);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -222,6 +294,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -241,9 +315,16 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButtonSupplier;
+        private System.Windows.Forms.RadioButton radioButtonFranchise;
         private System.Windows.Forms.ComboBox comboSupplier;
         private System.Windows.Forms.ComboBox comboFranchise;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
     }
 }
