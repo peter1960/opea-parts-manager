@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Data.SQLite;
 using log4net;
 using log4net.Config;
-
+using System.IO;
 
 namespace OPEAManager
 {
@@ -237,6 +237,23 @@ namespace OPEAManager
         private void toolStripButtonAdd_Click(object sender, EventArgs e) {
             FormOPEA fm = new FormOPEA();
             fm.ShowDialog();
+        }
+
+        private void buttonBackup_Click(object sender, EventArgs e) {
+            this.Cursor = Cursors.WaitCursor;
+            log.Debug("Backup Started");
+            toolStripStatusLabel1.Text = "Backup Started";
+            statusStrip1.Refresh();
+            DateTime dt = DateTime.Now; // Or whatever
+            string s = dt.ToString("yyyyMMddHHmm");
+            string dbPath = Properties.Settings.Default.DatabasePath;
+            string cFile = dbPath + "\\opea.db";
+            File.Copy(cFile, dbPath + "\\backup\\opea.db."+s);
+            toolStripStatusLabel1.Text = "Backup Ended";
+            log.Debug("Backup Ended");
+            statusStrip1.Refresh();
+            this.Cursor = Cursors.Default;
+
         }
 
 

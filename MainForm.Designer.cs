@@ -76,11 +76,12 @@
             this.tabCompany = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonComanySave = new System.Windows.Forms.Button();
+            this.companyControl1 = new OPEAManager.Controls.CompanyControl();
             this.tabSystem = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonSystemReset = new System.Windows.Forms.Button();
             this.buttonLoad = new System.Windows.Forms.Button();
-            this.companyControl1 = new OPEAManager.Controls.CompanyControl();
+            this.buttonBackup = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -221,7 +222,7 @@
             this.toolStripSeparator8});
             this.toolStripStock.Location = new System.Drawing.Point(3, 3);
             this.toolStripStock.Name = "toolStripStock";
-            this.toolStripStock.Size = new System.Drawing.Size(368, 25);
+            this.toolStripStock.Size = new System.Drawing.Size(337, 25);
             this.toolStripStock.Stretch = true;
             this.toolStripStock.TabIndex = 5;
             this.toolStripStock.Text = "toolStrip1";
@@ -581,10 +582,17 @@
             this.buttonComanySave.UseVisualStyleBackColor = true;
             this.buttonComanySave.Click += new System.EventHandler(this.buttonComanySave_Click);
             // 
+            // companyControl1
+            // 
+            this.companyControl1.Location = new System.Drawing.Point(3, 61);
+            this.companyControl1.Name = "companyControl1";
+            this.companyControl1.Size = new System.Drawing.Size(282, 289);
+            this.companyControl1.TabIndex = 4;
+            // 
             // tabSystem
             // 
+            this.tabSystem.Controls.Add(this.buttonSystemReset);
             this.tabSystem.Controls.Add(this.groupBox1);
-            this.tabSystem.Controls.Add(this.buttonLoad);
             this.tabSystem.Location = new System.Drawing.Point(23, 4);
             this.tabSystem.Name = "tabSystem";
             this.tabSystem.Padding = new System.Windows.Forms.Padding(3);
@@ -595,8 +603,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.buttonSystemReset);
-            this.groupBox1.Location = new System.Drawing.Point(520, 86);
+            this.groupBox1.Controls.Add(this.buttonBackup);
+            this.groupBox1.Controls.Add(this.buttonLoad);
+            this.groupBox1.Location = new System.Drawing.Point(32, 28);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 100);
             this.groupBox1.TabIndex = 2;
@@ -605,17 +614,18 @@
             // 
             // buttonSystemReset
             // 
-            this.buttonSystemReset.Location = new System.Drawing.Point(6, 71);
+            this.buttonSystemReset.Location = new System.Drawing.Point(458, 331);
             this.buttonSystemReset.Name = "buttonSystemReset";
             this.buttonSystemReset.Size = new System.Drawing.Size(75, 23);
             this.buttonSystemReset.TabIndex = 1;
             this.buttonSystemReset.Text = "Reset";
             this.buttonSystemReset.UseVisualStyleBackColor = true;
+            this.buttonSystemReset.Visible = false;
             this.buttonSystemReset.Click += new System.EventHandler(this.buttonSystemReset_Click);
             // 
             // buttonLoad
             // 
-            this.buttonLoad.Location = new System.Drawing.Point(63, 120);
+            this.buttonLoad.Location = new System.Drawing.Point(6, 19);
             this.buttonLoad.Name = "buttonLoad";
             this.buttonLoad.Size = new System.Drawing.Size(75, 23);
             this.buttonLoad.TabIndex = 0;
@@ -623,12 +633,15 @@
             this.buttonLoad.UseVisualStyleBackColor = true;
             this.buttonLoad.Click += new System.EventHandler(this.OPEA_Load_Click);
             // 
-            // companyControl1
+            // buttonBackup
             // 
-            this.companyControl1.Location = new System.Drawing.Point(3, 61);
-            this.companyControl1.Name = "companyControl1";
-            this.companyControl1.Size = new System.Drawing.Size(282, 289);
-            this.companyControl1.TabIndex = 4;
+            this.buttonBackup.Location = new System.Drawing.Point(6, 48);
+            this.buttonBackup.Name = "buttonBackup";
+            this.buttonBackup.Size = new System.Drawing.Size(75, 23);
+            this.buttonBackup.TabIndex = 1;
+            this.buttonBackup.Text = "Backup";
+            this.buttonBackup.UseVisualStyleBackColor = true;
+            this.buttonBackup.Click += new System.EventHandler(this.buttonBackup_Click);
             // 
             // Main
             // 
@@ -727,6 +740,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stockLevelsToolStripMenuItem;
+        private System.Windows.Forms.Button buttonBackup;
        
     }
 }
