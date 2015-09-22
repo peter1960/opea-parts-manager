@@ -132,6 +132,8 @@ namespace OPEAManager
             log.Debug("Load Complete ");
             statusStrip1.Refresh();
             this.Cursor = Cursors.Default;
+            SetupStockTab();
+
         }
 
         private void buttonComanySave_Click(object sender, EventArgs e) {
