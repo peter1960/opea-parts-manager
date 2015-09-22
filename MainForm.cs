@@ -122,18 +122,34 @@ namespace OPEAManager
         }
 
         private void OPEA_Load_Click(object sender, EventArgs e) {
-            this.Cursor = Cursors.WaitCursor;
-            log.Debug("Load Started ");
-            toolStripStatusLabel1.Text = "OPEA Load Started";
-            statusStrip1.Refresh();
-            opeaFile of = new opeaFile();
-            of.LoadFile("c:\\data\\KAWAMC01.dat");
-            toolStripStatusLabel1.Text = "OPEA Load Done";
-            log.Debug("Load Complete ");
-            statusStrip1.Refresh();
-            this.Cursor = Cursors.Default;
-            SetupStockTab();
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            // Set filter options and filter index.
+            openFileDialog1.Filter = "All Files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 1;
 
+            openFileDialog1.Multiselect = false;
+            openFileDialog1.CheckFileExists = true;
+            openFileDialog1.FileName = Properties.Settings.Default.OPEAPath;
+            // Call the ShowDialog method to show the dialog box.
+            DialogResult userClickedOK = openFileDialog1.ShowDialog();
+
+            if (userClickedOK == System.Windows.Forms.DialogResult.OK) {
+                Properties.Settings.Default.OPEAPath = openFileDialog1.FileName;
+                Properties.Settings.Default.Save();
+                this.Cursor = Cursors.WaitCursor;
+
+                log.Debug("Load Started ");
+
+                toolStripStatusLabel1.Text = "OPEA Load Started";
+                statusStrip1.Refresh();
+                opeaFile of = new opeaFile();
+                of.LoadFile(openFileDialog1.FileName);
+                toolStripStatusLabel1.Text = "OPEA Load Done";
+                log.Debug("Load Complete ");
+                statusStrip1.Refresh();
+                this.Cursor = Cursors.Default;
+                SetupStockTab();
+            }
         }
 
         private void buttonComanySave_Click(object sender, EventArgs e) {

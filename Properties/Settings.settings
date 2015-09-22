@@ -5,5 +5,8 @@
     <Setting Name="DatabasePath" Type="System.String" Scope="Application">
       <Value Profile="(Default)">c:\opeaManager</Value>
     </Setting>
+    <Setting Name="OPEAPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">c:\temp\KAWAMC01.dat</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
