@@ -15,29 +15,27 @@ namespace OPEAManager
 {
     public partial class splash : Form
     {
+        const double maxSplash = 10.0;
         private static readonly ILog log = LogManager.GetLogger(typeof(splash));
         int count = 0;
         public splash() {
-            //XmlConfigurator.Configure(new System.IO.FileInfo(@"log4net.xml"));
             log.Debug("Splash Create");
             InitializeComponent();
+            this.Show();
+            this.Refresh();
             Thread.Sleep(1000);
             splashtimer.Start();
 
         }
 
         private void splashtimer_Tick(object sender, EventArgs e) {
-            if (count > 30) {
+            if (count > maxSplash) {
                 log.Debug("Splash Done");
                 splashtimer.Stop();
                 this.Close();
             }
-            if (count > 15) {
-                double t = ((15.0 / (count-15)) );
-                this.Opacity = t;
-                this.Refresh();
-                log.Debug(t);
-            }
+            double t = count / maxSplash;
+            this.Opacity = 1.0 - t;
             count++;
         }
     }
