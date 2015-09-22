@@ -137,6 +137,12 @@
     <Compile Include="Reports\StockDocument.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="splash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="splash.Designer.cs">
+      <DependentUpon>splash.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Controls\CompanyControl.resx">
       <DependentUpon>CompanyControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,7 +175,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="splash.resx">
+      <DependentUpon>splash.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="OPEAManager_TemporaryKey.pfx" />
     <None Include="OPEAManger.log">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -215,6 +225,9 @@
     <Content Include="log4net.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\splash.png" />
+    <None Include="Resources\splash.jpg.jpg" />
+    <None Include="Resources\splash-img.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

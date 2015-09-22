@@ -20,10 +20,13 @@ namespace OPEAManager
         // Create a logger for use in this class
         //private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static readonly ILog log = LogManager.GetLogger(typeof(Main));
-
+        splash sp;
         private SQLiteConnection sql_con;
         public Main()
         {
+            sp = new splash();
+            sp.Show();
+
             InitializeComponent();
             Main_Resize(null,null);
 
