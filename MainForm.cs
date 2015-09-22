@@ -24,14 +24,15 @@ namespace OPEAManager
         private SQLiteConnection sql_con;
         public Main()
         {
+            XmlConfigurator.Configure(new System.IO.FileInfo(@"log4net.xml"));
+            log.Info("====================== Application Start ======================");
+
             sp = new splash();
             sp.Show();
 
             InitializeComponent();
             Main_Resize(null,null);
 
-            XmlConfigurator.Configure(new System.IO.FileInfo(@"log4net.xml"));
-            log.Info("====================== Application Start ======================");
             this.Cursor = Cursors.WaitCursor;
 
             tbVersion tv = new tbVersion();
