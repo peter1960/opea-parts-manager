@@ -23,6 +23,10 @@ namespace OPEAManager
                 log.Error(ex);
                 return 0;
             }
+            if (sql_res == null) {
+                log.Error("Database not present");
+                return 0;
+            }
             if (sql_res.Rows.Count == 0) {
                 log.Error("Database version is missing");
             }

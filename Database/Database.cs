@@ -78,7 +78,7 @@ namespace OPEAManager
                 DB.Fill(DS);
             }
             catch (System.Data.SQLite.SQLiteException ex) {
-                throw ex;
+                return null; // throw ex;
             }
             return DS.Tables[0];
 
