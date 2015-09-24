@@ -91,6 +91,13 @@ namespace OPEAManager
             Database.Instance.ExecuteNonQuery(sql);
         }
 
+        public bool Valid(String Franchise) {
+
+            DataTable tmp = Database.Instance.FillDataSet("select FRANCHISE_ID  from franchise where prefix = '"+Franchise+"'");
+            log.Debug("Verify Franchise: " + Franchise );
+
+            return (tmp.Rows.Count == 1);
+        }
 
 
         public void FillDrop(ComboBox cb) {

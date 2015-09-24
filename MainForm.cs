@@ -16,14 +16,13 @@ namespace OPEAManager
 {
     public partial class Main : Form
     {
-        
+
         // Create a logger for use in this class
         //private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static readonly ILog log = LogManager.GetLogger(typeof(Main));
         splash sp;
         private SQLiteConnection sql_con;
-        public Main()
-        {
+        public Main() {
             XmlConfigurator.Configure(new System.IO.FileInfo(@"log4net.xml"));
             log.Info("====================== Application Start ======================");
 
@@ -31,7 +30,7 @@ namespace OPEAManager
             sp.Show();
 
             InitializeComponent();
-            Main_Resize(null,null);
+            Main_Resize(null, null);
 
             this.Cursor = Cursors.WaitCursor;
 
@@ -55,13 +54,11 @@ namespace OPEAManager
             this.Cursor = Cursors.Default;
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
+        private void toolStripMenuItem1_Click(object sender, EventArgs e) {
 
         }
 
-        private void buttonSystemReset_Click(object sender, EventArgs e)
-        {
+        private void buttonSystemReset_Click(object sender, EventArgs e) {
             this.Cursor = Cursors.WaitCursor;
             Tables tb = new Tables();
             tb.CreateTables();
@@ -79,7 +76,7 @@ namespace OPEAManager
             fr.FillList(toolStripFranchise);
 
             tbOpea db = new tbOpea();
-            db.FillTable(0, 1000, dataGridStock,false);
+            db.FillTable(0, 1000, dataGridStock, false);
         }
 
         private void SetupSupplierTab() {
@@ -138,14 +135,24 @@ namespace OPEAManager
                 Properties.Settings.Default.Save();
                 this.Cursor = Cursors.WaitCursor;
 
-                log.Debug("Load Started ");
+                log.Info("Load Started ");
 
                 toolStripStatusLabel1.Text = "OPEA Load Started";
                 statusStrip1.Refresh();
                 opeaFile of = new opeaFile();
-                of.LoadFile(openFileDialog1.FileName);
-                toolStripStatusLabel1.Text = "OPEA Load Done";
-                log.Debug("Load Complete ");
+                stErr res = of.LoadFile(openFileDialog1.FileName);
+                switch (res) {
+                    case stErr.OK: {
+                            toolStripStatusLabel1.Text = "OPEA Load Done";
+                            log.Info("Load Complete ");
+                            break;
+                        }
+                    case stErr.FRANCHISE1: {
+                            toolStripStatusLabel1.Text = "Bad OPEA file or Franchise undefined, cancelled";
+                            log.Error("Load Cancelled ");
+                            break;
+                        }
+                }
                 statusStrip1.Refresh();
                 this.Cursor = Cursors.Default;
                 SetupStockTab();
@@ -156,7 +163,7 @@ namespace OPEAManager
             log.Debug("Save Company");
             tbCompany cp = new tbCompany();
             cp.Update(companyControl1.recValue);
-            
+
         }
 
         private void buttonTabSupplierAdd_Click(object sender, EventArgs e) {
@@ -207,7 +214,7 @@ namespace OPEAManager
                 log.Debug(Row[0].Cells[0].Value);
                 Row[0].Cells[6].Value = fs.Qty;
                 tbStock op = new tbStock();
-                op.UpdateStock((String)Row[0].Cells[0].Value,fs.Qty);
+                op.UpdateStock((String)Row[0].Cells[0].Value, fs.Qty);
             }
             fs.Dispose();
         }
@@ -223,14 +230,14 @@ namespace OPEAManager
             //printdlg.Document = ps;
 
             //if (printdlg.ShowDialog() == DialogResult.OK) {
-               // ps.Print();
-           // }
+            // ps.Print();
+            // }
         }
 
         private void toolStripButtonEdit_Click(object sender, EventArgs e) {
             DataGridViewSelectedRowCollection Row = dataGridStock.SelectedRows;
             String sOPEA_ID = (String)Row[0].Cells[0].Value;
-            FormOPEA fm = new FormOPEA(long.Parse (sOPEA_ID));
+            FormOPEA fm = new FormOPEA(long.Parse(sOPEA_ID));
             fm.ShowDialog();
         }
 
@@ -248,7 +255,7 @@ namespace OPEAManager
             string s = dt.ToString("yyyyMMddHHmm");
             string dbPath = Properties.Settings.Default.DatabasePath;
             string cFile = dbPath + "\\opea.db";
-            File.Copy(cFile, dbPath + "\\backup\\opea.db."+s);
+            File.Copy(cFile, dbPath + "\\backup\\opea.db." + s);
             toolStripStatusLabel1.Text = "Backup Ended";
             log.Debug("Backup Ended");
             statusStrip1.Refresh();

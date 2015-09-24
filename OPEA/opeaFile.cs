@@ -15,54 +15,49 @@ namespace OPEAManager
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(opeaFile));
 
-        public void LoadFile(String fileName) {
+        public stErr LoadFile(String fileName) {
             log.Info("Loading: " + fileName);
             opeaLine ol = new opeaLine();
             using (TextReader sr = File.OpenText(fileName)) {
                 String line;
+
+                // first line is just a dummy
+                // but will be used to verify the franchise before 
+                // the entire file is loaded
+
                 line = sr.ReadLine();
-                //			Franshise = str.substring(0, 4);
-                //Mode = str.substring(107, 108);
-                //logger.debug("Franchise: " + Franshise);
-                //if (!IsFranchiseOk(Franshise)) {
-                //    in.close();
-                //    fireXXX(new eventProgress(this, "ERR1:"));
-                //    return;
-                //}
 
-                //// mark all records dirty if this is a "R" replace file
-                //if (Mode.equals("R")) {
-                //    logger.debug("Replace Mode");
-                //    MarkDirty(Franshise);
-                //} else {
-                //    logger.debug("Update Mode");
+                String Franchise = line.Substring(0, 4);
+                tbFranchise tbf = new tbFranchise();
+                if (!tbf.Valid(Franchise)) {
+                    log.Error("Franchise is not setup, load cancelled");
+                    sr.Close();
+                    return stErr.FRANCHISE1;
 
-                //}
+                }
 
-                //try {
                 tbOpea dbs = new tbOpea();
                 int nCount = 0;
+                int nTotal = 0;
                 Database.Instance.BeginTrans();
                 while ((line = sr.ReadLine()) != null ) {
                     ol.ParseLine(line);
-                    dbs.Insert(ol,1);
+                    dbs.InsertUpdate(ol);
                     nCount++;
-                    if (nCount > 1000) {
+                    nTotal++;
+                    if (nCount >= 1000) {
                         Database.Instance.CommitTrans();
                         Database.Instance.BeginTrans();
                         nCount = 0;
+                        log.Debug("     Committed :" + nTotal);
                     }
 
                 }
                 Database.Instance.CommitTrans();
+                log.Debug("Committed :" + nTotal);
                 Database.Instance.ExecuteNonQuery("vacuum;");
-                //Console.WriteLine(line);
+                return stErr.OK;
             }
-            //}
-            //catch (Exception e) {
-            //    MessageBox.Show(e.Message, "LogScanner", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-
-            //}
         }
 
 

@@ -26,9 +26,39 @@ namespace OPEAManager
         const string Id = "Id";
 
         private static readonly ILog log = LogManager.GetLogger(typeof(tbOpea));
+        public void InsertUpdate(opeaLine data) {
+            //if update failed then this is a new 
+            //record and then insert it.
+            //relies on the part/franshise index
+            if (!Update(data)) {
+                Insert(data);
+            }
+        }
+        public bool Update(opeaLine data) {
 
-        public void Insert(opeaLine data, int Company_ID) {
-            String sql = "insert or replace into `opea` (" +
+            String sql = "update opea set " +
+               "TYPE = '" + data.Type + "'," +
+               "EFFECTIVEDATE = '" + data.EffectiveDate + "'," +
+               "DIRTY = 'F'," +
+            "DESCRIPTION = '" + data.Description + "'," +
+            "LISTPRICE = '" + data.ListPrice + "'," +
+            "RETAILPRICE = '" + data.RetailPrice + "'," +
+            "DISCOUNTCODE = '" + data.DiscountCode + "'," +
+            "SUPERCESSION = '" + data.Supercession + "'," +
+            "STATUS = '" + data.Status + "'," +
+            "TAXCODE = '" + data.TaxCode + "'," +
+            "STOCKINGCODE = '" + data.StockingCode + "'," +
+            "MINORDER ='" + data.MinOrder + "'," +
+            "CLASS = '" + data.Class + "'," +
+            "CLEANPART = '" + data.Clean + "' " +
+            "where PARTNO = '" + data.PartNo + "' and FRANCHISE_ID = '"+data.Franchise+"';";
+
+            //log.Debug(Database.Instance.ExecuteNonQuery(sql, false));
+
+            return Database.Instance.ExecuteNonQuery(sql, false) == 1;
+        }
+        public void Insert(opeaLine data) {
+            String sql = "insert into `opea` (" +
        "TYPE," +
        "FRANCHISE_ID," +
        "EFFECTIVEDATE," +
@@ -137,7 +167,7 @@ namespace OPEAManager
             if (bStocked) {
                 sQuery += ", stock where ";
                 if (Pattern.Length > 0) {
-                    sQuery += " (cleanpart like '%" + Pattern + "%' or description like '%"+Pattern+"%'  ) AND ";
+                    sQuery += " (cleanpart like '%" + Pattern + "%' or description like '%" + Pattern + "%'  ) AND ";
                 }
             }
             else {

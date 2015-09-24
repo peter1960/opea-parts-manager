@@ -59,7 +59,7 @@ namespace OPEAManager
             Database.Instance.ExecuteNonQuery(sql);
             sql = "CREATE TABLE opea (`OPEA_ID` INTEGER PRIMARY KEY AUTOINCREMENT,TYPE TEXT default '" + stOPEATypes.Type.Custom + "',FRANCHISE_ID TEXT default NULL,`SUPPLIER_ID` INTEGER default 0, EFFECTIVEDATE TEXT default NULL,DIRTY BOOLEAN default NULL,PARTNO varchar(20) default NULL,DESCRIPTION varchar(35) default NULL,LISTPRICE double default NULL,RETAILPRICE double default NULL,DISCOUNTCODE varchar(2) default NULL,SUPERCESSION varchar(20) default NULL,STATUS varchar(1) default NULL,TAXCODE varchar(1) default NULL,STOCKINGCODE varchar(1) default NULL,MINORDER int default NULL,CLASS varchar(4) default NULL,CLEANPART varchar(20) default NULL);";
             Database.Instance.ExecuteNonQuery(sql);
-            sql = "CREATE UNIQUE INDEX opea_idx1 on opea (partno asc);";
+            sql = "CREATE UNIQUE INDEX opea_idx1 on opea (FRANCHISE_ID,partno asc);";
             Database.Instance.ExecuteNonQuery(sql);
         }
         public void CreateSupplier() {
