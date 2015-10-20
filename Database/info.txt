@@ -1,11 +1,11 @@
 ﻿opea:
 Field                         Edit    Create      Values           Notes
 OPEA_ID 
-TYPE                           CS       CS        'Cust','FIxed','Sup'      Custom,Franchaise,Supplier. 'F' is loaded from OPEA file an cannot be edited, 'S' is a supplier selected
+TYPE                           CS       CS        'Cust','Fixed','Sup'      Custom,Franchaise,Supplier. 'F' is loaded from OPEA file an cannot be edited, 'S' is a supplier selected
 FRANCHISE_ID                   C        C
 SUPPLIER_ID                    S        S
 EFFECTIVEDATE                
-DIRTY BOOLEAN                                     'Y','N'                  
+DIRTY BOOLEAN                                     'Y','N'                   Marked to "Y" before a load so any not updated can be removed at completion, anything with stock or orders will not be set to "Y"
 PARTNO                         CS       CS
 DESCRIPTION                    CS       CS
 LISTPRICE                      CS       CS

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using log4net;
 
 
 
@@ -13,6 +14,7 @@ namespace OPEAManager
     class opeaLine
     {
         private stOPEA oLine;
+        private static readonly ILog log = LogManager.GetLogger(typeof(opeaLine));
 
         public void ParseLine(String opeaText) {
             oLine.Valid = true;
@@ -34,6 +36,15 @@ namespace OPEAManager
             oLine.mFiller = "";// line.substring(118, 126);
 
         }
+        public void StructureToLine(stOPEA opeaST) {
+            log.Debug("Structure convert");
+            oLine.mType = opeaST.mType;
+            oLine.mPart = opeaST.mPart;
+            oLine.mClean = clean(oLine.mPart);
+            oLine.mFranchise = opeaST.mFranchise;
+            oLine.mDescription = quotes(opeaST.mDescription);
+        }
+
         public string PartNo {
             get { return oLine.mPart; }
         }

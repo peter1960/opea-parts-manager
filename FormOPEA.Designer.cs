@@ -42,10 +42,10 @@
             this.radioButtonSupplier = new System.Windows.Forms.RadioButton();
             this.radioButtonFranchise = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxSuperbyDescription = new System.Windows.Forms.TextBox();
+            this.textBoxSuperceedsDescription = new System.Windows.Forms.TextBox();
+            this.textBoxSuperbyPart = new System.Windows.Forms.TextBox();
+            this.textBoxSuperceedsPart = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -55,6 +55,7 @@
             // 
             // buttonSave
             // 
+            this.buttonSave.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonSave.Location = new System.Drawing.Point(600, 24);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
@@ -65,6 +66,7 @@
             // 
             // buttonCancel
             // 
+            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancel.Location = new System.Drawing.Point(600, 56);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
@@ -75,18 +77,20 @@
             // 
             // textPartNo
             // 
+            this.textPartNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textPartNo.Location = new System.Drawing.Point(24, 27);
             this.textPartNo.Name = "textPartNo";
             this.textPartNo.Size = new System.Drawing.Size(100, 20);
-            this.textPartNo.TabIndex = 2;
+            this.textPartNo.TabIndex = 0;
             this.textPartNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textDescription
             // 
+            this.textDescription.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textDescription.Location = new System.Drawing.Point(130, 27);
             this.textDescription.Name = "textDescription";
             this.textDescription.Size = new System.Drawing.Size(421, 20);
-            this.textDescription.TabIndex = 3;
+            this.textDescription.TabIndex = 1;
             // 
             // groupBox1
             // 
@@ -208,10 +212,10 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox4);
-            this.groupBox3.Controls.Add(this.textBox3);
-            this.groupBox3.Controls.Add(this.textBox2);
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.textBoxSuperbyDescription);
+            this.groupBox3.Controls.Add(this.textBoxSuperceedsDescription);
+            this.groupBox3.Controls.Add(this.textBoxSuperbyPart);
+            this.groupBox3.Controls.Add(this.textBoxSuperceedsPart);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Location = new System.Drawing.Point(24, 144);
@@ -221,35 +225,35 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Alternatives";
             // 
-            // textBox4
+            // textBoxSuperbyDescription
             // 
-            this.textBox4.Location = new System.Drawing.Point(212, 54);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(421, 20);
-            this.textBox4.TabIndex = 6;
+            this.textBoxSuperbyDescription.Location = new System.Drawing.Point(212, 54);
+            this.textBoxSuperbyDescription.Name = "textBoxSuperbyDescription";
+            this.textBoxSuperbyDescription.Size = new System.Drawing.Size(421, 20);
+            this.textBoxSuperbyDescription.TabIndex = 7;
             // 
-            // textBox3
+            // textBoxSuperceedsDescription
             // 
-            this.textBox3.Location = new System.Drawing.Point(212, 20);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(421, 20);
-            this.textBox3.TabIndex = 5;
+            this.textBoxSuperceedsDescription.Location = new System.Drawing.Point(212, 20);
+            this.textBoxSuperceedsDescription.Name = "textBoxSuperceedsDescription";
+            this.textBoxSuperceedsDescription.Size = new System.Drawing.Size(421, 20);
+            this.textBoxSuperceedsDescription.TabIndex = 5;
             // 
-            // textBox2
+            // textBoxSuperbyPart
             // 
-            this.textBox2.Location = new System.Drawing.Point(106, 54);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 4;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxSuperbyPart.Location = new System.Drawing.Point(106, 54);
+            this.textBoxSuperbyPart.Name = "textBoxSuperbyPart";
+            this.textBoxSuperbyPart.Size = new System.Drawing.Size(100, 20);
+            this.textBoxSuperbyPart.TabIndex = 6;
+            this.textBoxSuperbyPart.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox1
+            // textBoxSuperceedsPart
             // 
-            this.textBox1.Location = new System.Drawing.Point(106, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxSuperceedsPart.Location = new System.Drawing.Point(106, 19);
+            this.textBoxSuperceedsPart.Name = "textBoxSuperceedsPart";
+            this.textBoxSuperceedsPart.Size = new System.Drawing.Size(100, 20);
+            this.textBoxSuperceedsPart.TabIndex = 4;
+            this.textBoxSuperceedsPart.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label6
             // 
@@ -284,12 +288,14 @@
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormOPEA";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "OPEAForm";
             this.Load += new System.EventHandler(this.FormOPEA_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormOPEA_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -320,10 +326,10 @@
         private System.Windows.Forms.ComboBox comboSupplier;
         private System.Windows.Forms.ComboBox comboFranchise;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxSuperbyDescription;
+        private System.Windows.Forms.TextBox textBoxSuperceedsDescription;
+        private System.Windows.Forms.TextBox textBoxSuperbyPart;
+        private System.Windows.Forms.TextBox textBoxSuperceedsPart;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
     }
