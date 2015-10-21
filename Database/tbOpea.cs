@@ -50,7 +50,8 @@ namespace OPEAManager
             "STOCKINGCODE = '" + data.StockingCode + "'," +
             "MINORDER ='" + data.MinOrder + "'," +
             "CLASS = '" + data.Class + "'," +
-            "CLEANPART = '" + data.Clean + "' " +
+            "CLEANPART = '" + data.Clean + "', " +
+            "UPDATED = (datetime('now','localtime')) " +
             "where PARTNO = '" + data.PartNo + "' and FRANCHISE_ID = '"+data.Franchise+"';";
 
             //log.Debug(Database.Instance.ExecuteNonQuery(sql, false));
@@ -99,13 +100,15 @@ namespace OPEAManager
 
         public stOPEA FetchRecord(long oped_id) {
             stOPEA st = new stOPEA();
-            String sQuery = "select opea_id, franchise_id,partno ,description, listprice,retailprice from opea where opea_id = " + oped_id.ToString();
+            String sQuery = "select opea_id, franchise_id,partno ,description, listprice,retailprice,created,updated from opea where opea_id = " + oped_id.ToString();
             DataTable tmp = Database.Instance.FillDataSet(sQuery);
             st.mPart = (String)tmp.Rows[0]["partno"];
             st.mDescription = (String)tmp.Rows[0]["description"];
             st.mListPrice = (Decimal)(Double)tmp.Rows[0]["listprice"];
             st.mRetailPrice = (Decimal)(Double)tmp.Rows[0]["retailprice"];
             st.mFranchise = (String)tmp.Rows[0]["franchise_id"];
+            st.mCreated = (DateTime)tmp.Rows[0]["created"];
+            st.mUpdated = (DateTime)tmp.Rows[0]["updated"];
             return st;
         }
 

@@ -53,6 +53,9 @@ namespace OPEAManager
                 textDescription.Text = st.mDescription;
                 textList.Text = st.mListPrice.ToString("$0.00");
                 textRetail.Text = st.mRetailPrice.ToString("$0.00");
+                textBoxCreated.Text = st.mCreated.ToString("d/M/y HH:mm");
+                textBoxUpdated.Text = st.mUpdated.ToString("d/M/y HH:mm");
+
                 if (st.mType == stOPEATypes.Type.Fixed) {
                     comboSupplier.Enabled = false;
                     comboFranchise.Enabled = false;

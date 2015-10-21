@@ -63,6 +63,8 @@ namespace OPEAManager
         public String mClass;
         public String mFiller;
         public String mCode;
+        public DateTime mCreated;
+        public DateTime mUpdated;
         public stOPEATypes.Type mType;
 
     }

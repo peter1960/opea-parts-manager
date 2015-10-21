@@ -243,7 +243,11 @@ namespace OPEAManager
 
         private void toolStripButtonAdd_Click(object sender, EventArgs e) {
             FormOPEA fm = new FormOPEA();
-            fm.ShowDialog();
+            if (fm.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+                tbOpea db = new tbOpea();
+                db.FillTable(0, 1000, dataGridStock, checkBoxStocked.Checked, textStockSearch.Text.Trim());
+            }
+
         }
 
         private void buttonBackup_Click(object sender, EventArgs e) {
