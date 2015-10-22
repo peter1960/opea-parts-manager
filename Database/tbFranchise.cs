@@ -120,7 +120,7 @@ namespace OPEAManager
         String m_Name1;
 
         public tbFranchiseItem(String Prefix_Id) {
-            log.Debug("Fanchise : " + Prefix_Id);
+            log.Debug("Franchise : " + Prefix_Id);
             m_Prefix_Id = Prefix_Id;
         }
 
