@@ -8,5 +8,8 @@
     <Setting Name="OPEAPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">c:\temp\KAWAMC01.dat</Value>
     </Setting>
+    <Setting Name="StockRows" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

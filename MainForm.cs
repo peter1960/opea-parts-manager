@@ -11,6 +11,7 @@ using System.Data.SQLite;
 using log4net;
 using log4net.Config;
 using System.IO;
+using System.Media;
 
 namespace OPEAManager
 {
@@ -193,7 +194,7 @@ namespace OPEAManager
 
         private void Search() {
             tbOpea db = new tbOpea();
-            db.FillTable(0, 1000, dataGridStock, checkBoxStocked.Checked, textStockSearch.Text.Trim());
+            db.FillTable(0, Properties.Settings.Default.StockRows, dataGridStock, checkBoxStocked.Checked, textStockSearch.Text.Trim());
         }
 
         private void toolStripButtonCart_Click(object sender, EventArgs e) {
@@ -247,8 +248,7 @@ namespace OPEAManager
             String sOPEA_ID = (String)Row[0].Cells[0].Value;
             FormOPEA fm = new FormOPEA(long.Parse(sOPEA_ID));
             if (fm.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
-                tbOpea db = new tbOpea();
-                db.FillTable(0, 1000, dataGridStock, checkBoxStocked.Checked, textStockSearch.Text.Trim());
+                Search();
                 //dataGridStock.Rows[Row[0].Index].Selected = true;
                 //dataGridStock.Rows[Row[0].Index].Visible = true;
             }
@@ -257,8 +257,7 @@ namespace OPEAManager
         private void toolStripButtonAdd_Click(object sender, EventArgs e) {
             FormOPEA fm = new FormOPEA();
             if (fm.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
-                tbOpea db = new tbOpea();
-                db.FillTable(0, 1000, dataGridStock, checkBoxStocked.Checked, textStockSearch.Text.Trim());
+                Search();
             }
 
         }
@@ -280,8 +279,50 @@ namespace OPEAManager
 
         }
 
+        private void Main_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.F5) {
+                log.Debug("Pressed F5");
+            }
+            if (e.KeyCode == Keys.F6) {
+                log.Debug("Pressed F6");
+            }
+            if (e.KeyCode == Keys.F7) {
+                log.Debug("Pressed F7");
+                toolStripButtonEdit_Click(null, null);
+            }
+            if (e.KeyCode == Keys.F8) {
+                log.Debug("Pressed F8");
+                toolStripButtonAdd_Click(null, null);
+            }
+            if (e.KeyCode == Keys.Down) {
+                log.Debug("Pressed Down");
+                DataGridViewSelectedRowCollection Row = dataGridStock.SelectedRows;
+                int nRow = Row[0].Index;
+                if (nRow < (Properties.Settings.Default.StockRows - 1)) {
+                    dataGridStock.Rows[nRow].Selected = false;
+                    dataGridStock.Rows[++nRow].Selected = true;
+                    dataGridStock.FirstDisplayedScrollingRowIndex = nRow;
+                }
+                else {
+                    SystemSounds.Beep.Play();
+                }
 
-
+                e.SuppressKeyPress = true;
+            }
+            if (e.KeyCode == Keys.Up) {
+                log.Debug("Pressed Up");
+                DataGridViewSelectedRowCollection Row = dataGridStock.SelectedRows;
+                int nRow = Row[0].Index;
+                if (nRow > 0) {
+                    dataGridStock.Rows[nRow].Selected = false;
+                    dataGridStock.Rows[--nRow].Selected = true;
+                }
+                else {
+                    SystemSounds.Beep.Play();
+                }
+                e.SuppressKeyPress = true;
+            }
+        }
 
     }
 }

@@ -39,6 +39,7 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.MainTabControl = new System.Windows.Forms.TabControl();
             this.tabStock = new System.Windows.Forms.TabPage();
+            this.buttonStockReset = new System.Windows.Forms.Button();
             this.toolStripStock = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripFranchise = new System.Windows.Forms.ToolStripComboBox();
@@ -82,7 +83,6 @@
             this.buttonBackup = new System.Windows.Forms.Button();
             this.buttonLoad = new System.Windows.Forms.Button();
             this.companyControl1 = new OPEAManager.Controls.CompanyControl();
-            this.buttonStockReset = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -206,6 +206,17 @@
             this.tabStock.Text = "Stock";
             this.tabStock.UseVisualStyleBackColor = true;
             // 
+            // buttonStockReset
+            // 
+            this.buttonStockReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonStockReset.Location = new System.Drawing.Point(334, 411);
+            this.buttonStockReset.Name = "buttonStockReset";
+            this.buttonStockReset.Size = new System.Drawing.Size(75, 23);
+            this.buttonStockReset.TabIndex = 6;
+            this.buttonStockReset.Text = "Reset";
+            this.buttonStockReset.UseVisualStyleBackColor = true;
+            this.buttonStockReset.Click += new System.EventHandler(this.buttonStockReset_Click);
+            // 
             // toolStripStock
             // 
             this.toolStripStock.Dock = System.Windows.Forms.DockStyle.None;
@@ -224,7 +235,7 @@
             this.toolStripSeparator8});
             this.toolStripStock.Location = new System.Drawing.Point(3, 3);
             this.toolStripStock.Name = "toolStripStock";
-            this.toolStripStock.Size = new System.Drawing.Size(337, 25);
+            this.toolStripStock.Size = new System.Drawing.Size(368, 25);
             this.toolStripStock.Stretch = true;
             this.toolStripStock.TabIndex = 5;
             this.toolStripStock.Text = "toolStrip1";
@@ -256,7 +267,7 @@
             this.toolStripButtonCart.Name = "toolStripButtonCart";
             this.toolStripButtonCart.Size = new System.Drawing.Size(32, 22);
             this.toolStripButtonCart.Text = "Cart";
-            this.toolStripButtonCart.ToolTipText = "Add selected to Cart";
+            this.toolStripButtonCart.ToolTipText = "F5 - Add selected to Cart";
             this.toolStripButtonCart.Click += new System.EventHandler(this.toolStripButtonCart_Click);
             // 
             // toolStripSeparator2
@@ -272,7 +283,7 @@
             this.toolStripButtonStock.Name = "toolStripButtonStock";
             this.toolStripButtonStock.Size = new System.Drawing.Size(37, 22);
             this.toolStripButtonStock.Text = "Stock";
-            this.toolStripButtonStock.ToolTipText = "Adjust Stock for selected";
+            this.toolStripButtonStock.ToolTipText = "F6 - Adjust Stock for selected";
             this.toolStripButtonStock.Click += new System.EventHandler(this.toolStripButtonStock_Click);
             // 
             // toolStripSeparator3
@@ -288,7 +299,7 @@
             this.toolStripButtonEdit.Name = "toolStripButtonEdit";
             this.toolStripButtonEdit.Size = new System.Drawing.Size(29, 22);
             this.toolStripButtonEdit.Text = "Edit";
-            this.toolStripButtonEdit.ToolTipText = "Edit the part details";
+            this.toolStripButtonEdit.ToolTipText = "F7 - Edit the part details";
             this.toolStripButtonEdit.Click += new System.EventHandler(this.toolStripButtonEdit_Click);
             // 
             // toolStripSeparator7
@@ -304,7 +315,7 @@
             this.toolStripButtonAdd.Name = "toolStripButtonAdd";
             this.toolStripButtonAdd.Size = new System.Drawing.Size(30, 22);
             this.toolStripButtonAdd.Text = "Add";
-            this.toolStripButtonAdd.ToolTipText = "Add Item to custom Franchise";
+            this.toolStripButtonAdd.ToolTipText = "F8 - Add Item to custom Franchise";
             this.toolStripButtonAdd.Click += new System.EventHandler(this.toolStripButtonAdd_Click);
             // 
             // toolStripSeparator8
@@ -646,17 +657,6 @@
             this.companyControl1.Size = new System.Drawing.Size(282, 289);
             this.companyControl1.TabIndex = 4;
             // 
-            // buttonStockReset
-            // 
-            this.buttonStockReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonStockReset.Location = new System.Drawing.Point(334, 411);
-            this.buttonStockReset.Name = "buttonStockReset";
-            this.buttonStockReset.Size = new System.Drawing.Size(75, 23);
-            this.buttonStockReset.TabIndex = 6;
-            this.buttonStockReset.Text = "Reset";
-            this.buttonStockReset.UseVisualStyleBackColor = true;
-            this.buttonStockReset.Click += new System.EventHandler(this.buttonStockReset_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -665,9 +665,11 @@
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
             this.Text = "OPEA Manager";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_KeyDown);
             this.Resize += new System.EventHandler(this.Main_Resize);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

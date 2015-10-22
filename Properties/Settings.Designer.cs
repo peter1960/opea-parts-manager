@@ -43,5 +43,14 @@ namespace OPEAManager.Properties {
                 this["OPEAPath"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
+        public int StockRows {
+            get {
+                return ((int)(this["StockRows"]));
+            }
+        }
     }
 }
