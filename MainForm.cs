@@ -301,6 +301,7 @@ namespace OPEAManager
                 if (nRow < (Properties.Settings.Default.StockRows - 1)) {
                     dataGridStock.Rows[nRow].Selected = false;
                     dataGridStock.Rows[++nRow].Selected = true;
+                    int vis = dataGridStock.DisplayedRowCount(false);
                     dataGridStock.FirstDisplayedScrollingRowIndex = nRow;
                 }
                 else {
