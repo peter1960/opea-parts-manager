@@ -46,7 +46,7 @@
             this.textBoxQty.Location = new System.Drawing.Point(94, 45);
             this.textBoxQty.Name = "textBoxQty";
             this.textBoxQty.Size = new System.Drawing.Size(50, 20);
-            this.textBoxQty.TabIndex = 1;
+            this.textBoxQty.TabIndex = 0;
             // 
             // buttonCancel
             // 
@@ -69,6 +69,7 @@
             // 
             // buttonSave
             // 
+            this.buttonSave.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonSave.Location = new System.Drawing.Point(178, 38);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
@@ -88,11 +89,13 @@
             this.Controls.Add(this.textBoxQty);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormStock";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Stock Adjustment";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormStock_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

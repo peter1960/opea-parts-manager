@@ -45,5 +45,17 @@ namespace OPEAManager
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
+        private void FormStock_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Return) {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            if (e.KeyCode == Keys.Escape) {
+                this.DialogResult = DialogResult.Cancel;
+                this.Close();
+            }
+
+        }
     }
 }
