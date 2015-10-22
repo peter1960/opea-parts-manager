@@ -19,7 +19,7 @@ namespace OPEAManager
         public void ParseLine(String opeaText) {
             oLine.Valid = true;
             oLine.mType = stOPEATypes.Type.Fixed;
-            oLine.mFranchise = opeaText.Substring(0, 4);
+            oLine.mFranchise_id = opeaText.Substring(0, 4);
             oLine.mEffectiveDate = opeaText.Substring(4, 6);
             oLine.mPart = opeaText.Substring(10, 20);
             oLine.mClean = clean(oLine.mPart);
@@ -41,17 +41,32 @@ namespace OPEAManager
             oLine.mType = opeaST.mType;
             oLine.mPart = opeaST.mPart;
             oLine.mClean = clean(oLine.mPart);
-            oLine.mFranchise = opeaST.mFranchise;
+            oLine.mFranchise_id = opeaST.mFranchise_id;
+            oLine.mSupplier_id = opeaST.mSupplier_id;
             oLine.mDescription = quotes(opeaST.mDescription);
+            oLine.OPEA_id = opeaST.OPEA_id;
+            oLine.mListPrice = opeaST.mListPrice;
+            oLine.mRetailPrice = opeaST.mRetailPrice;
+
         }
 
         public string PartNo {
             get { return oLine.mPart; }
         }
 
+        public long OPEA_id {
+            get { return oLine.OPEA_id; }
+        }
+
+
         public string Franchise {
             get {
-                return oLine.mFranchise;
+                return oLine.mFranchise_id;
+            }
+        }
+        public long Supplier {
+            get {
+                return oLine.mSupplier_id;
             }
         }
         public string EffectiveDate {

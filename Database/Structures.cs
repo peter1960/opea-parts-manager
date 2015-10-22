@@ -45,8 +45,9 @@ namespace OPEAManager
 
     public struct stOPEA
     {
-        public int OPEA_id;
-        public String mFranchise;
+        public long OPEA_id;
+        public String mFranchise_id;
+        public long mSupplier_id;
         public String mPart;
         public String mClean;
         public String mDescription;

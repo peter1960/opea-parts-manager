@@ -30,11 +30,19 @@ namespace OPEAManager
             //if update failed then this is a new 
             //record and then insert it.
             //relies on the part/franshise index
-            if (!Update(data)) {
+            if (!Update(data, false)) {
                 Insert(data);
             }
         }
-        public bool Update(opeaLine data) {
+        public void UpdateById(opeaLine data) {
+            //if update failed then this is a new 
+            //record and then insert it.
+            //relies on the part/franshise index
+            if (!Update(data, true)) {
+                log.Debug("Update Failed, inserting");
+            }
+        }
+        public bool Update(opeaLine data, bool byId) {
 
             String sql = "update opea set " +
                "TYPE = '" + data.Type + "'," +
@@ -51,12 +59,21 @@ namespace OPEAManager
             "MINORDER ='" + data.MinOrder + "'," +
             "CLASS = '" + data.Class + "'," +
             "CLEANPART = '" + data.Clean + "', " +
-            "UPDATED = (datetime('now','localtime')) " +
-            "where PARTNO = '" + data.PartNo + "' and FRANCHISE_ID = '"+data.Franchise+"';";
+            "UPDATED = (datetime('now','localtime')) ";
+            if (byId) {
+                log.Debug("Update ID: " + data.OPEA_id.ToString());
+                sql += ", SUPPLIER_ID = "+data.Supplier.ToString()+" ";
+                sql += " where OPEA_ID = " + data.OPEA_id.ToString() + ";";
+            }
+            else {
+                sql += " where PARTNO = '" + data.PartNo + "' and FRANCHISE_ID = '" + data.Franchise + "';";
+            }
 
             //log.Debug(Database.Instance.ExecuteNonQuery(sql, false));
 
-            return Database.Instance.ExecuteNonQuery(sql, false) == 1;
+            // if updating by id then this is a single update and not a bulk load
+            // so the execute can be logged
+            return Database.Instance.ExecuteNonQuery(sql, byId) == 1;
         }
         public void Insert(opeaLine data) {
             String sql = "insert into `opea` (" +
@@ -99,14 +116,19 @@ namespace OPEAManager
         }
 
         public stOPEA FetchRecord(long oped_id) {
+            log.Debug("Fetch OPEA Record");
             stOPEA st = new stOPEA();
-            String sQuery = "select opea_id, franchise_id,partno ,description, listprice,retailprice,created,updated from opea where opea_id = " + oped_id.ToString();
+            String sQuery = "select opea_id, type, franchise_id,supplier_id,partno ,description, listprice,retailprice,created,updated from opea where opea_id = " + oped_id.ToString();
             DataTable tmp = Database.Instance.FillDataSet(sQuery);
+            st.OPEA_id = (long)tmp.Rows[0]["opea_id"];
+            //StatusEnum MyStatus = (StatusEnum)Enum.Parse(typeof(StatusEnum), "Active", true);
+            st.mType = (stOPEATypes.Type)Enum.Parse(typeof(stOPEATypes.Type), (String)tmp.Rows[0]["type"]);
             st.mPart = (String)tmp.Rows[0]["partno"];
             st.mDescription = (String)tmp.Rows[0]["description"];
             st.mListPrice = (Decimal)(Double)tmp.Rows[0]["listprice"];
             st.mRetailPrice = (Decimal)(Double)tmp.Rows[0]["retailprice"];
-            st.mFranchise = (String)tmp.Rows[0]["franchise_id"];
+            st.mFranchise_id = (String)tmp.Rows[0]["franchise_id"];
+            st.mSupplier_id = (long)tmp.Rows[0]["supplier_id"];
             st.mCreated = (DateTime)tmp.Rows[0]["created"];
             st.mUpdated = (DateTime)tmp.Rows[0]["updated"];
             return st;

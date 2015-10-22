@@ -41,8 +41,9 @@ namespace OPEAManager
                 // set value so check for changes is common function
                 st.mPart = "";
                 st.mDescription = "";
-                textList.Text = st.mListPrice.ToString("$0.00");
-                textRetail.Text = st.mRetailPrice.ToString("$0.00");
+                st.mSupplier_id = -1;
+                textList.Text = st.mListPrice.ToString("0.00");
+                textRetail.Text = st.mRetailPrice.ToString("0.00");
 
             }
             else {
@@ -51,20 +52,36 @@ namespace OPEAManager
                 st = op.FetchRecord(Id);
                 textPartNo.Text = st.mPart;
                 textDescription.Text = st.mDescription;
-                textList.Text = st.mListPrice.ToString("$0.00");
-                textRetail.Text = st.mRetailPrice.ToString("$0.00");
+                textList.Text = st.mListPrice.ToString("0.00");
+                textRetail.Text = st.mRetailPrice.ToString("0.00");
                 textBoxCreated.Text = st.mCreated.ToString("d/M/y HH:mm");
                 textBoxUpdated.Text = st.mUpdated.ToString("d/M/y HH:mm");
 
                 if (st.mType == stOPEATypes.Type.Fixed) {
+                    log.Debug("Fixed");
                     comboSupplier.Enabled = false;
                     comboFranchise.Enabled = false;
-                    comboFranchise.SelectedIndex = comboFranchise.FindString(st.mFranchise);
+                    comboFranchise.SelectedIndex = comboFranchise.FindString(st.mFranchise_id);
                     radioButtonFranchise.Checked = true;
                     radioButtonFranchise.Enabled = false;
                     radioButtonSupplier.Enabled = false;
                     textPartNo.ReadOnly = true;
                     textDescription.ReadOnly = true;
+                }
+                else {
+                    log.Debug("Supplier Type");
+                    comboSupplier.Enabled = true;
+                    comboFranchise.Enabled = false;
+                    radioButtonSupplier.Checked = true;
+                    radioButtonFranchise.Enabled = false;
+                    for (int xloop = 0; xloop < comboSupplier.Items.Count; xloop++) {
+                        tbSupplierItem fi = (tbSupplierItem)comboSupplier.Items[xloop];
+                        if (fi.Id == st.mSupplier_id) {
+                            log.Debug("Supplier in Combo box");
+                            comboSupplier.SelectedIndex = xloop;
+                        }
+                    }
+
                 }
 
             }
@@ -77,33 +94,66 @@ namespace OPEAManager
         }
 
         private void buttonSave_Click(object sender, EventArgs e) {
-            this.DialogResult = DialogResult.OK;
+            try {
+                st.mListPrice = Decimal.Parse(textList.Text);
+            }
+            catch (System.FormatException ex){
+                MessageBox.Show(this, "There is an error with the List price", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                log.Error("List Price parse error: " + textList.Text);
+                return;
+            }
+            try {
+                st.mRetailPrice = Decimal.Parse(textRetail.Text);
+            }
+            catch (System.FormatException ex) {
+                MessageBox.Show(this, "There is an error with the Retail price", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                log.Error("Retails Price parse error: " + textRetail.Text);
+                return;
+            }
             if (Id == 0) {
+                log.Debug("Add New");
                 st.mPart = textPartNo.Text;
                 st.mDescription = textDescription.Text;
                 st.mType = stOPEATypes.Type.Supplier;
-                st.mFranchise = "CUST";
+                st.mFranchise_id = "CUST";
+                if (comboSupplier.SelectedItem == null) {
+                    MessageBox.Show(this, "Select a supplier", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    log.Error("Supplier not selected, cannot save");
+                    return;
+                }
 
+                st.mSupplier_id = ((tbSupplierItem)(comboSupplier.SelectedItem)).Id;
                 tbOpea op = new tbOpea();
                 opeaLine ol = new opeaLine();
                 ol.StructureToLine(st);
                 op.InsertUpdate(ol);
-                log.Debug("Add New");
             }
             else {
-                st.mListPrice = 666;
+                log.Debug("Update part: "+ st.OPEA_id.ToString());
                 tbOpea op = new tbOpea();
                 opeaLine ol = new opeaLine();
+                // update things that are not fixed
+                if (st.mType != stOPEATypes.Type.Fixed) {
+                    log.Debug("Not Fixed Type");
+                    // should not happend but ensure a supplier is selected
+                    if (comboSupplier.SelectedItem == null) {
+                        MessageBox.Show(this, "Select a supplier", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        log.Error("Supplier not selected, cannot save");
+                        return;
+                    }
+
+                    st.mSupplier_id = ((tbSupplierItem)(comboSupplier.SelectedItem)).Id;
+                }
                 ol.StructureToLine(st);
-                op.InsertUpdate(ol);
-                log.Debug("Update part");
+                op.UpdateById(ol);
             }
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
         private void buttonCancel_Click(object sender, EventArgs e) {
-            this.DialogResult = DialogResult.Cancel;
             if (OkToCancel()) {
+                this.DialogResult = DialogResult.Cancel;
                 this.Close();
             }
 
@@ -142,10 +192,10 @@ namespace OPEAManager
                 return true;
             }
 
-            if (!textList.Text.Equals(st.mListPrice.ToString("$0.00"))) {
+            if (!textList.Text.Equals(st.mListPrice.ToString("0.00"))) {
                 return true;
             }
-            if (!textRetail.Text.Equals(st.mRetailPrice.ToString("$0.00"))) {
+            if (!textRetail.Text.Equals(st.mRetailPrice.ToString("0.00"))) {
                 return true;
             }
             return false;

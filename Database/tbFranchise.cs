@@ -21,9 +21,22 @@ namespace OPEAManager
         const string Supplier = "Supplier";
 
 
-        public void FillList(ToolStripComboBox cb) {
+        public void FillFilterList(ToolStripComboBox cb) {
             cb.Items.Clear();
             cb.Items.Add("All");
+            // add the Franshise
+            DataTable tmp = Database.Instance.FillDataSet("select Prefix from Franchise where active = 'Y' order by prefix");
+            for (int x = 0; x < tmp.Rows.Count; x++) {
+                cb.Items.Add(new tbFranchiseItem((String)tmp.Rows[x][0]));
+            }
+
+            tmp = Database.Instance.FillDataSet("select supplier_id,name1 from supplier where active = 'Y' order by name1");
+            for (int x = 0; x < tmp.Rows.Count; x++) {
+                cb.Items.Add(new tbSupplierItem((long)tmp.Rows[x][0],"Cust:"+(String)tmp.Rows[x][1]));
+            }
+            
+
+
             cb.SelectedIndex = 0;
         }
 
@@ -93,8 +106,8 @@ namespace OPEAManager
 
         public bool Valid(String Franchise) {
 
-            DataTable tmp = Database.Instance.FillDataSet("select FRANCHISE_ID  from franchise where prefix = '"+Franchise+"'");
-            log.Debug("Verify Franchise: " + Franchise );
+            DataTable tmp = Database.Instance.FillDataSet("select FRANCHISE_ID  from franchise where prefix = '" + Franchise + "'");
+            log.Debug("Verify Franchise: " + Franchise);
 
             return (tmp.Rows.Count == 1);
         }
@@ -109,6 +122,36 @@ namespace OPEAManager
         }
     }
 
+
+    class tbFranchiseFilterItem
+    {
+        private static readonly ILog log = LogManager.GetLogger(typeof(tbFranchiseFilterItem));
+
+        String m_Prefix_Id = "";
+        String m_Name1;
+        tbSupplierItem m_supRecord;
+
+        public tbFranchiseFilterItem(String Prefix_Id) {
+            log.Debug("Franchise : " + Prefix_Id);
+            m_Prefix_Id = Prefix_Id;
+        }
+
+        public tbFranchiseFilterItem(tbSupplierItem supRecord) {
+            log.Debug("Supplier : " + supRecord.Id + " " + supRecord.ToString());
+            m_supRecord = supRecord;
+        }
+
+        public override String ToString() {
+
+            if (m_Prefix_Id == "") {
+                return m_supRecord.ToString();
+            }
+            else {
+                return m_Prefix_Id;
+            }
+        }
+
+    }
 
 
     class tbFranchiseItem
@@ -127,6 +170,7 @@ namespace OPEAManager
         public override String ToString() {
             return m_Prefix_Id;
         }
+
     }
 
 }

@@ -25,10 +25,10 @@ namespace OPEAManager
         public Main() {
             XmlConfigurator.Configure(new System.IO.FileInfo(@"log4net.xml"));
             log.Info("====================== Application Start ======================");
-
+#if !DEBUG
             sp = new splash();
             sp.Show();
-
+#endif
             InitializeComponent();
             Main_Resize(null, null);
 
@@ -73,7 +73,7 @@ namespace OPEAManager
         private void SetupStockTab() {
 
             tbFranchise fr = new tbFranchise();
-            fr.FillList(toolStripFranchise);
+            fr.FillFilterList(toolStripFranchise);
 
             tbOpea db = new tbOpea();
             db.FillTable(0, 1000, dataGridStock, false);
@@ -236,9 +236,15 @@ namespace OPEAManager
 
         private void toolStripButtonEdit_Click(object sender, EventArgs e) {
             DataGridViewSelectedRowCollection Row = dataGridStock.SelectedRows;
+            log.Debug("Edit Row: " + Row[0].Index);
             String sOPEA_ID = (String)Row[0].Cells[0].Value;
             FormOPEA fm = new FormOPEA(long.Parse(sOPEA_ID));
-            fm.ShowDialog();
+            if (fm.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+                tbOpea db = new tbOpea();
+                db.FillTable(0, 1000, dataGridStock, checkBoxStocked.Checked, textStockSearch.Text.Trim());
+                //dataGridStock.Rows[Row[0].Index].Selected = true;
+                //dataGridStock.Rows[Row[0].Index].Visible = true;
+            }
         }
 
         private void toolStripButtonAdd_Click(object sender, EventArgs e) {

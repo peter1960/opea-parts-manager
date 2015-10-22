@@ -78,10 +78,10 @@
             this.buttonComanySave = new System.Windows.Forms.Button();
             this.companyControl1 = new OPEAManager.Controls.CompanyControl();
             this.tabSystem = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonSystemReset = new System.Windows.Forms.Button();
-            this.buttonLoad = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonBackup = new System.Windows.Forms.Button();
+            this.buttonLoad = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -222,7 +222,7 @@
             this.toolStripSeparator8});
             this.toolStripStock.Location = new System.Drawing.Point(3, 3);
             this.toolStripStock.Name = "toolStripStock";
-            this.toolStripStock.Size = new System.Drawing.Size(337, 25);
+            this.toolStripStock.Size = new System.Drawing.Size(368, 25);
             this.toolStripStock.Stretch = true;
             this.toolStripStock.TabIndex = 5;
             this.toolStripStock.Text = "toolStrip1";
@@ -235,6 +235,7 @@
             // 
             // toolStripFranchise
             // 
+            this.toolStripFranchise.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.toolStripFranchise.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
             this.toolStripFranchise.Name = "toolStripFranchise";
             this.toolStripFranchise.Size = new System.Drawing.Size(121, 25);
@@ -601,17 +602,6 @@
             this.tabSystem.Text = "System";
             this.tabSystem.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.buttonBackup);
-            this.groupBox1.Controls.Add(this.buttonLoad);
-            this.groupBox1.Location = new System.Drawing.Point(32, 28);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 100);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Database";
-            // 
             // buttonSystemReset
             // 
             this.buttonSystemReset.Location = new System.Drawing.Point(458, 331);
@@ -623,15 +613,16 @@
             this.buttonSystemReset.Visible = false;
             this.buttonSystemReset.Click += new System.EventHandler(this.buttonSystemReset_Click);
             // 
-            // buttonLoad
+            // groupBox1
             // 
-            this.buttonLoad.Location = new System.Drawing.Point(6, 19);
-            this.buttonLoad.Name = "buttonLoad";
-            this.buttonLoad.Size = new System.Drawing.Size(75, 23);
-            this.buttonLoad.TabIndex = 0;
-            this.buttonLoad.Text = "Load OPEA";
-            this.buttonLoad.UseVisualStyleBackColor = true;
-            this.buttonLoad.Click += new System.EventHandler(this.OPEA_Load_Click);
+            this.groupBox1.Controls.Add(this.buttonBackup);
+            this.groupBox1.Controls.Add(this.buttonLoad);
+            this.groupBox1.Location = new System.Drawing.Point(32, 28);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 100);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Database";
             // 
             // buttonBackup
             // 
@@ -642,6 +633,16 @@
             this.buttonBackup.Text = "Backup";
             this.buttonBackup.UseVisualStyleBackColor = true;
             this.buttonBackup.Click += new System.EventHandler(this.buttonBackup_Click);
+            // 
+            // buttonLoad
+            // 
+            this.buttonLoad.Location = new System.Drawing.Point(6, 19);
+            this.buttonLoad.Name = "buttonLoad";
+            this.buttonLoad.Size = new System.Drawing.Size(75, 23);
+            this.buttonLoad.TabIndex = 0;
+            this.buttonLoad.Text = "Load OPEA";
+            this.buttonLoad.UseVisualStyleBackColor = true;
+            this.buttonLoad.Click += new System.EventHandler(this.OPEA_Load_Click);
             // 
             // Main
             // 
