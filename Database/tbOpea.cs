@@ -237,10 +237,10 @@ namespace OPEAManager
             grid.Columns[Id].Visible = false;
             grid.Columns[PartNo].Width = 110;
             grid.Columns[Descr].Width = 400;
-            grid.Columns[List].Width = 50;
+            grid.Columns[List].Width = 60;
             grid.Columns[List].DefaultCellStyle.Format = "C";
             grid.Columns[List].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            grid.Columns[Retail].Width = 50;
+            grid.Columns[Retail].Width = 60;
             grid.Columns[Retail].DefaultCellStyle.Format = "C";
             grid.Columns[Retail].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             grid.Columns[Qty].Width = 40;
