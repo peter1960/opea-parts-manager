@@ -77,12 +77,12 @@
             this.tabCompany = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonComanySave = new System.Windows.Forms.Button();
+            this.companyControl1 = new OPEAManager.Controls.CompanyControl();
             this.tabSystem = new System.Windows.Forms.TabPage();
             this.buttonSystemReset = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonBackup = new System.Windows.Forms.Button();
             this.buttonLoad = new System.Windows.Forms.Button();
-            this.companyControl1 = new OPEAManager.Controls.CompanyControl();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -235,7 +235,7 @@
             this.toolStripSeparator8});
             this.toolStripStock.Location = new System.Drawing.Point(3, 3);
             this.toolStripStock.Name = "toolStripStock";
-            this.toolStripStock.Size = new System.Drawing.Size(368, 25);
+            this.toolStripStock.Size = new System.Drawing.Size(337, 25);
             this.toolStripStock.Stretch = true;
             this.toolStripStock.TabIndex = 5;
             this.toolStripStock.Text = "toolStrip1";
@@ -596,6 +596,13 @@
             this.buttonComanySave.UseVisualStyleBackColor = true;
             this.buttonComanySave.Click += new System.EventHandler(this.buttonComanySave_Click);
             // 
+            // companyControl1
+            // 
+            this.companyControl1.Location = new System.Drawing.Point(3, 61);
+            this.companyControl1.Name = "companyControl1";
+            this.companyControl1.Size = new System.Drawing.Size(282, 289);
+            this.companyControl1.TabIndex = 4;
+            // 
             // tabSystem
             // 
             this.tabSystem.Controls.Add(this.buttonSystemReset);
@@ -650,13 +657,6 @@
             this.buttonLoad.UseVisualStyleBackColor = true;
             this.buttonLoad.Click += new System.EventHandler(this.OPEA_Load_Click);
             // 
-            // companyControl1
-            // 
-            this.companyControl1.Location = new System.Drawing.Point(3, 61);
-            this.companyControl1.Name = "companyControl1";
-            this.companyControl1.Size = new System.Drawing.Size(282, 289);
-            this.companyControl1.TabIndex = 4;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -669,6 +669,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
             this.Text = "OPEA Manager";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_KeyDown);
             this.Resize += new System.EventHandler(this.Main_Resize);
             this.menuStrip1.ResumeLayout(false);

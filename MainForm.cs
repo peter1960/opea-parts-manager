@@ -55,6 +55,14 @@ namespace OPEAManager
             this.Cursor = Cursors.Default;
         }
 
+        private void Main_FormClosing(object sender, FormClosingEventArgs e) {
+            log.Info("Shutdown");
+            log.Info("=============================================");
+            log.Info("");
+
+        }
+
+
         private void toolStripMenuItem1_Click(object sender, EventArgs e) {
 
         }
@@ -280,11 +288,21 @@ namespace OPEAManager
         }
 
         private void Main_KeyDown(object sender, KeyEventArgs e) {
+            DataGridViewSelectedRowCollection Row = dataGridStock.SelectedRows;
+            int nCurrentVisable;
+            nCurrentVisable = Row[0].Index;
+            int nFirstVisableRow;
+            nFirstVisableRow = dataGridStock.FirstDisplayedScrollingRowIndex;
+            //last visable row
+            int nTotalVisable = dataGridStock.DisplayedRowCount(false) -1;
+
+            
             if (e.KeyCode == Keys.F5) {
                 log.Debug("Pressed F5");
             }
             if (e.KeyCode == Keys.F6) {
                 log.Debug("Pressed F6");
+                toolStripButtonStock_Click(null, null);
             }
             if (e.KeyCode == Keys.F7) {
                 log.Debug("Pressed F7");
@@ -294,36 +312,51 @@ namespace OPEAManager
                 log.Debug("Pressed F8");
                 toolStripButtonAdd_Click(null, null);
             }
+            if (e.KeyCode == Keys.Enter) {
+                log.Debug("Pressed Enter");
+                Search();
+            }
             if (e.KeyCode == Keys.Down) {
-                log.Debug("Pressed Down");
-                DataGridViewSelectedRowCollection Row = dataGridStock.SelectedRows;
-                int nRow = Row[0].Index;
-                if (nRow < (Properties.Settings.Default.StockRows - 1)) {
-                    dataGridStock.Rows[nRow].Selected = false;
-                    dataGridStock.Rows[++nRow].Selected = true;
-                    int vis = dataGridStock.DisplayedRowCount(false);
-                    dataGridStock.FirstDisplayedScrollingRowIndex = nRow;
+                if (nCurrentVisable < (Properties.Settings.Default.StockRows - 1)) {
+                    dataGridStock.Rows[nCurrentVisable].Selected = false;
+                    dataGridStock.Rows[++nCurrentVisable].Selected = true;
+
+                    if (nCurrentVisable > (nFirstVisableRow + (nTotalVisable -1))) {
+
+                        dataGridStock.FirstDisplayedScrollingRowIndex = nCurrentVisable - (nTotalVisable);
+                    }
                 }
                 else {
                     SystemSounds.Beep.Play();
                 }
-
                 e.SuppressKeyPress = true;
             }
             if (e.KeyCode == Keys.Up) {
-                log.Debug("Pressed Up");
-                DataGridViewSelectedRowCollection Row = dataGridStock.SelectedRows;
-                int nRow = Row[0].Index;
-                if (nRow > 0) {
-                    dataGridStock.Rows[nRow].Selected = false;
-                    dataGridStock.Rows[--nRow].Selected = true;
+                if (nCurrentVisable > 0) {
+                    dataGridStock.Rows[nCurrentVisable].Selected = false;
+                    dataGridStock.Rows[--nCurrentVisable].Selected = true;
+                    if (nCurrentVisable < nFirstVisableRow) {
+
+                        dataGridStock.FirstDisplayedScrollingRowIndex = nCurrentVisable;
+                    }
                 }
                 else {
                     SystemSounds.Beep.Play();
                 }
                 e.SuppressKeyPress = true;
             }
+            if (Char.IsLetterOrDigit((Char)e.KeyValue)) {
+                textStockSearch.Focus();
+                textStockSearch.AppendText(((Char)e.KeyValue).ToString());
+                e.SuppressKeyPress = true;
+            }
+            if (e.KeyCode == Keys.Back) {
+                textStockSearch.Focus();
+            }
+
+            
         }
+
 
     }
 }
