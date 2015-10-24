@@ -16,7 +16,7 @@ namespace OPEAManager
         private static Database instance = null;
         private static readonly object padlock = new object();
         private static SQLiteConnection sql_con;
-        private static SQLiteCommand sql_cmd;
+        //private static SQLiteCommand sql_cmd;
         private static SQLiteDataAdapter DB;
         private static SQLiteTransaction Trans;
         private static Boolean TransOpen;
@@ -32,9 +32,6 @@ namespace OPEAManager
         }
         static Database() {
             instance = new Database();
-        }
-        ~Database() {
-            //sql_con.Close();
         }
 
         private long Max(long val1, long val2) {
@@ -63,9 +60,12 @@ namespace OPEAManager
             if (Logit) {
                 log.Debug("Execute " + txtQuery);
             }
+            SQLiteCommand sql_cmd;
             sql_cmd = sql_con.CreateCommand();
             sql_cmd.CommandText = txtQuery;
-            return sql_cmd.ExecuteNonQuery();
+            int x = sql_cmd.ExecuteNonQuery();
+            sql_cmd.Dispose();
+            return x;
         }
 
         public DataTable FillDataSet(string txtQuery) {
