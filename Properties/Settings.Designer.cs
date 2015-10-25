@@ -52,5 +52,17 @@ namespace OPEAManager.Properties {
                 return ((int)(this["StockRows"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2000")]
+        public int CommitSize {
+            get {
+                return ((int)(this["CommitSize"]));
+            }
+            set {
+                this["CommitSize"] = value;
+            }
+        }
     }
 }

@@ -7,16 +7,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using log4net;
 using log4net.Config;
-
+using System.Diagnostics;
 
 namespace OPEAManager
 {
     class opeaFile
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(opeaFile));
-
+        private PerformanceCounter ramCounter;
         public stErr LoadFile(String fileName) {
             log.Info("Loading: " + fileName);
+            ramCounter = new PerformanceCounter("Memory", "Available MBytes", true);
             opeaLine ol = new opeaLine();
             using (TextReader sr = File.OpenText(fileName)) {
                 String line;
@@ -35,7 +36,7 @@ namespace OPEAManager
                     return stErr.FRANCHISE1;
 
                 }
-
+                
                 tbOpea dbs = new tbOpea();
                 int nCount = 0;
                 int nTotal = 0;
@@ -43,13 +44,14 @@ namespace OPEAManager
                 while ((line = sr.ReadLine()) != null ) {
                     ol.ParseLine(line);
                     dbs.InsertUpdate(ol);
+                    
                     nCount++;
                     nTotal++;
-                    if (nCount >= 1000) {
+                    if (nCount >= Properties.Settings.Default.CommitSize) {
                         Database.Instance.CommitTrans();
                         Database.Instance.BeginTrans();
                         nCount = 0;
-                        log.Debug("     Committed :" + nTotal);
+                        log.Debug("     Committed :" + nTotal + "   " + Convert.ToInt32(ramCounter.NextValue()).ToString()+"Mb");
                     }
 
                 }
