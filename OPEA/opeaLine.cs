@@ -15,9 +15,14 @@ namespace OPEAManager
     {
         private stOPEA oLine;
         private static readonly ILog log = LogManager.GetLogger(typeof(opeaLine));
-
+#if DEBUG
+        public opeaLine() {
+            log.Debug("New Line");
+        }
+#endif
         public void ParseLine(String opeaText) {
             oLine.Valid = true;
+            
             oLine.mType = stOPEATypes.Type.Fixed;
             oLine.mFranchise_id = opeaText.Substring(0, 4);
             oLine.mEffectiveDate = opeaText.Substring(4, 6);
@@ -25,7 +30,7 @@ namespace OPEAManager
             oLine.mClean = clean(oLine.mPart);
             oLine.mDescription = quotes(opeaText.Substring(30, 35));
             oLine.mListPrice = Decimal.Parse(addPoint(opeaText.Substring(65, 10)));
-            oLine.mRetailPrice = Decimal.Parse (addPoint(opeaText.Substring(75, 10)));
+            oLine.mRetailPrice = Decimal.Parse(addPoint(opeaText.Substring(75, 10)));
             oLine.mDiscountCode = opeaText.Substring(85, 2);
             oLine.mSupercession = opeaText.Substring(87, 20);
             oLine.mStatus = opeaText.Substring(107, 1);
@@ -34,7 +39,7 @@ namespace OPEAManager
             oLine.mMinOrder = Int16.Parse(opeaText.Substring(110, 4));
             oLine.mClass = opeaText.Substring(114, 4);
             oLine.mFiller = "";// line.substring(118, 126);
-
+              
         }
         public void StructureToLine(stOPEA opeaST) {
             log.Debug("Structure convert");
