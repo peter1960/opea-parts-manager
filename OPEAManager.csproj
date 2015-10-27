@@ -126,6 +126,12 @@
       <DependentUpon>InputControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Database\tbVersion.cs" />
+    <Compile Include="FormCartAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCartAdd.Designer.cs">
+      <DependentUpon>FormCartAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\InputControl.resx">
       <DependentUpon>InputControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCartAdd.resx">
+      <DependentUpon>FormCartAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormStock.resx">
       <DependentUpon>FormStock.cs</DependentUpon>
