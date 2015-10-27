@@ -337,7 +337,6 @@
             this.dataGridStock.Size = new System.Drawing.Size(843, 342);
             this.dataGridStock.TabIndex = 0;
             this.dataGridStock.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridStock_CellContentClick);
-            this.dataGridStock.NewRowNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridStock_NewRowNeeded);
             // 
             // checkBoxStocked
             // 

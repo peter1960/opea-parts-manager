@@ -33,6 +33,7 @@ namespace OPEAManager
             oLine.mRetailPrice = Decimal.Parse(addPoint(opeaText.Substring(75, 10)));
             oLine.mDiscountCode = opeaText.Substring(85, 2);
             oLine.mSupercession = opeaText.Substring(87, 20);
+            oLine.mSuperceeds = "";
             oLine.mStatus = opeaText.Substring(107, 1);
             oLine.mTaxCode = opeaText.Substring(108, 1);
             oLine.mStockingCode = opeaText.Substring(109, 1);
@@ -107,6 +108,11 @@ namespace OPEAManager
         public string Supercession {
             get {
                 return oLine.mSupercession;
+            }
+        }
+        public string Superceeds {
+            get {
+                return oLine.mSuperceeds;
             }
         }
         public string Status {

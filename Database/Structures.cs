@@ -57,6 +57,7 @@ namespace OPEAManager
         public Decimal mRetailPrice;
         public String mDiscountCode;
         public String mSupercession;
+        public String mSuperceeds;
         public String mStatus;
         public String mTaxCode;
         public String mStockingCode;

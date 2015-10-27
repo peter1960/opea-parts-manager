@@ -16,6 +16,7 @@ namespace OPEAManager
         private static readonly ILog log = LogManager.GetLogger(typeof(opeaFile));
         private PerformanceCounter ramCounter;
         public stErr LoadFile(String fileName) {
+            Dictionary<String, String> superList = new Dictionary<string, string>(); ;
             log.Info("Loading: " + fileName);
             ramCounter = new PerformanceCounter("Memory", "Available MBytes", true);
             opeaLine ol = new opeaLine();
@@ -43,6 +44,9 @@ namespace OPEAManager
                 Database.Instance.BeginTrans();
                 while ((line = sr.ReadLine()) != null ) {
                     ol.ParseLine(line);
+                    if (ol.Supercession.Trim().Length > 0) {
+                        superList.Add(ol.PartNo, ol.Supercession);
+                    }
                     dbs.InsertUpdate(ol);
                     
                     nCount++;
@@ -58,6 +62,8 @@ namespace OPEAManager
                 Database.Instance.CommitTrans();
                 log.Debug("Committed :" + nTotal);
                 Database.Instance.ExecuteNonQuery("vacuum;");
+                dbs.UpdateSuperceeded(Franchise,superList);
+
                 return stErr.OK;
             }
         }

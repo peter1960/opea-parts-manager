@@ -10,6 +10,7 @@ using System.Data.SQLite;
 using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
+using System.Diagnostics;
 
 
 namespace OPEAManager
@@ -24,6 +25,7 @@ namespace OPEAManager
         const string Franchise = "F";
         const string Qty = "Avail";
         const string Id = "Id";
+        const string Status = "Status";
 
         private static readonly ILog log = LogManager.GetLogger(typeof(tbOpea));
         public void InsertUpdate(opeaLine data) {
@@ -53,6 +55,7 @@ namespace OPEAManager
             "RETAILPRICE = '" + data.RetailPrice + "'," +
             "DISCOUNTCODE = '" + data.DiscountCode + "'," +
             "SUPERCESSION = '" + data.Supercession + "'," +
+            "SUPERCEEDS = '" + data.Superceeds + "'," +
             "STATUS = '" + data.Status + "'," +
             "TAXCODE = '" + data.TaxCode + "'," +
             "STOCKINGCODE = '" + data.StockingCode + "'," +
@@ -118,7 +121,7 @@ namespace OPEAManager
         public stOPEA FetchRecord(long oped_id) {
             log.Debug("Fetch OPEA Record");
             stOPEA st = new stOPEA();
-            String sQuery = "select opea_id, type, franchise_id,supplier_id,partno ,description, listprice,retailprice,created,updated from opea where opea_id = " + oped_id.ToString();
+            String sQuery = "select opea_id, type, franchise_id,supplier_id,partno ,description, listprice,retailprice,created,updated,supercession,superceeds from opea where opea_id = " + oped_id.ToString();
             DataTable tmp = Database.Instance.FillDataSet(sQuery);
             st.OPEA_id = (long)tmp.Rows[0]["opea_id"];
             //StatusEnum MyStatus = (StatusEnum)Enum.Parse(typeof(StatusEnum), "Active", true);
@@ -131,9 +134,40 @@ namespace OPEAManager
             st.mSupplier_id = (long)tmp.Rows[0]["supplier_id"];
             st.mCreated = (DateTime)tmp.Rows[0]["created"];
             st.mUpdated = (DateTime)tmp.Rows[0]["updated"];
+            st.mSupercession = (String)tmp.Rows[0]["supercession"];
+            st.mSuperceeds = (String)tmp.Rows[0]["superceeds"];
             return st;
         }
 
+        public void UpdateSuperceeded(String Franchise, Dictionary<String, String> sList) {
+            PerformanceCounter ramCounter;
+            ramCounter = new PerformanceCounter("Memory", "Available MBytes", true);
+
+            log.Info(Franchise + " Total Parts Superceeded: " + sList.Count);
+            Database.Instance.BeginTrans();
+            int nCount = 0;
+            int nTotal = 0;
+
+            foreach (KeyValuePair<string, string> entry in sList) {
+                String sql = "update opea set " +
+                "SUPERCEEDS = '" + entry.Key + "' where PARTNO = '" + entry.Value + "' and FRANCHISE_ID = '" + Franchise + "';";
+                Database.Instance.ExecuteNonQuery(sql, false);
+                nCount++;
+                nTotal++;
+
+                if (nCount >= Properties.Settings.Default.CommitSize) {
+                    Database.Instance.CommitTrans();
+                    Database.Instance.BeginTrans();
+                    nCount = 0;
+                    log.Debug("     Committed :" + nTotal + "   " + Convert.ToInt32(ramCounter.NextValue()).ToString() + "Mb");
+                }
+
+            }
+            Database.Instance.CommitTrans();
+
+
+
+        }
         private DataTable EmptyTable(int RowsToHold) {
             log.Debug("Create empty DS");
 
@@ -188,7 +222,7 @@ namespace OPEAManager
                 t = EmptyTable(Rows);
             }
 
-            String sQuery = "select opea.opea_id, franchise_id,partno ,description, listprice,retailprice,qty from opea ";
+            String sQuery = "select opea.opea_id, franchise_id,partno ,description, listprice,retailprice,qty,status from opea ";
             if (bStocked) {
                 sQuery += ", stock where ";
                 if (Pattern.Length > 0) {
@@ -213,6 +247,9 @@ namespace OPEAManager
                     t.Rows[x][Id] = tmp.Rows[x]["opea_id"];
                     t.Rows[x][Franchise] = tmp.Rows[x]["franchise_id"];
                     t.Rows[x][PartNo] = tmp.Rows[x]["partno"];
+                    if (tmp.Rows[x]["status"].ToString().Equals("N")) {
+                        t.Rows[x][PartNo] = "NA:" + t.Rows[x][PartNo];
+                    }
                     t.Rows[x][Descr] = tmp.Rows[x]["description"];
                     t.Rows[x][List] = tmp.Rows[x]["listprice"];
                     t.Rows[x][Retail] = tmp.Rows[x]["retailprice"];

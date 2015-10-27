@@ -22,7 +22,7 @@ namespace OPEAManager
         private static Boolean TransOpen;
         private Database() {
             string dbPath = Properties.Settings.Default.DatabasePath;
-            sql_con = new SQLiteConnection("Data Source="+dbPath+"\\opea.db;Version=3;New=True;Compress=True;");
+            sql_con = new SQLiteConnection("Data Source="+dbPath+"\\db\\opea.db;Version=3;New=True;Compress=True;");
             sql_con.Open();
             TransOpen = false;
 

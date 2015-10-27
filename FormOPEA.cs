@@ -56,7 +56,8 @@ namespace OPEAManager
                 textRetail.Text = st.mRetailPrice.ToString("0.00");
                 textBoxCreated.Text = st.mCreated.ToString("d/M/y HH:mm");
                 textBoxUpdated.Text = st.mUpdated.ToString("d/M/y HH:mm");
-
+                textBoxSuperbyPart.Text = st.mSupercession;
+                textBoxSuperceedsPart.Text = st.mSuperceeds;
                 if (st.mType == stOPEATypes.Type.Fixed) {
                     log.Debug("Fixed");
                     comboSupplier.Enabled = false;
@@ -67,6 +68,7 @@ namespace OPEAManager
                     radioButtonSupplier.Enabled = false;
                     textPartNo.ReadOnly = true;
                     textDescription.ReadOnly = true;
+
                 }
                 else {
                     log.Debug("Supplier Type");

@@ -26,11 +26,14 @@ namespace OPEAManager
         public Main() {
             XmlConfigurator.Configure(new System.IO.FileInfo(@"log4net.xml"));
             log.Info("====================== Application Start ======================");
+            log.Info("Version : " + Properties.Settings.Default.Version);
+            log.Info("===============================================================");
 #if !DEBUG
             sp = new splash();
             sp.Show();
 #endif
             InitializeComponent();
+            this.Text = "OPEA Parts Manager : "+ Properties.Settings.Default.Version;
             Main_Resize(null, null);
 
             this.Cursor = Cursors.WaitCursor;
@@ -57,7 +60,7 @@ namespace OPEAManager
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e) {
             log.Info("Shutdown");
-            log.Info("=============================================");
+            log.Info("===============================================================");
             log.Info("");
 
         }
@@ -113,11 +116,6 @@ namespace OPEAManager
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e) {
             log.Debug("Index Changed " + e.ToString());
-
-        }
-
-        private void dataGridStock_NewRowNeeded(object sender, DataGridViewRowEventArgs e) {
-            log.Debug("Row Needed " + e.ToString());
 
         }
 
@@ -356,7 +354,6 @@ namespace OPEAManager
 
             
         }
-
 
     }
 }
